@@ -75,9 +75,9 @@ export default class Header extends React.Component<any, any> {
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="http://czs.boards.net/" target="_blank">
+                                <a className="nav-link" href="http://forums.starwarsnwn.com/">
                                     <i className="fa fa-th-list fa-lg" /> Forums
-                                </Link>
+                                </a>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="https://github.com/zunath/Star-Wars-Legends-of-the-Old-Republic-NWN" target="_blank">

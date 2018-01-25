@@ -43,7 +43,7 @@ export default class Downloads extends React.Component<any, any> {
                                         </a>
 
                                     </td>
-                                </tr>
+                                </tr>;
                             })}
                         </tbody>
                     </table>

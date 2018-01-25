@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using DotNetify;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -79,7 +80,7 @@ namespace SWLOR.Web
             {
                 services.Configure<MvcOptions>(options =>
                 {
-                    options.Filters.Add(new RequireHttpsAttribute());
+                    //options.Filters.Add(new RequireHttpsAttribute());
                 });
             }
 
@@ -104,9 +105,9 @@ namespace SWLOR.Web
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                var rewriterOptions = new RewriteOptions()
-                    .AddRedirectToHttps();
-                app.UseRewriter(rewriterOptions);
+                //var rewriterOptions = new RewriteOptions()
+                //    .AddRedirectToHttps();
+                //app.UseRewriter(rewriterOptions);
             }
 
             // MVC / Routing / Authentication
@@ -119,8 +120,8 @@ namespace SWLOR.Web
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
             
-
-            app.MapWhen(x => !x.Request.Path.Value.StartsWith("/dotnetify"), builder =>
+            app.MapWhen(x => !x.Request.Path.Value.StartsWith("/dotnetify") &&
+                             !x.Request.Path.Value.StartsWith("/forums"), builder =>
             {
                 builder.UseMvc(routes =>
                 {
