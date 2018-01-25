@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import * as dotnetify from 'dotnetify';
 import Logout from './Logout';
+import * as Logo from '../images/compressed/swollogo2.png';
 
 export default class Header extends React.Component<any, any> {
     vm: any;
@@ -44,25 +45,51 @@ export default class Header extends React.Component<any, any> {
             <div>
                 <Logout callback={this.confirmLogout} />
 
-                <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-
+                <div className="center">
                     <Link className="navbar-brand" to="/">
-                        <div className="center">
-                            Star Wars<br />Legends of the Old Republic <br />
-                        </div>
+                        <img className="navbar-brand img-fluid" src={Logo} alt="logo" />
                     </Link>
+                </div> 
+                
+                <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+
 
                     <div className="navbar">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <Link className="nav-link" to="/features">
-                                    <i className="fa fa-info-circle fa-lg" /> Features
+                                <Link className="nav-link" to="/story">
+                                    <i className="fa fa-info-circle fa-lg" /> Story
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/classes">
+                                    <i className="fa fa-info-circle fa-lg" /> Classes
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/races">
+                                    <i className="fa fa-info-circle fa-lg" /> Races
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/crafting">
+                                    <i className="fa fa-info-circle fa-lg" /> Skills
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/crafting">
+                                    <i className="fa fa-info-circle fa-lg" /> Crafting
                                 </Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/downloads">
                                     <i className="fa fa-download fa-lg" /> Downloads
                                 </Link>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="http://forums.starwarsnwn.com/">
+                                    <i className="fa fa-th-list fa-lg" /> Forums
+                                </a>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="https://discord.gg/g7PzMaM" target="_blank">
@@ -75,13 +102,18 @@ export default class Header extends React.Component<any, any> {
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="http://forums.starwarsnwn.com/">
-                                    <i className="fa fa-th-list fa-lg" /> Forums
+                                <Link className="nav-link" to="https://github.com/zunath/Star-Wars-Legends-of-the-Old-Republic-NWN" target="_blank">
+                                    <i className="fa fa-code fa-lg" /> Source Code
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/team">
+                                    <i className="fa fa-th-list fa-lg" /> Team
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="https://github.com/zunath/Star-Wars-Legends-of-the-Old-Republic-NWN" target="_blank">
-                                    <i className="fa fa-code fa-lg" /> Source Code
+                                <Link className="nav-link" to="/about-nwn">
+                                    <i className="fa fa-info-circle fa-lg" /> About NWN
                                 </Link>
                             </li>
 
