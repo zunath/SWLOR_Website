@@ -1,0 +1,28 @@
+.center {
+    text-align: center;
+}
+
+.greenText {
+    color: #2d792d;
+}
+
+.redText {
+    color: #dc1c17;
+}
+
+.sidebar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 4rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+}
+
+body {
+    position: relative;
+}
+
+.scrollable {
+    height: 200px;
+    overflow-y: scroll;
+}
