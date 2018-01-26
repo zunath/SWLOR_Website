@@ -1,20 +1,3 @@
 .center {
     text-align: center;
 }
-
-body {
-    width: 100%;
-    height: 100%;
-    background: #000;
-    overflow: hidden;
-}
-
-.navbar.center .navbar-inner {
-    text-align: center;
-}
-
-
-.navbar.center .navbar-inner .nav {
-    display: inline-block;
-    float: none;
-}

@@ -11,8 +11,8 @@
     <PackageReference Include="AspNet.Security.OAuth.Discord" Version="2.0.0-rc2-0535" />
     <PackageReference Include="AspNet.Security.OAuth.Validation" Version="2.0.0-rc1-final" />
     <PackageReference Include="DotNetify.SignalR" Version="2.2.2-pre" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -55,7 +55,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\images\uncompressed\" />
+    <None Include="wwwroot\Scripts\star-wars.js" />
   </ItemGroup>
 
   <ItemGroup>
