@@ -49,116 +49,124 @@ export default class Header extends React.Component<any, any> {
                     <Link className="navbar-brand" to="/">
                         <img className="navbar-brand img-fluid" src={Logo} alt="logo" />
                     </Link>
-                </div> 
-                
-                <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                </div>
 
+                <div className="row">
+                    <div className="col-7 offset-2">
 
-                    <div className="navbar">
-                        <ul className="navbar-nav">
+                        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                            <div className="navbar">
+                                <ul className="navbar-nav">
 
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/home">
-                                    <i className="fa fa-home " /> Home
+                                    <li>
+                                        <Link className="nav-link" to="/home">
+                                            <i className="fa fa-home" /> Home
                                 </Link>
-                            </li>
-                            <li className="nav-item dropdown">
-                                <Link id="loreDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
-                                    <i className="fa fa-space-shuttle " /> Lore
+                                    </li>
+                                    <li className="nav-item dropdown">
+                                        <Link id="loreDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
+                                            <i className="fa fa-space-shuttle" /> Lore
                                 </Link>
-                                <div className="dropdown-menu">
-                                    <Link className="dropdown-item" to="/story">
-                                        <i className="fa fa-book " /> Story
+                                        <div className="dropdown-menu">
+                                            <Link className="dropdown-item" to="/story">
+                                                <i className="fa fa-book" /> Story
                                     </Link>
-                                    <Link className="dropdown-item" to="/races">
-                                        <i className="fa fa-male " /> Races
+                                            <Link className="dropdown-item" to="/races">
+                                                <i className="fa fa-male" /> Races
                                     </Link>
-                                </div>
-                            </li>
-                            <li className="nav-item dropdown">
-                                <Link id="gameplayDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
-                                    <i className="fa fa-gamepad " /> Gameplay
+                                        </div>
+                                    </li>
+                                    <li className="nav-item dropdown">
+                                        <Link id="gameplayDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
+                                            <i className="fa fa-gamepad" /> Gameplay
                                 </Link>
-                                <div className="dropdown-menu">
-                                    <Link className="dropdown-item" to="/classes">
-                                        <i className="fa fa-shield " /> Classes
+                                        <div className="dropdown-menu">
+                                            <Link className="dropdown-item" to="/classes">
+                                                <i className="fa fa-shield" /> Classes
                                     </Link>
-                                    <Link className="dropdown-item" to="/skills">
-                                        <i className="fa fa-bolt " /> Skills
+                                            <Link className="dropdown-item" to="/skills">
+                                                <i className="fa fa-bolt" /> Skills
                                     </Link>
-                                </div>
-                            </li>
-                            <li className="nav-item dropdown">
-                                <Link id="serverInfoDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
-                                    <i className="fa fa-info " /> Server Info
+                                        </div>
+                                    </li>
+                                    <li className="nav-item dropdown">
+                                        <Link id="serverInfoDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
+                                            <i className="fa fa-info" /> Server Info
                                 </Link>
-                                <div className="dropdown-menu">
-                                    <Link className="dropdown-item" to="/downloads">
-                                        <i className="fa fa-download " /> Downloads
+                                        <div className="dropdown-menu">
+                                            <Link className="dropdown-item" to="/downloads">
+                                                <i className="fa fa-download" /> Downloads
                                     </Link>
-                                    <Link className="dropdown-item" to="/connection-info">
-                                        <i className="fa fa-plug " /> Connection Info
+                                            <Link className="dropdown-item" to="/connection-info">
+                                                <i className="fa fa-plug" /> Connection Info
                                     </Link>
-                                </div>
-                            </li>
-                            <li className="nav-item dropdown">
-                                <Link id="communityDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
-                                    <i className="fa fa-users " /> Community
+                                        </div>
+                                    </li>
+                                    <li className="nav-item dropdown">
+                                        <Link id="communityDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
+                                            <i className="fa fa-users " /> Community
                                 </Link>
-                                <div className="dropdown-menu">
-                                    <Link className="dropdown-item" to="http://forums.starwarsnwn.com/">
-                                        <i className="fa fa-list " /> Forums
+                                        <div className="dropdown-menu">
+                                            <Link className="dropdown-item" to="http://forums.starwarsnwn.com/">
+                                                <i className="fa fa-list " /> Forums
                                     </Link>
-                                    <Link className="dropdown-item" to="https://discord.gg/g7PzMaM" target="_blank">
-                                        <i className="fa fa-commenting-o " /> Discord (Chat)
+                                            <Link className="dropdown-item" to="https://discord.gg/g7PzMaM" target="_blank">
+                                                <i className="fa fa-commenting-o " /> Discord (Chat)
                                     </Link>
-                                    <Link className="dropdown-item" to="http://wiki.starwarsnwn.com/" target="_blank">
-                                        <i className="fa fa-wikipedia-w " /> Wiki
-                                    </Link>
-                                </div>
-                            </li>
-                            <li className="nav-item dropdown">
-                                <Link id="aboutDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
-                                    <i className="fa fa-user " /> About
+                                        </div>
+                                    </li>
+                                    <li className="nav-item dropdown">
+                                        <Link id="aboutDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
+                                            <i className="fa fa-user " /> About
                                 </Link>
-                                <div className="dropdown-menu">
-                                    <Link className="dropdown-item" to="/team-members">
-                                        <i className="fa fa-user-circle-o" /> Team Members
+                                        <div className="dropdown-menu">
+                                            <Link className="dropdown-item" to="/team-members">
+                                                <i className="fa fa-user-circle-o" /> Team Members
                                     </Link>
-                                    <Link className="dropdown-item" to="/neverwinter-nights" target="_blank">
-                                        <i className="fa fa-external-link" /> Buy Neverwinter Nights
+                                            <Link className="dropdown-item" to="http://nwn.beamdog.com/" target="_blank">
+                                                <i className="fa fa-external-link" /> Buy Neverwinter Nights
                                     </Link>
-                                </div>
-                            </li>
+                                            <Link className="dropdown-item" to="https://forums.beamdog.com/categories/neverwinter-nights" target="_blank">
+                                                <i className="fa fa-external-link" /> NWN Beamdog Forums
+                                    </Link>
+                                            <Link className="dropdown-item" to="https://discord.gg/ZDHxTdJ" target="_blank">
+                                                <i className="fa fa-external-link" /> NWN Community Discord Channel
+                                    </Link>
+                                        </div>
+                                    </li>
 
-                            {renderAdmin()}
+                                    {renderAdmin()}
 
-                            {this.state.Username === '' || this.state.Username === null || this.state.Username === undefined ?
+                                    {this.state.Username === '' || this.state.Username === null || this.state.Username === undefined ?
 
-                                <li className="nav-item pull-right">
-                                    <a className="nav-link" href="/Authorization/Login">
-                                        <i className="fa fa-sign-in " /> Login (With Discord)
+                                        <li className="nav-item pull-right">
+                                            <a className="nav-link" href="/Authorization/Login">
+                                                <i className="fa fa-sign-in " /> Login (With Discord)
                                     </a>
-                                </li> :
-                                <li className="nav-item dropdown">
-                                    <Link id="userDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
-                                        <i className="fa fa-user " /> {this.state.Username}
-                                    </Link>
-                                    <div className="dropdown-menu">
-                                        <Link className="dropdown-item" to="/user-profile">
-                                            <i className="fa fa-user" /> Profile
+                                        </li> :
+                                        <li className="nav-item dropdown">
+                                            <Link id="userDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
+                                                <i className="fa fa-user " /> {this.state.Username}
+                                            </Link>
+                                            <div className="dropdown-menu">
+                                                <Link className="dropdown-item" to="/user-profile">
+                                                    <i className="fa fa-user" /> Profile
                                         </Link>
-                                        <Link className="dropdown-item" to="#" data-toggle="modal" data-target="#logoutModal">
-                                            <i className="fa fa-sign-out" /> Log Out
+                                                <Link className="dropdown-item" to="#" data-toggle="modal" data-target="#logoutModal">
+                                                    <i className="fa fa-sign-out" /> Log Out
                                         </Link>
-                                    </div>
-                                </li>
-                            }
-                        </ul>
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+
+
+                        </nav>
                     </div>
 
+                </div>
 
-                </nav>
             </div>
         );
 

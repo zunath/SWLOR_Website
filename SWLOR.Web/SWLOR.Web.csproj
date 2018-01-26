@@ -48,9 +48,15 @@
   <ItemGroup>
     <None Remove="ClientApp\components\Admin.tsx" />
     <None Remove="ClientApp\components\admin\logs\Logs.tsx" />
+    <None Remove="ClientApp\components\Classes.tsx" />
+    <None Remove="ClientApp\components\ConnectionInfo.tsx" />
     <None Remove="ClientApp\components\Footer.tsx" />
     <None Remove="ClientApp\components\Header.tsx" />
     <None Remove="ClientApp\components\NotFound.tsx" />
+    <None Remove="ClientApp\components\Races.tsx" />
+    <None Remove="ClientApp\components\Skills.tsx" />
+    <None Remove="ClientApp\components\Story.tsx" />
+    <None Remove="ClientApp\components\TeamMembers.tsx" />
     <None Remove="ClientApp\components\UserProfile.tsx" />
   </ItemGroup>
 
@@ -59,6 +65,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\components\Story.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\Races.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\Classes.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\Skills.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\ConnectionInfo.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\TeamMembers.tsx" />
     <TypeScriptCompile Include="ClientApp\components\UserProfile.tsx" />
     <TypeScriptCompile Include="ClientApp\components\Admin.tsx" />
     <TypeScriptCompile Include="ClientApp\components\Downloads.tsx" />

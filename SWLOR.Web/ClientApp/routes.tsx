@@ -11,6 +11,12 @@ import Features from './components/Features';
 import Admin from './components/Admin';
 import Downloads from './components/Downloads';
 import NotFound from './components/NotFound';
+import Classes from './components/Classes';
+import ConnectionInfo from './components/ConnectionInfo';
+import Races from './components/Races';
+import Skills from './components/Skills';
+import Story from './components/Story';
+import TeamMembers from './components/TeamMembers';
 
 export const routes =
     <Layout>
@@ -23,6 +29,12 @@ export const routes =
             <Route exact path="/admin" component={Admin} />
             <Route exact path="/downloads" component={Downloads} />
             <Route exact path="/user-profile" component={UserProfile} />
+            <Route exact path="/classes" component={Classes} />
+            <Route exact path="/connection-info" component={ConnectionInfo} />
+            <Route exact path="/races" component={Races} />
+            <Route exact path="/skills" component={Skills} />
+            <Route exact path="/story" component={Story} />
+            <Route exact path="/team-members" component={TeamMembers} />
             <Route exact path="/admin/logs" component={Logs} />
             <Route exact path="/admin/chat-logs" component={ChatLogs} />
             <Route exact path="/admin/connection-logs" component={ConnectionLogs} />
