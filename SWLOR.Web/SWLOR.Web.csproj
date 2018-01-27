@@ -58,6 +58,7 @@
     <None Remove="ClientApp\components\Story.tsx" />
     <None Remove="ClientApp\components\TeamMembers.tsx" />
     <None Remove="ClientApp\components\UserProfile.tsx" />
+    <None Remove="Properties\PublishProfiles\swlor-forums - Web Deploy.pubxml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -83,6 +84,10 @@
     <TypeScriptCompile Include="ClientApp\components\Header.tsx" />
     <TypeScriptCompile Include="ClientApp\components\NotFound.tsx" />
     <TypeScriptCompile Include="ClientApp\components\AbilityViewer.tsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

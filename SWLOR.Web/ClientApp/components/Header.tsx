@@ -107,9 +107,9 @@ export default class Header extends React.Component<any, any> {
                                             <i className="fa fa-users " /> Community
                                 </Link>
                                         <div className="dropdown-menu">
-                                            <Link className="dropdown-item" to="http://forums.starwarsnwn.com/">
+                                            <a className="dropdown-item" href="http://forums.starwarsnwn.com/">
                                                 <i className="fa fa-list " /> Forums
-                                    </Link>
+                                            </a>
                                             <Link className="dropdown-item" to="https://discord.gg/g7PzMaM" target="_blank">
                                                 <i className="fa fa-commenting-o " /> Discord (Chat)
                                     </Link>
