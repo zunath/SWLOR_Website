@@ -85,7 +85,7 @@ export default class Header extends React.Component<any, any> {
                                                 <i className="fa fa-shield" /> Classes
                                     </Link>
                                             <Link className="dropdown-item" to="/skills">
-                                                <i className="fa fa-bolt" /> Skills
+                                                <i className="fa fa-bolt" /> Skills & Abilities
                                     </Link>
                                         </div>
                                     </li>
