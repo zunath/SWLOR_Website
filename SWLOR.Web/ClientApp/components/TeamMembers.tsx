@@ -13,7 +13,7 @@ export default class TeamMembers extends React.Component<any, any> {
 
                 <div className="row"> 
                     <div className="offset-2 col-10">
-                        <h4>Zunath</h4>
+                        <h4>Zunath (Admin / Development)</h4>
                     </div>
                 </div>
 
@@ -42,7 +42,7 @@ export default class TeamMembers extends React.Component<any, any> {
 
                 <div className="row">
                     <div className="offset-2 col-10">
-                        <h4>RedCrayon</h4>
+                        <h4>RedCrayon (Admin / Lore / DM)</h4>
                     </div>
                 </div>
 
@@ -54,7 +54,25 @@ export default class TeamMembers extends React.Component<any, any> {
                     </div>
                     <div className="col-10">
                         <p>
-                            RedCrayon is super shy and hasn't sent a biography yet.
+                            Hello! My name is Laura, or RedCrayon if you're nasty. 
+                            <br />
+                            <br />
+                            Three things you need to know about me: 
+                            <ol>
+                                <li>
+                                    I'm from Liverpool, UK, so I represent the Euro massive DM-wise.
+                                </li>
+                                <li>
+                                    I've been roleplaying for about 17 years now on and off.
+                                </li>
+                                <li>
+                                    My favourite breed of pig is sausages.
+                                </li>
+                            </ol>
+                            I have been a huge Star Wars fan since I wore out our taped-from-the-TV <i>Empire Strikes Back</i> as a kid, and I've never looked back.
+                            <br />
+                            <br />
+                            I'm hoping to see all of you in game, where we can carve out our own little slice of The Old Republic!
                         </p>
                     </div>
                 </div>
@@ -62,7 +80,7 @@ export default class TeamMembers extends React.Component<any, any> {
 
                 <div className="row">
                     <div className="offset-2 col-10">
-                        <h4>pieman102</h4>
+                        <h4>pieman102 (Lore / DM)</h4>
                     </div>
                 </div>
 
