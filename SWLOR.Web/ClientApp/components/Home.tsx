@@ -16,7 +16,13 @@ export default class Home extends React.Component<any, any> {
                         <iframe className="embed-responsive-item" src="http://www.starwarsnwn.com/Intro" />
                     </div>
                 </div>
-
+                <div className="row">&nbsp;</div>
+                <div className="row">
+                    <div className="col-4 offset-8">
+                        <a href="https://codepen.io/TimPietrusky/pen/eHGfj" target="_blank">Video Credit: Tim Pietrusky</a>
+                    </div>
+                </div>
+                
                 <div className="container">
                     <div className="row">&nbsp;</div>
                     <footer>
