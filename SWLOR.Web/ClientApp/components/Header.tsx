@@ -61,12 +61,12 @@ export default class Header extends React.Component<any, any> {
                                     <li>
                                         <Link className="nav-link" to="/home">
                                             <i className="fa fa-home" /> Home
-                                </Link>
+                                        </Link>
                                     </li>
                                     <li className="nav-item dropdown">
                                         <Link id="loreDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
                                             <i className="fa fa-space-shuttle" /> Lore
-                                </Link>
+                                        </Link>
                                         <div className="dropdown-menu">
                                             <Link className="dropdown-item" to="/story">
                                                 <i className="fa fa-book" /> Story
@@ -79,7 +79,7 @@ export default class Header extends React.Component<any, any> {
                                     <li className="nav-item dropdown">
                                         <Link id="gameplayDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
                                             <i className="fa fa-gamepad" /> Gameplay
-                                </Link>
+                                        </Link>
                                         <div className="dropdown-menu">
                                             <Link className="dropdown-item" to="/classes">
                                                 <i className="fa fa-shield" /> Classes
@@ -92,46 +92,51 @@ export default class Header extends React.Component<any, any> {
                                     <li className="nav-item dropdown">
                                         <Link id="serverInfoDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
                                             <i className="fa fa-info" /> Server Info
-                                </Link>
+                                        </Link>
                                         <div className="dropdown-menu">
                                             <Link className="dropdown-item" to="/downloads">
                                                 <i className="fa fa-download" /> Downloads
-                                    </Link>
+                                            </Link>
                                             <Link className="dropdown-item" to="/connection-info">
                                                 <i className="fa fa-plug" /> Connection Info
-                                    </Link>
+                                            </Link>
                                         </div>
                                     </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="https://discord.gg/g7PzMaM" target="_blank">
+                                            <i className="fa fa-commenting-o " /> Discord (Chat)
+                                        </Link>
+                                    </li>
                                     <li className="nav-item dropdown">
-                                        <Link id="communityDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
-                                            <i className="fa fa-users " /> Community
-                                </Link>
+                                        <Link id="serverInfoDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
+                                            <i className="fa fa-code" /> Source Code
+                                        </Link>
                                         <div className="dropdown-menu">
-                                            <a className="dropdown-item" href="http://forums.starwarsnwn.com/">
-                                                <i className="fa fa-list " /> Forums
+                                            <a className="dropdown-item" href="https://github.com/zunath/Star-Wars-Legends-of-the-Old-Republic-NWN" target="_blank">
+                                                <i className="fa fa-code" /> Server Source Code
                                             </a>
-                                            <Link className="dropdown-item" to="https://discord.gg/g7PzMaM" target="_blank">
-                                                <i className="fa fa-commenting-o " /> Discord (Chat)
-                                    </Link>
+                                            <a className="dropdown-item" href="https://github.com/zunath/Star-Wars-Legends-of-the-Old-Republic-NWN-Website" target="_blank">
+                                                <i className="fa fa-code" /> Website Source Code
+                                            </a>
                                         </div>
                                     </li>
                                     <li className="nav-item dropdown">
                                         <Link id="aboutDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
                                             <i className="fa fa-user " /> About
-                                </Link>
+                                        </Link>
                                         <div className="dropdown-menu">
                                             <Link className="dropdown-item" to="/team-members">
                                                 <i className="fa fa-user-circle-o" /> Team Members
-                                    </Link>
+                                            </Link>
                                             <Link className="dropdown-item" to="http://nwn.beamdog.com/" target="_blank">
                                                 <i className="fa fa-external-link" /> Buy Neverwinter Nights
-                                    </Link>
+                                            </Link>
                                             <Link className="dropdown-item" to="https://forums.beamdog.com/categories/neverwinter-nights" target="_blank">
                                                 <i className="fa fa-external-link" /> NWN Beamdog Forums
-                                    </Link>
+                                            </Link>
                                             <Link className="dropdown-item" to="https://discord.gg/ZDHxTdJ" target="_blank">
                                                 <i className="fa fa-external-link" /> NWN Community Discord Channel
-                                    </Link>
+                                            </Link>
                                         </div>
                                     </li>
 
