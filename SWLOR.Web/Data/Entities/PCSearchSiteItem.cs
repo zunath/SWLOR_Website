@@ -1,11 +1,14 @@
-﻿namespace SWLOR.Web.Data.Entities
+﻿using System;
+using System.Collections.Generic;
+
+namespace SWLOR.Web.Data.Entities
 {
-    public class PCSearchSiteItem
+    public partial class PCSearchSiteItem
     {
         public long PCSearchSiteItemID { get; set; }
         public string PlayerID { get; set; }
         public int SearchSiteID { get; set; }
-        public byte[] SearchItem { get; set; }
+        public string SearchItem { get; set; }
 
         public PlayerCharacter Player { get; set; }
     }

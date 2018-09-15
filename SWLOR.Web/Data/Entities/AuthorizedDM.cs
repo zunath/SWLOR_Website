@@ -1,6 +1,9 @@
-﻿namespace SWLOR.Web.Data.Entities
+﻿using System;
+using System.Collections.Generic;
+
+namespace SWLOR.Web.Data.Entities
 {
-    public class AuthorizedDM
+    public partial class AuthorizedDM
     {
         public int AuthorizedDMID { get; set; }
         public string Name { get; set; }

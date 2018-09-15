@@ -1,6 +1,9 @@
-﻿namespace SWLOR.Web.Data.Entities
+﻿using System;
+using System.Collections.Generic;
+
+namespace SWLOR.Web.Data.Entities
 {
-    public class PCRegionalFame
+    public partial class PCRegionalFame
     {
         public int PCRegionalFameID { get; set; }
         public string PlayerID { get; set; }

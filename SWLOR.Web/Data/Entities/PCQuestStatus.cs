@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SWLOR.Web.Data.Entities
 {
-    public class PCQuestStatus
+    public partial class PCQuestStatus
     {
         public PCQuestStatus()
         {
@@ -19,7 +19,7 @@ namespace SWLOR.Web.Data.Entities
 
         public QuestState CurrentQuestState { get; set; }
         public PlayerCharacter Player { get; set; }
-        public Quests Quest { get; set; }
+        public Quest Quest { get; set; }
         public QuestRewardItem SelectedItemReward { get; set; }
         public ICollection<PCQuestKillTargetProgress> PCQuestKillTargetProgress { get; set; }
     }

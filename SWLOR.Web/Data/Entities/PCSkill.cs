@@ -1,6 +1,9 @@
-﻿namespace SWLOR.Web.Data.Entities
+﻿using System;
+using System.Collections.Generic;
+
+namespace SWLOR.Web.Data.Entities
 {
-    public class PCSkill
+    public partial class PCSkill
     {
         public int PCSkillID { get; set; }
         public string PlayerID { get; set; }

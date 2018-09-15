@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using SWLOR.Web.Data;
+using SWLOR.Web.Data.Entities;
 using SWLOR.Web.Middleware;
 using SWLOR.Web.Models;
 using SWLOR.Web.Models.Contracts;

@@ -7,7 +7,10 @@ export class Layout extends React.Component {
 
     render() {
         return <div>
-            <Header />
+            <div className="container">
+                <Header />
+            </div>
+
 
             <div className="row">&nbsp;</div>
 

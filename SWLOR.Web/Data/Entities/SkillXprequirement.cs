@@ -1,6 +1,9 @@
-﻿namespace SWLOR.Web.Data.Entities
+﻿using System;
+using System.Collections.Generic;
+
+namespace SWLOR.Web.Data.Entities
 {
-    public class SkillXPRequirement
+    public partial class SkillXPRequirement
     {
         public int SkillXPRequirementID { get; set; }
         public int SkillID { get; set; }

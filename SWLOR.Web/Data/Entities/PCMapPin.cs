@@ -1,6 +1,9 @@
-﻿namespace SWLOR.Web.Data.Entities
+﻿using System;
+using System.Collections.Generic;
+
+namespace SWLOR.Web.Data.Entities
 {
-    public class PCMapPin
+    public partial class PCMapPin
     {
         public int PCMapPinID { get; set; }
         public string PlayerID { get; set; }

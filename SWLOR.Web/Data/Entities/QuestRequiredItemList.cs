@@ -1,6 +1,9 @@
-﻿namespace SWLOR.Web.Data.Entities
+﻿using System;
+using System.Collections.Generic;
+
+namespace SWLOR.Web.Data.Entities
 {
-    public class QuestRequiredItemList
+    public partial class QuestRequiredItemList
     {
         public int QuestRequiredItemListID { get; set; }
         public int QuestID { get; set; }
@@ -8,7 +11,7 @@
         public int Quantity { get; set; }
         public int QuestStateID { get; set; }
 
-        public Quests Quest { get; set; }
+        public Quest Quest { get; set; }
         public QuestState QuestState { get; set; }
     }
 }

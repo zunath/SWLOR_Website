@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SWLOR.Web.Data.Entities
 {
-    public class User
+    public partial class User
     {
         public long UserID { get; set; }
         public string DiscordUserID { get; set; }

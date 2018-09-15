@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SWLOR.Web.Data.Entities
 {
-    public class PCPerk
+    public partial class PCPerk
     {
         public int PCPerkID { get; set; }
         public string PlayerID { get; set; }

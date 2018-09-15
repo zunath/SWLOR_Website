@@ -1,17 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SWLOR.Web.Data.Entities
 {
-    public class GrowingPlant
+    public partial class GrowingPlant
     {
         public int GrowingPlantID { get; set; }
         public int PlantID { get; set; }
         public int RemainingTicks { get; set; }
         public string LocationAreaTag { get; set; }
-        public string LocationX { get; set; }
-        public string LocationY { get; set; }
-        public string LocationZ { get; set; }
-        public string LocationOrientation { get; set; }
+        public double LocationX { get; set; }
+        public double LocationY { get; set; }
+        public double LocationZ { get; set; }
+        public double LocationOrientation { get; set; }
         public DateTime DateCreated { get; set; }
         public bool? IsActive { get; set; }
         public int TotalTicks { get; set; }

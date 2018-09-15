@@ -239,7 +239,7 @@ namespace SWLOR.Web.ViewModels
             ActiveQuest = BuildQuestUIObject(quest);
         }
 
-        private static QuestDetailsUI BuildQuestUIObject(Quests quest)
+        private static QuestDetailsUI BuildQuestUIObject(Quest quest)
         {
             var uiQuest = new QuestDetailsUI
             {
@@ -258,7 +258,6 @@ namespace SWLOR.Web.ViewModels
                     Fame = quest.RewardFame,
                     Gold = quest.RewardGold,
                     KeyItemID = quest.RewardKeyItemID ?? -1,
-                    XP = quest.RewardXP,
                     RewardItems = quest.QuestRewardItems.Select(x => new QuestRewardItemUI()
                     {
                         Quantity = x.Quantity,
@@ -313,7 +312,7 @@ namespace SWLOR.Web.ViewModels
                 return;
             }
 
-            var quest = _db.Quests.SingleOrDefault(x => x.QuestID == questDetails.QuestID) ?? new Quests();
+            var quest = _db.Quests.SingleOrDefault(x => x.QuestID == questDetails.QuestID) ?? new Quest();
 
             quest.Name = questDetails.Name;
             quest.JournalTag = questDetails.JournalTag;
@@ -321,7 +320,6 @@ namespace SWLOR.Web.ViewModels
             quest.RequiredFameAmount = questDetails.RequiredFameAmount;
             quest.AllowRewardSelection = questDetails.AllowRewardSelection;
             quest.RewardGold = questDetails.Rewards.Gold;
-            quest.RewardXP = questDetails.Rewards.XP;
 
             if (questDetails.Rewards.KeyItemID <= 0) quest.RewardKeyItemID = null;
             else quest.RewardKeyItemID = questDetails.Rewards.KeyItemID;

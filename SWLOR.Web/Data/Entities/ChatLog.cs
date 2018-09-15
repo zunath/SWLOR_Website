@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SWLOR.Web.Data.Entities
 {
-    public class ChatLog
+    public partial class ChatLog
     {
         public long ChatLogID { get; set; }
         public int ChatChannelID { get; set; }

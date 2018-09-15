@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace SWLOR.Web.Data.Entities
 {
-    public class Quests
+    public partial class Quest
     {
-        public Quests()
+        public Quest()
         {
+            PCQuestStatus = new HashSet<PCQuestStatus>();
             QuestKillTargetList = new HashSet<QuestKillTargetList>();
             QuestPrerequisitesQuest = new HashSet<QuestPrerequisite>();
             QuestPrerequisitesRequiredQuest = new HashSet<QuestPrerequisite>();
@@ -22,7 +24,6 @@ namespace SWLOR.Web.Data.Entities
         public int RequiredFameAmount { get; set; }
         public bool AllowRewardSelection { get; set; }
         public int RewardGold { get; set; }
-        public int RewardXP { get; set; }
         public int? RewardKeyItemID { get; set; }
         public int RewardFame { get; set; }
         public bool IsRepeatable { get; set; }
@@ -33,6 +34,7 @@ namespace SWLOR.Web.Data.Entities
         public FameRegion FameRegion { get; set; }
         public KeyItem RewardKeyItem { get; set; }
         public KeyItem StartKeyItem { get; set; }
+        public ICollection<PCQuestStatus> PCQuestStatus { get; set; }
         public ICollection<QuestKillTargetList> QuestKillTargetList { get; set; }
         public ICollection<QuestPrerequisite> QuestPrerequisitesQuest { get; set; }
         public ICollection<QuestPrerequisite> QuestPrerequisitesRequiredQuest { get; set; }

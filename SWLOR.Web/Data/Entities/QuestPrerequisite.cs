@@ -1,12 +1,15 @@
-﻿namespace SWLOR.Web.Data.Entities
+﻿using System;
+using System.Collections.Generic;
+
+namespace SWLOR.Web.Data.Entities
 {
-    public class QuestPrerequisite
+    public partial class QuestPrerequisite
     {
         public int QuestPrerequisiteID { get; set; }
         public int QuestID { get; set; }
         public int RequiredQuestID { get; set; }
 
-        public Quests Quest { get; set; }
-        public Quests RequiredQuest { get; set; }
+        public Quest Quest { get; set; }
+        public Quest RequiredQuest { get; set; }
     }
 }

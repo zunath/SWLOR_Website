@@ -2,7 +2,6 @@
 import { Link } from 'react-router-dom';
 import ChatLogs from './ChatLogs';
 import ConnectionLogs from './ConnectionLogs';
-import QuickBuildLogs from './QuickBuildLogs';
 
 export default class Logs extends React.Component {
 
@@ -31,9 +30,6 @@ export default class Logs extends React.Component {
                 <li className="nav-item">
                     <Link className="nav-link" data-toggle="tab" to="#nav-connectionlogs" role="tab">Connection Logs</Link>
                 </li>
-                <li className="nav-item">
-                    <Link className="nav-link" data-toggle="tab" to="#nav-quickbuildlogs" role="tab">Quick Build Logs</Link>
-                </li>
             </ul>
 
             <div className="tab-content">
@@ -42,9 +38,6 @@ export default class Logs extends React.Component {
                 </div>
                 <div className="tab-pane" id="nav-connectionlogs" role="tabpanel">
                     <ConnectionLogs />
-                </div>
-                <div className="tab-pane" id="nav-quickbuildlogs" role="tabpanel">
-                    <QuickBuildLogs />
                 </div>
             </div>
             

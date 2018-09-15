@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
+    <Compile Remove="ClientApp\dist\**" />
     <Compile Remove="Extensions\**" />
     <Compile Remove="Services\**" />
     <Compile Remove="Wiki\**" />
@@ -29,9 +30,11 @@
     <Content Remove="Extensions\**" />
     <Content Remove="Services\**" />
     <Content Remove="Wiki\**" />
+    <EmbeddedResource Remove="ClientApp\dist\**" />
     <EmbeddedResource Remove="Extensions\**" />
     <EmbeddedResource Remove="Services\**" />
     <EmbeddedResource Remove="Wiki\**" />
+    <None Remove="ClientApp\dist\**" />
     <None Remove="Extensions\**" />
     <None Remove="Services\**" />
     <None Remove="Wiki\**" />
@@ -42,15 +45,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="ClientApp\dist\vendor-manifest.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\Scripts\star-wars.js" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 
@@ -85,7 +83,7 @@
   </Target>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="webpack --config webpack.config.vendor.js" />
+    <Exec Command="webpack --config webpack.config.vendor.js&#xD;&#xA;webpack --config webpack.config.js" />
   </Target>
 
 </Project>

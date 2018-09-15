@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SWLOR.Web.Data.Entities
 {
-    public class ClientLogEvent
+    public partial class ClientLogEvent
     {
         public int ClientLogEventID { get; set; }
         public int ClientLogEventTypeID { get; set; }

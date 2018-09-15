@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import * as dotnetify from 'dotnetify';
 import Logout from './Logout';
-import Logo from '../images/logo.png';
+import Logo from '../images/swollogo2.png';
 
 export default class Header extends React.Component {
     constructor(props) {
@@ -39,17 +39,25 @@ export default class Header extends React.Component {
         }
 
         return (
-            <div>
+            <div className="container">
                 <Logout callback={this.confirmLogout} />
-
-                <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-
-                    <Link className="navbar-brand" to="/">
-                        <img src={Logo} alt="Freescape" />
-                    </Link>
-
+                
+                <Link className="navbar-brand" to="/">
+                    <img src={Logo} alt="Star Wars: LOR" className="img-fluid" />
+                </Link>
+                <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div className="navbar">
                         <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/home">
+                                    <i className="fa fa-home fa-lg" /> Home
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/about">
+                                    <i className="fa fa-info-circle fa-lg" /> About
+                                </Link>
+                            </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/lore">
                                     <i className="fa fa-book fa-lg" /> Lore
@@ -76,13 +84,8 @@ export default class Header extends React.Component {
                                 </div>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/downloads">
-                                    <i className="fa fa-download fa-lg" /> Downloads
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="https://discord.gg/q38r3gw" target="_blank">
-                                    <i className="fa fa-commenting-o fa-lg" /> Discord (Chat)
+                                <Link className="nav-link" to="https://discord.gg/MyQAM6m" target="_blank">
+                                    <i className="fa fa-commenting-o fa-lg" /> Discord
                                 </Link>
                             </li>
 
@@ -91,10 +94,10 @@ export default class Header extends React.Component {
                                     <i className="fa fa-code" /> Source Code
                                 </Link>
                                 <div className="dropdown-menu">
-                                    <a className="dropdown-item" href="https://github.com/zunath/Freescape_JVM" target="_blank">
+                                    <a className="dropdown-item" href="https://github.com/zunath/SWLOR_NWN" target="_blank">
                                         <i className="fa fa-code" /> &nbsp;Server Source Code
                                     </a>
-                                    <a className="dropdown-item" href="https://github.com/zunath/Freescape_Website" target="_blank">
+                                    <a className="dropdown-item" href="https://github.com/zunath/SWLOR_Website" target="_blank">
                                         <i className="fa fa-code" /> &nbsp;Website Source Code
                                     </a>
                                 </div>

@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.Collections.Generic;
 
 namespace SWLOR.Web.Data.Entities
 {
-    public class GameTopic
+    public partial class GameTopic
     {
         public int GameTopicID { get; set; }
         public string Name { get; set; }
@@ -12,7 +13,6 @@ namespace SWLOR.Web.Data.Entities
         public int Sequence { get; set; }
         public string Icon { get; set; }
 
-        [ForeignKey("GameTopicCategoryID")]
-        public GameTopicCategory Category { get; set; }
+        public GameTopicCategory GameTopicCategory { get; set; }
     }
 }

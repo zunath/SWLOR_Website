@@ -1,6 +1,9 @@
-﻿namespace SWLOR.Web.Data.Entities
+﻿using System;
+using System.Collections.Generic;
+
+namespace SWLOR.Web.Data.Entities
 {
-    public class PCQuestKillTargetProgress
+    public partial class PCQuestKillTargetProgress
     {
         public int PCQuestKillTargetProgressID { get; set; }
         public string PlayerID { get; set; }

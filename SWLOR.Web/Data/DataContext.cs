@@ -1,43 +1,61 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SWLOR.Web.Data.Entities;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace SWLOR.Web.Data
+namespace SWLOR.Web.Data.Entities
 {
-    public class DataContext : DbContext
+    public partial class DataContext : DbContext
     {
+        public DataContext()
+        {
+        }
+
+        public DataContext(DbContextOptions<DataContext> options)
+            : base(options)
+        {
+        }
+
+        public virtual DbSet<Area> Areas { get; set; }
+        public virtual DbSet<AreaWalkmesh> AreaWalkmesh { get; set; }
         public virtual DbSet<Attribute> Attributes { get; set; }
         public virtual DbSet<AuthorizedDM> AuthorizedDMs { get; set; }
+        public virtual DbSet<Background> Backgrounds { get; set; }
         public virtual DbSet<BaseItemType> BaseItemTypes { get; set; }
-        public virtual DbSet<BuildPrivacyDomain> BuildPrivacyDomain { get; set; }
+        public virtual DbSet<BaseStructure> BaseStructures { get; set; }
+        public virtual DbSet<BaseStructureType> BaseStructureType { get; set; }
+        public virtual DbSet<BuildingStyle> BuildingStyles { get; set; }
         public virtual DbSet<ChatChannelsDomain> ChatChannelsDomain { get; set; }
         public virtual DbSet<ChatLog> ChatLog { get; set; }
         public virtual DbSet<ClientLogEvent> ClientLogEvents { get; set; }
         public virtual DbSet<ClientLogEventTypesDomain> ClientLogEventTypesDomain { get; set; }
-        public virtual DbSet<ConstructionSiteComponent> ConstructionSiteComponents { get; set; }
-        public virtual DbSet<ConstructionSite> ConstructionSites { get; set; }
+        public virtual DbSet<ComponentType> ComponentTypes { get; set; }
         public virtual DbSet<CooldownCategory> CooldownCategories { get; set; }
         public virtual DbSet<CraftBlueprintCategory> CraftBlueprintCategories { get; set; }
-        public virtual DbSet<CraftBlueprintComponent> CraftBlueprintComponents { get; set; }
         public virtual DbSet<CraftBlueprint> CraftBlueprints { get; set; }
         public virtual DbSet<CraftDevice> CraftDevices { get; set; }
         public virtual DbSet<CustomEffect> CustomEffects { get; set; }
         public virtual DbSet<DMRoleDomain> DMRoleDomain { get; set; }
         public virtual DbSet<Download> Downloads { get; set; }
+        public virtual DbSet<EnmityAdjustmentRule> EnmityAdjustmentRule { get; set; }
         public virtual DbSet<FameRegion> FameRegions { get; set; }
-        public virtual DbSet<GameTopic> GameTopics { get; set; }
         public virtual DbSet<GameTopicCategory> GameTopicCategories { get; set; }
+        public virtual DbSet<GameTopic> GameTopics { get; set; }
         public virtual DbSet<GrowingPlant> GrowingPlants { get; set; }
-        public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<ItemType> ItemTypes { get; set; }
         public virtual DbSet<KeyItemCategory> KeyItemCategories { get; set; }
         public virtual DbSet<KeyItem> KeyItems { get; set; }
         public virtual DbSet<LootTableItem> LootTableItems { get; set; }
         public virtual DbSet<LootTable> LootTables { get; set; }
+        public virtual DbSet<Mod> Mods { get; set; }
         public virtual DbSet<NPCGroup> NPCGroups { get; set; }
+        public virtual DbSet<PCBasePermission> PCBasePermissions { get; set; }
+        public virtual DbSet<PCBase> PCBases { get; set; }
+        public virtual DbSet<PCBaseStructureItem> PCBaseStructureItems { get; set; }
+        public virtual DbSet<PCBaseStructurePermission> PCBaseStructurePermissions { get; set; }
+        public virtual DbSet<PCBaseStructure> PCBaseStructures { get; set; }
         public virtual DbSet<PCCooldown> PCCooldowns { get; set; }
-        public virtual DbSet<PCCorpseItem> PCCorpseItems { get; set; }
-        public virtual DbSet<PCCorpse> PCCorpses { get; set; }
         public virtual DbSet<PCCustomEffect> PCCustomEffects { get; set; }
+        public virtual DbSet<PCImpoundedItem> PCImpoundedItems { get; set; }
         public virtual DbSet<PCKeyItem> PCKeyItems { get; set; }
         public virtual DbSet<PCMapPin> PCMapPins { get; set; }
         public virtual DbSet<PCMigrationItem> PCMigrationItems { get; set; }
@@ -51,10 +69,6 @@ namespace SWLOR.Web.Data
         public virtual DbSet<PCSearchSiteItem> PCSearchSiteItems { get; set; }
         public virtual DbSet<PCSearchSite> PCSearchSites { get; set; }
         public virtual DbSet<PCSkill> PCSkills { get; set; }
-        public virtual DbSet<PCTerritoryFlag> PCTerritoryFlags { get; set; }
-        public virtual DbSet<PCTerritoryFlagsPermission> PCTerritoryFlagsPermissions { get; set; }
-        public virtual DbSet<PCTerritoryFlagsStructure> PCTerritoryFlagsStructures { get; set; }
-        public virtual DbSet<PCTerritoryFlagsStructuresItem> PCTerritoryFlagsStructuresItems { get; set; }
         public virtual DbSet<PerkCategory> PerkCategories { get; set; }
         public virtual DbSet<PerkExecutionType> PerkExecutionTypes { get; set; }
         public virtual DbSet<PerkLevel> PerkLevels { get; set; }
@@ -67,108 +81,220 @@ namespace SWLOR.Web.Data
         public virtual DbSet<QuestRequiredItemList> QuestRequiredItemList { get; set; }
         public virtual DbSet<QuestRequiredKeyItemList> QuestRequiredKeyItemList { get; set; }
         public virtual DbSet<QuestRewardItem> QuestRewardItems { get; set; }
-        public virtual DbSet<Quests> Quests { get; set; }
+        public virtual DbSet<Quest> Quests { get; set; }
         public virtual DbSet<QuestState> QuestStates { get; set; }
         public virtual DbSet<QuestTypeDomain> QuestTypeDomain { get; set; }
         public virtual DbSet<ServerConfiguration> ServerConfiguration { get; set; }
         public virtual DbSet<SkillCategory> SkillCategories { get; set; }
         public virtual DbSet<Skill> Skills { get; set; }
         public virtual DbSet<SkillXPRequirement> SkillXPRequirement { get; set; }
+        public virtual DbSet<SpawnObject> SpawnObjects { get; set; }
+        public virtual DbSet<SpawnObjectType> SpawnObjectType { get; set; }
+        public virtual DbSet<Spawn> Spawns { get; set; }
         public virtual DbSet<StorageContainer> StorageContainers { get; set; }
         public virtual DbSet<StorageItem> StorageItems { get; set; }
-        public virtual DbSet<StructureBlueprint> StructureBlueprints { get; set; }
-        public virtual DbSet<StructureCategory> StructureCategories { get; set; }
-        public virtual DbSet<StructureComponent> StructureComponents { get; set; }
-        public virtual DbSet<StructureQuickBuildAudit> StructureQuickBuildAudit { get; set; }
-        public virtual DbSet<TerritoryFlagPermission> TerritoryFlagPermissions { get; set; }
         public virtual DbSet<User> Users { get; set; }
-
-        public DataContext(DbContextOptions<DataContext> options)
-            : base(options)
-        {
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-        }
-
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Area>(entity =>
+            {
+                entity.HasKey(e => e.AreaID);
+
+                entity.HasIndex(e => e.Resref)
+                    .HasName("UQ_Areas_Resref")
+                    .IsUnique();
+
+                entity.Property(e => e.AreaID)
+                    .HasMaxLength(60)
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.DateLastBaked).HasDefaultValueSql("(getutcdate())");
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(128);
+
+                entity.Property(e => e.NortheastOwner).HasMaxLength(60);
+
+                entity.Property(e => e.NorthwestOwner).HasMaxLength(60);
+
+                entity.Property(e => e.Resref)
+                    .IsRequired()
+                    .HasMaxLength(16);
+
+                entity.Property(e => e.SoutheastOwner).HasMaxLength(60);
+
+                entity.Property(e => e.SouthwestOwner).HasMaxLength(60);
+
+                entity.Property(e => e.Tag)
+                    .IsRequired()
+                    .HasMaxLength(32);
+
+                entity.HasOne(d => d.NortheastOwnerNavigation)
+                    .WithMany(p => p.AreasNortheastOwnerNavigation)
+                    .HasForeignKey(d => d.NortheastOwner)
+                    .HasConstraintName("FK_Areas_NortheastOwner");
+
+                entity.HasOne(d => d.NorthwestOwnerNavigation)
+                    .WithMany(p => p.AreasNorthwestOwnerNavigation)
+                    .HasForeignKey(d => d.NorthwestOwner)
+                    .HasConstraintName("FK_Areas_NorthwestOwner");
+
+                entity.HasOne(d => d.ResourceSpawnTable)
+                    .WithMany(p => p.Areas)
+                    .HasForeignKey(d => d.ResourceSpawnTableID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Areas_ResourceSpawnTableID");
+
+                entity.HasOne(d => d.SoutheastOwnerNavigation)
+                    .WithMany(p => p.AreasSoutheastOwnerNavigation)
+                    .HasForeignKey(d => d.SoutheastOwner)
+                    .HasConstraintName("FK_Areas_SoutheastOwner");
+
+                entity.HasOne(d => d.SouthwestOwnerNavigation)
+                    .WithMany(p => p.AreasSouthwestOwnerNavigation)
+                    .HasForeignKey(d => d.SouthwestOwner)
+                    .HasConstraintName("FK_Areas_SouthwestOwner");
+            });
+
+            modelBuilder.Entity<AreaWalkmesh>(entity =>
+            {
+                entity.Property(e => e.AreaID)
+                    .IsRequired()
+                    .HasMaxLength(60);
+
+                entity.HasOne(d => d.Area)
+                    .WithMany(p => p.AreaWalkmesh)
+                    .HasForeignKey(d => d.AreaID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_AreaWalkmesh_AreaID");
+            });
+
             modelBuilder.Entity<Attribute>(entity =>
             {
-                entity.ToTable("Attributes");
                 entity.HasKey(e => e.AttributeID);
 
-                entity.Property(e => e.AttributeID)
-                    .HasColumnName("AttributeID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.AttributeID).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(3)
                     .HasDefaultValueSql("('')");
-
-                entity.Property(e => e.NWNValue)
-                    .HasColumnName("NWNValue")
-                    .HasDefaultValueSql("((0))");
             });
 
             modelBuilder.Entity<AuthorizedDM>(entity =>
             {
                 entity.HasKey(e => e.AuthorizedDMID);
 
-                entity.ToTable("AuthorizedDMs");
-
-                entity.Property(e => e.AuthorizedDMID).HasColumnName("AuthorizedDMID");
-
                 entity.Property(e => e.CDKey)
                     .IsRequired()
-                    .HasColumnName("CDKey")
                     .HasMaxLength(20);
-
-                entity.Property(e => e.DMRole).HasColumnName("DMRole");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(255);
             });
 
+            modelBuilder.Entity<Background>(entity =>
+            {
+                entity.HasKey(e => e.BackgroundID);
+
+                entity.Property(e => e.BackgroundID).ValueGeneratedNever();
+
+                entity.Property(e => e.Bonuses)
+                    .IsRequired()
+                    .HasMaxLength(512)
+                    .HasDefaultValueSql("('')");
+
+                entity.Property(e => e.Description)
+                    .IsRequired()
+                    .HasMaxLength(512)
+                    .HasDefaultValueSql("('')");
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(64)
+                    .HasDefaultValueSql("('')");
+            });
+
             modelBuilder.Entity<BaseItemType>(entity =>
             {
-                entity.ToTable("BaseItemTypes");
                 entity.HasKey(e => e.BaseItemTypeID);
 
-                entity.Property(e => e.BaseItemTypeID)
-                    .HasColumnName("BaseItemTypeID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.BaseItemTypeID).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(64);
             });
 
-            modelBuilder.Entity<BuildPrivacyDomain>(entity =>
+            modelBuilder.Entity<BaseStructure>(entity =>
             {
-                entity.ToTable("BuildPrivacyDomain");
-                entity.HasKey(e => e.BuildPrivacyTypeID);
+                entity.HasKey(e => e.BaseStructureID);
 
-                entity.Property(e => e.BuildPrivacyTypeID)
-                    .HasColumnName("BuildPrivacyTypeID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.BaseStructureID).ValueGeneratedNever();
+
+                entity.Property(e => e.ItemResref)
+                    .IsRequired()
+                    .HasMaxLength(16)
+                    .HasDefaultValueSql("('')");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasMaxLength(12);
+                    .HasMaxLength(64)
+                    .HasDefaultValueSql("('')");
+
+                entity.Property(e => e.PlaceableResref)
+                    .IsRequired()
+                    .HasMaxLength(16)
+                    .HasDefaultValueSql("('')");
+
+                entity.HasOne(d => d.BaseStructureType)
+                    .WithMany(p => p.BaseStructures)
+                    .HasForeignKey(d => d.BaseStructureTypeID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_BaseStructures_BaseStructureTypeID");
+            });
+
+            modelBuilder.Entity<BaseStructureType>(entity =>
+            {
+                entity.Property(e => e.BaseStructureTypeID).ValueGeneratedNever();
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(64)
+                    .HasDefaultValueSql("('')");
+            });
+
+            modelBuilder.Entity<BuildingStyle>(entity =>
+            {
+                entity.HasKey(e => e.BuildingStyleID);
+
+                entity.Property(e => e.BuildingStyleID).ValueGeneratedNever();
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(64)
+                    .HasDefaultValueSql("('')");
+
+                entity.Property(e => e.Resref)
+                    .IsRequired()
+                    .HasMaxLength(16)
+                    .HasDefaultValueSql("('')");
+
+                entity.HasOne(d => d.BaseStructure)
+                    .WithMany(p => p.BuildingStyles)
+                    .HasForeignKey(d => d.BaseStructureID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_BuildingStyles_BaseStructureID");
             });
 
             modelBuilder.Entity<ChatChannelsDomain>(entity =>
             {
-                entity.ToTable("ChatChannelsDomain");
                 entity.HasKey(e => e.ChatChannelID);
 
-                entity.Property(e => e.ChatChannelID)
-                    .HasColumnName("ChatChannelID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.ChatChannelID).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -178,11 +304,6 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<ChatLog>(entity =>
             {
-                entity.ToTable("ChatLog");
-                entity.Property(e => e.ChatLogID).HasColumnName("ChatLogID");
-
-                entity.Property(e => e.ChatChannelID).HasColumnName("ChatChannelID");
-
                 entity.Property(e => e.DateSent).HasDefaultValueSql("(getutcdate())");
 
                 entity.Property(e => e.Message)
@@ -191,17 +312,11 @@ namespace SWLOR.Web.Data
 
                 entity.Property(e => e.ReceiverAccountName).HasMaxLength(1024);
 
-                entity.Property(e => e.ReceiverCDKey)
-                    .HasColumnName("ReceiverCDKey")
-                    .HasMaxLength(20);
+                entity.Property(e => e.ReceiverCDKey).HasMaxLength(20);
 
-                entity.Property(e => e.ReceiverDMName)
-                    .HasColumnName("ReceiverDMName")
-                    .HasMaxLength(60);
+                entity.Property(e => e.ReceiverDMName).HasMaxLength(60);
 
-                entity.Property(e => e.ReceiverPlayerID)
-                    .HasColumnName("ReceiverPlayerID")
-                    .HasMaxLength(60);
+                entity.Property(e => e.ReceiverPlayerID).HasMaxLength(60);
 
                 entity.Property(e => e.SenderAccountName)
                     .IsRequired()
@@ -210,25 +325,33 @@ namespace SWLOR.Web.Data
 
                 entity.Property(e => e.SenderCDKey)
                     .IsRequired()
-                    .HasColumnName("SenderCDKey")
                     .HasMaxLength(20)
                     .HasDefaultValueSql("('')");
 
-                entity.Property(e => e.SenderDMName)
-                    .HasColumnName("SenderDMName")
-                    .HasMaxLength(60);
+                entity.Property(e => e.SenderDMName).HasMaxLength(60);
 
-                entity.Property(e => e.SenderPlayerID)
-                    .HasColumnName("SenderPlayerID")
-                    .HasMaxLength(60);
+                entity.Property(e => e.SenderPlayerID).HasMaxLength(60);
+
+                entity.HasOne(d => d.ChatChannel)
+                    .WithMany(p => p.ChatLog)
+                    .HasForeignKey(d => d.ChatChannelID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_ChatLog_ChatChannelID");
+
+                entity.HasOne(d => d.ReceiverPlayer)
+                    .WithMany(p => p.ChatLogReceiverPlayer)
+                    .HasForeignKey(d => d.ReceiverPlayerID)
+                    .HasConstraintName("fk_ChatLog_ReceiverPlayerID");
+
+                entity.HasOne(d => d.SenderPlayer)
+                    .WithMany(p => p.ChatLogSenderPlayer)
+                    .HasForeignKey(d => d.SenderPlayerID)
+                    .HasConstraintName("fk_ChatLog_SenderPlayerID");
             });
 
             modelBuilder.Entity<ClientLogEvent>(entity =>
             {
-                entity.ToTable("ClientLogEvents");
                 entity.HasKey(e => e.ClientLogEventID);
-
-                entity.Property(e => e.ClientLogEventID).HasColumnName("ClientLogEventID");
 
                 entity.Property(e => e.AccountName)
                     .IsRequired()
@@ -236,88 +359,52 @@ namespace SWLOR.Web.Data
 
                 entity.Property(e => e.CDKey)
                     .IsRequired()
-                    .HasColumnName("CDKey")
                     .HasMaxLength(20);
-
-                entity.Property(e => e.ClientLogEventTypeID).HasColumnName("ClientLogEventTypeID");
 
                 entity.Property(e => e.DateOfEvent).HasDefaultValueSql("(getutcdate())");
 
-                entity.Property(e => e.PlayerID)
-                    .HasColumnName("PlayerID")
-                    .HasMaxLength(60);
+                entity.Property(e => e.PlayerID).HasMaxLength(60);
+
+                entity.HasOne(d => d.ClientLogEventType)
+                    .WithMany(p => p.ClientLogEvents)
+                    .HasForeignKey(d => d.ClientLogEventTypeID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ClientLogEvents_ClientLogEventTypeID");
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.ClientLogEvents)
+                    .HasForeignKey(d => d.PlayerID)
+                    .HasConstraintName("FK_ClientLogEvents_PlayerID");
             });
 
             modelBuilder.Entity<ClientLogEventTypesDomain>(entity =>
             {
-                entity.ToTable("ClientLogEventTypesDomain");
                 entity.HasKey(e => e.ClientLogEventTypeID);
 
-                entity.Property(e => e.ClientLogEventTypeID)
-                    .HasColumnName("ClientLogEventTypeID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.ClientLogEventTypeID).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(30);
             });
 
-            modelBuilder.Entity<ConstructionSiteComponent>(entity =>
+            modelBuilder.Entity<ComponentType>(entity =>
             {
-                entity.ToTable("ConstructionSiteComponents");
-                entity.HasKey(e => e.ConstructionSiteComponentID);
+                entity.HasKey(e => e.ComponentTypeID);
 
-                entity.Property(e => e.ConstructionSiteComponentID).HasColumnName("ConstructionSiteComponentID");
+                entity.Property(e => e.ComponentTypeID).ValueGeneratedNever();
 
-                entity.Property(e => e.ConstructionSiteID).HasColumnName("ConstructionSiteID");
-
-                entity.Property(e => e.Quantity).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.StructureComponentID).HasColumnName("StructureComponentID");
-
-                entity.HasOne(d => d.ConstructionSite)
-                    .WithMany(p => p.ConstructionSiteComponents)
-                    .HasForeignKey(d => d.ConstructionSiteID)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_ConstructionSiteComponents_ConstructionSiteID");
-            });
-
-            modelBuilder.Entity<ConstructionSite>(entity =>
-            {
-                entity.ToTable("ConstructionSites");
-                entity.HasKey(e => e.ConstructionSiteID);
-
-                entity.Property(e => e.ConstructionSiteID).HasColumnName("ConstructionSiteID");
-
-                entity.Property(e => e.LocationAreaTag)
+                entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasMaxLength(64);
-
-                entity.Property(e => e.PCTerritoryFlagID).HasColumnName("PCTerritoryFlagID");
-
-                entity.Property(e => e.PlayerID)
-                    .IsRequired()
-                    .HasColumnName("PlayerID")
-                    .HasMaxLength(60);
-
-                entity.Property(e => e.StructureBlueprintID).HasColumnName("StructureBlueprintID");
-
-                entity.HasOne(d => d.PCTerritoryFlag)
-                    .WithMany(p => p.ConstructionSites)
-                    .HasForeignKey(d => d.PCTerritoryFlagID)
-                    .HasConstraintName("fk_ConstructionSites_PCTerritoryFlagID");
+                    .HasMaxLength(32)
+                    .HasDefaultValueSql("('')");
             });
 
             modelBuilder.Entity<CooldownCategory>(entity =>
             {
-                entity.ToTable("CooldownCategories");
                 entity.HasKey(e => e.CooldownCategoryID);
 
-                entity.Property(e => e.CooldownCategoryID)
-                    .HasColumnName("CooldownCategoryID")
-                    .ValueGeneratedNever();
-
-                entity.Property(e => e.BaseCooldownTime).HasDefaultValueSql("((0.0))");
+                entity.Property(e => e.CooldownCategoryID).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -327,52 +414,20 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<CraftBlueprintCategory>(entity =>
             {
-                entity.ToTable("CraftBlueprintCategories");
                 entity.HasKey(e => e.CraftBlueprintCategoryID);
 
-                entity.Property(e => e.CraftBlueprintCategoryID)
-                    .HasColumnName("CraftBlueprintCategoryID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.CraftBlueprintCategoryID).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(32);
             });
 
-            modelBuilder.Entity<CraftBlueprintComponent>(entity =>
-            {
-                entity.ToTable("CraftBlueprintComponents");
-                entity.HasKey(e => e.CraftComponentID);
-
-                entity.Property(e => e.CraftComponentID).HasColumnName("CraftComponentID");
-
-                entity.Property(e => e.CraftBlueprintID).HasColumnName("CraftBlueprintID");
-
-                entity.Property(e => e.ItemResref)
-                    .IsRequired()
-                    .HasMaxLength(16);
-
-                entity.HasOne(d => d.CraftBlueprint)
-                    .WithMany(p => p.CraftBlueprintComponents)
-                    .HasForeignKey(d => d.CraftBlueprintID)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_CraftBlueprintComponents_CraftBlueprintID");
-            });
-
             modelBuilder.Entity<CraftBlueprint>(entity =>
             {
-                entity.ToTable("CraftBlueprints");
                 entity.HasKey(e => e.CraftBlueprintID);
 
-                entity.Property(e => e.CraftBlueprintID)
-                    .HasColumnName("CraftBlueprintID")
-                    .ValueGeneratedNever();
-
-                entity.Property(e => e.CraftCategoryID).HasColumnName("CraftCategoryID");
-
-                entity.Property(e => e.CraftDeviceID).HasColumnName("CraftDeviceID");
-
-                entity.Property(e => e.CraftTierLevel).HasDefaultValueSql("((0))");
+                entity.Property(e => e.CraftBlueprintID).ValueGeneratedNever();
 
                 entity.Property(e => e.ItemName)
                     .IsRequired()
@@ -382,21 +437,58 @@ namespace SWLOR.Web.Data
                     .IsRequired()
                     .HasMaxLength(16);
 
-                entity.Property(e => e.PerkID).HasColumnName("PerkID");
+                entity.HasOne(d => d.BaseStructure)
+                    .WithMany(p => p.CraftBlueprints)
+                    .HasForeignKey(d => d.BaseStructureID)
+                    .HasConstraintName("FK__CraftBlue__BaseS__2F2FFC0C");
 
-                entity.Property(e => e.RequiredPerkLevel).HasDefaultValueSql("((0))");
+                entity.HasOne(d => d.CraftCategory)
+                    .WithMany(p => p.CraftBlueprints)
+                    .HasForeignKey(d => d.CraftCategoryID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_CraftBlueprints_CraftCategoryID");
 
-                entity.Property(e => e.SkillID).HasColumnName("SkillID");
+                entity.HasOne(d => d.CraftDevice)
+                    .WithMany(p => p.CraftBlueprints)
+                    .HasForeignKey(d => d.CraftDeviceID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_CraftBlueprints_CraftDeviceID");
+
+                entity.HasOne(d => d.MainComponentType)
+                    .WithMany(p => p.CraftBlueprintsMainComponentType)
+                    .HasForeignKey(d => d.MainComponentTypeID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_CraftBlueprints_MainComponentTypeID");
+
+                entity.HasOne(d => d.Perk)
+                    .WithMany(p => p.CraftBlueprints)
+                    .HasForeignKey(d => d.PerkID)
+                    .HasConstraintName("FK_CraftBlueprints_PerkID");
+
+                entity.HasOne(d => d.SecondaryComponentType)
+                    .WithMany(p => p.CraftBlueprintsSecondaryComponentType)
+                    .HasForeignKey(d => d.SecondaryComponentTypeID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_CraftBlueprints_SecondaryComponentTypeID");
+
+                entity.HasOne(d => d.Skill)
+                    .WithMany(p => p.CraftBlueprints)
+                    .HasForeignKey(d => d.SkillID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_CraftBlueprints_SkillID");
+
+                entity.HasOne(d => d.TertiaryComponentType)
+                    .WithMany(p => p.CraftBlueprintsTertiaryComponentType)
+                    .HasForeignKey(d => d.TertiaryComponentTypeID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_CraftBlueprints_TertiaryComponentTypeID");
             });
 
             modelBuilder.Entity<CraftDevice>(entity =>
             {
-                entity.ToTable("CraftDevices");
                 entity.HasKey(e => e.CraftDeviceID);
 
-                entity.Property(e => e.CraftDeviceID)
-                    .HasColumnName("CraftDeviceID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.CraftDeviceID).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -406,18 +498,13 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<CustomEffect>(entity =>
             {
-                entity.ToTable("CustomEffects");
                 entity.HasKey(e => e.CustomEffectID);
 
-                entity.Property(e => e.CustomEffectID)
-                    .HasColumnName("CustomEffectID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.CustomEffectID).ValueGeneratedNever();
 
                 entity.Property(e => e.ContinueMessage)
                     .IsRequired()
                     .HasMaxLength(64);
-
-                entity.Property(e => e.IconID).HasColumnName("IconID");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -438,11 +525,7 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<DMRoleDomain>(entity =>
             {
-                entity.ToTable("DMRoleDomain");
-
-                entity.Property(e => e.DMRoleDomainID)
-                    .HasColumnName("DMRoleDomainID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.DMRoleDomainID).ValueGeneratedNever();
 
                 entity.Property(e => e.Description)
                     .IsRequired()
@@ -451,12 +534,9 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<Download>(entity =>
             {
-                entity.ToTable("Downloads");
                 entity.HasKey(e => e.DownloadID);
 
-                entity.Property(e => e.DownloadID)
-                    .HasColumnName("DownloadID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.DownloadID).ValueGeneratedNever();
 
                 entity.Property(e => e.Description)
                     .IsRequired()
@@ -468,20 +548,38 @@ namespace SWLOR.Web.Data
                     .HasMaxLength(50)
                     .HasDefaultValueSql("('')");
 
-                entity.Property(e => e.URL)
+                entity.Property(e => e.Url)
                     .IsRequired()
                     .HasMaxLength(200)
                     .HasDefaultValueSql("('')");
             });
 
+            modelBuilder.Entity<EnmityAdjustmentRule>(entity =>
+            {
+                entity.Property(e => e.EnmityAdjustmentRuleID).ValueGeneratedNever();
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(32)
+                    .HasDefaultValueSql("('')");
+            });
+
             modelBuilder.Entity<FameRegion>(entity =>
             {
-                entity.ToTable("FameRegions");
                 entity.HasKey(e => e.FameRegionID);
 
-                entity.Property(e => e.FameRegionID)
-                    .HasColumnName("FameRegionID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.FameRegionID).ValueGeneratedNever();
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(32);
+            });
+
+            modelBuilder.Entity<GameTopicCategory>(entity =>
+            {
+                entity.HasKey(e => e.GameTopicCategoryID);
+
+                entity.Property(e => e.GameTopicCategoryID).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -490,142 +588,55 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<GameTopic>(entity =>
             {
-                entity.ToTable("GameTopics");
                 entity.HasKey(e => e.GameTopicID);
 
-                entity.Property(e => e.GameTopicID)
-                    .HasColumnName("GameTopicID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.GameTopicID).ValueGeneratedNever();
+
+                entity.Property(e => e.Icon)
+                    .IsRequired()
+                    .HasMaxLength(32)
+                    .HasDefaultValueSql("('')");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(32);
 
-                entity.Property(e => e.Text)
-                    .IsRequired();
-            });
+                entity.Property(e => e.Text).IsRequired();
 
-            modelBuilder.Entity<GameTopicCategory>(entity =>
-            {
-                entity.ToTable("GameTopicCategories");
-                entity.HasKey(e => e.GameTopicCategoryID);
-
-                entity.Property(e => e.GameTopicCategoryID)
-                    .HasColumnName("GameTopicCategoryID")
-                    .ValueGeneratedNever();
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(32);
+                entity.HasOne(d => d.GameTopicCategory)
+                    .WithMany(p => p.GameTopics)
+                    .HasForeignKey(d => d.GameTopicCategoryID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_GameTopics_GameTopicCategoryID");
             });
 
             modelBuilder.Entity<GrowingPlant>(entity =>
             {
-                entity.ToTable("GrowingPlants");
                 entity.HasKey(e => e.GrowingPlantID);
-
-                entity.Property(e => e.GrowingPlantID).HasColumnName("GrowingPlantID");
 
                 entity.Property(e => e.DateCreated).HasDefaultValueSql("(getutcdate())");
 
-                entity.Property(e => e.IsActive).HasDefaultValueSql("((1))");
+                entity.Property(e => e.IsActive)
+                    .IsRequired()
+                    .HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.LocationAreaTag)
                     .IsRequired()
                     .HasMaxLength(64)
                     .HasDefaultValueSql("('')");
 
-                entity.Property(e => e.LocationOrientation)
-                    .IsRequired()
-                    .HasMaxLength(64)
-                    .HasDefaultValueSql("('')");
-
-                entity.Property(e => e.LocationX)
-                    .IsRequired()
-                    .HasMaxLength(64)
-                    .HasDefaultValueSql("('')");
-
-                entity.Property(e => e.LocationY)
-                    .IsRequired()
-                    .HasMaxLength(64)
-                    .HasDefaultValueSql("('')");
-
-                entity.Property(e => e.LocationZ)
-                    .IsRequired()
-                    .HasMaxLength(64)
-                    .HasDefaultValueSql("('')");
-
-                entity.Property(e => e.LongevityBonus).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.PlantID).HasColumnName("PlantID");
-
-                entity.Property(e => e.RemainingTicks).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.TotalTicks).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.WaterStatus).HasDefaultValueSql("((0))");
-            });
-
-            modelBuilder.Entity<Item>(entity =>
-            {
-                entity.ToTable("Items");
-                entity.HasKey(e => e.Resref);
-
-                entity.Property(e => e.Resref)
-                    .HasMaxLength(16)
-                    .ValueGeneratedNever();
-
-                entity.Property(e => e.AC)
-                    .HasColumnName("AC")
-                    .HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.AssociatedSkillID)
-                    .HasColumnName("AssociatedSkillID")
-                    .HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.CastingSpeed).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.CraftBonusArmorsmith).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.CraftBonusCooking).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.CraftBonusMetalworking).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.CraftBonusWeaponsmith).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.CraftBonusWoodworking).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.CraftTierLevel).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.DurabilityPoints).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.HPBonus)
-                    .HasColumnName("HPBonus")
-                    .HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.ItemTypeID)
-                    .HasColumnName("ItemTypeID")
-                    .HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.LoggingBonus).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.ManaBonus).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.MiningBonus).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.RecommendedLevel).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.Weight).HasDefaultValueSql("((0))");
+                entity.HasOne(d => d.Plant)
+                    .WithMany(p => p.GrowingPlants)
+                    .HasForeignKey(d => d.PlantID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_GrowingPlants_PlantID");
             });
 
             modelBuilder.Entity<ItemType>(entity =>
             {
-                entity.ToTable("ItemTypes");
                 entity.HasKey(e => e.ItemTypeID);
 
-                entity.Property(e => e.ItemTypeID)
-                    .HasColumnName("ItemTypeID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.ItemTypeID).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -635,12 +646,9 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<KeyItemCategory>(entity =>
             {
-                entity.ToTable("KeyItemCategories");
                 entity.HasKey(e => e.KeyItemCategoryID);
 
-                entity.Property(e => e.KeyItemCategoryID)
-                    .HasColumnName("KeyItemCategoryID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.KeyItemCategoryID).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -649,158 +657,338 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<KeyItem>(entity =>
             {
-                entity.ToTable("KeyItems");
                 entity.HasKey(e => e.KeyItemID);
 
-                entity.Property(e => e.KeyItemID)
-                    .HasColumnName("KeyItemID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.KeyItemID).ValueGeneratedNever();
 
                 entity.Property(e => e.Description)
                     .IsRequired()
                     .HasMaxLength(1000);
 
-                entity.Property(e => e.KeyItemCategoryID).HasColumnName("KeyItemCategoryID");
-
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(64);
+
+                entity.HasOne(d => d.KeyItemCategory)
+                    .WithMany(p => p.KeyItems)
+                    .HasForeignKey(d => d.KeyItemCategoryID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_KeyItems_KeyItemCategoryID");
             });
 
             modelBuilder.Entity<LootTableItem>(entity =>
             {
-                entity.ToTable("LootTableItems");
                 entity.HasKey(e => e.LootTableItemID);
-
-                entity.Property(e => e.LootTableItemID).HasColumnName("LootTableItemID");
-
-                entity.Property(e => e.LootTableID).HasColumnName("LootTableID");
 
                 entity.Property(e => e.Resref)
                     .IsRequired()
                     .HasMaxLength(16)
                     .IsUnicode(false);
+
+                entity.HasOne(d => d.LootTable)
+                    .WithMany(p => p.LootTableItems)
+                    .HasForeignKey(d => d.LootTableID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_LootTableItems_LootTableID");
             });
 
             modelBuilder.Entity<LootTable>(entity =>
             {
-                entity.ToTable("LootTables");
                 entity.HasKey(e => e.LootTableID);
 
-                entity.Property(e => e.LootTableID)
-                    .HasColumnName("LootTableID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.LootTableID).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(64);
             });
 
+            modelBuilder.Entity<Mod>(entity =>
+            {
+                entity.HasKey(e => e.ModID);
+
+                entity.Property(e => e.ModID).ValueGeneratedNever();
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(64)
+                    .HasDefaultValueSql("('')");
+
+                entity.Property(e => e.Script)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .HasDefaultValueSql("('')");
+            });
+
             modelBuilder.Entity<NPCGroup>(entity =>
             {
-                entity.ToTable("NPCGroups");
                 entity.HasKey(e => e.NPCGroupID);
 
-                entity.Property(e => e.NPCGroupID)
-                    .HasColumnName("NPCGroupID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.NPCGroupID).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(32);
             });
 
-            modelBuilder.Entity<PCCooldown>(entity =>
+            modelBuilder.Entity<PCBasePermission>(entity =>
             {
-                entity.ToTable("PCCooldowns");
-                entity.HasKey(e => e.PCCooldownID);
-                
-                entity.Property(e => e.PCCooldownID).HasColumnName("PCCooldownID");
-
-                entity.Property(e => e.CooldownCategoryID).HasColumnName("CooldownCategoryID");
+                entity.HasKey(e => e.PCBasePermissionID);
 
                 entity.Property(e => e.PlayerID)
                     .IsRequired()
-                    .HasColumnName("PlayerID")
                     .HasMaxLength(60);
-            });
 
-            modelBuilder.Entity<PCCorpseItem>(entity =>
-            {
-                entity.ToTable("PCCorpseItems");
-                entity.HasKey(e => e.PCCorpseItemID);
-                
-                entity.Property(e => e.PCCorpseItemID).HasColumnName("PCCorpseItemID");
-
-                entity.Property(e => e.NWItemObject)
-                    .IsRequired()
-                    .HasColumnName("NWItemObject");
-
-                entity.Property(e => e.PCCorpseID).HasColumnName("PCCorpseID");
-
-                entity.HasOne(d => d.PCCorpse)
-                    .WithMany(p => p.PCCorpseItems)
-                    .HasForeignKey(d => d.PCCorpseID)
+                entity.HasOne(d => d.PCBase)
+                    .WithMany(p => p.PCBasePermissions)
+                    .HasForeignKey(d => d.PCBaseID)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_PCCorpseItems_PCCorpseID");
+                    .HasConstraintName("FK_PCBasePermissions_PCBaseID");
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.PCBasePermissions)
+                    .HasForeignKey(d => d.PlayerID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCBasePermissions_PlayerID");
             });
 
-            modelBuilder.Entity<PCCorpse>(entity =>
+            modelBuilder.Entity<PCBase>(entity =>
             {
-                entity.ToTable("PCCorpses");
-                entity.HasKey(e => e.PCCorpseID);
-                
-                entity.Property(e => e.PCCorpseID).HasColumnName("PCCorpseID");
+                entity.HasKey(e => e.PCBaseID);
 
-                entity.Property(e => e.AreaTag).HasMaxLength(32);
+                entity.HasIndex(e => new { e.AreaResref, e.Sector })
+                    .HasName("UQ_PCBases_AreaResrefSector")
+                    .IsUnique();
 
-                entity.Property(e => e.Name)
+                entity.Property(e => e.AreaResref)
                     .IsRequired()
-                    .HasMaxLength(100);
+                    .HasMaxLength(16);
+
+                entity.Property(e => e.DateFuelEnds).HasDefaultValueSql("(getutcdate())");
+
+                entity.Property(e => e.DateInitialPurchase).HasDefaultValueSql("(getutcdate())");
+
+                entity.Property(e => e.PlayerID)
+                    .IsRequired()
+                    .HasMaxLength(60);
+
+                entity.Property(e => e.Sector)
+                    .IsRequired()
+                    .HasMaxLength(2)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.AreaResrefNavigation)
+                    .WithMany(p => p.PCBases)
+                    .HasPrincipalKey(p => p.Resref)
+                    .HasForeignKey(d => d.AreaResref)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCBases_AreaResref");
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.PCBases)
+                    .HasForeignKey(d => d.PlayerID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCBases_PlayerID");
+            });
+
+            modelBuilder.Entity<PCBaseStructureItem>(entity =>
+            {
+                entity.HasKey(e => e.PCBaseStructureItemID);
+
+                entity.Property(e => e.ItemGlobalID)
+                    .IsRequired()
+                    .HasMaxLength(60);
+
+                entity.Property(e => e.ItemName).IsRequired();
+
+                entity.Property(e => e.ItemObject)
+                    .IsRequired()
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ItemResref)
+                    .IsRequired()
+                    .HasMaxLength(16);
+
+                entity.Property(e => e.ItemTag)
+                    .IsRequired()
+                    .HasMaxLength(64);
+
+                entity.HasOne(d => d.PCBaseStructure)
+                    .WithMany(p => p.PCBaseStructureItems)
+                    .HasForeignKey(d => d.PCBaseStructureID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCBaseStructureItems_PCBaseStructureID");
+            });
+
+            modelBuilder.Entity<PCBaseStructurePermission>(entity =>
+            {
+                entity.HasKey(e => e.PCBaseStructurePermissionID);
+
+                entity.Property(e => e.PlayerID)
+                    .IsRequired()
+                    .HasMaxLength(60);
+
+                entity.HasOne(d => d.PCBaseStructure)
+                    .WithMany(p => p.PCBaseStructurePermissions)
+                    .HasForeignKey(d => d.PCBaseStructureID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCBaseStructurePermissions_PCBaseStructureID");
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.PCBaseStructurePermissions)
+                    .HasForeignKey(d => d.PlayerID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCBaseStructurePermissions_PlayerID");
+            });
+
+            modelBuilder.Entity<PCBaseStructure>(entity =>
+            {
+                entity.HasKey(e => e.PCBaseStructureID);
+
+                entity.Property(e => e.CustomName)
+                    .IsRequired()
+                    .HasMaxLength(64)
+                    .HasDefaultValueSql("('')");
+
+                entity.HasOne(d => d.BaseStructure)
+                    .WithMany(p => p.PCBaseStructures)
+                    .HasForeignKey(d => d.BaseStructureID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCBaseStructures_BaseStructureID");
+
+                entity.HasOne(d => d.ExteriorStyle)
+                    .WithMany(p => p.PCBaseStructuresExteriorStyle)
+                    .HasForeignKey(d => d.ExteriorStyleID)
+                    .HasConstraintName("FK_PCBaseStructures_ExteriorStyleID");
+
+                entity.HasOne(d => d.InteriorStyle)
+                    .WithMany(p => p.PCBaseStructuresInteriorStyle)
+                    .HasForeignKey(d => d.InteriorStyleID)
+                    .HasConstraintName("FK_PCBaseStructures_InteriorStyleID");
+
+                entity.HasOne(d => d.PCBase)
+                    .WithMany(p => p.PCBaseStructures)
+                    .HasForeignKey(d => d.PCBaseID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCBaseStructures_PCBaseID");
+
+                entity.HasOne(d => d.ParentPCBaseStructure)
+                    .WithMany(p => p.InverseParentPCBaseStructure)
+                    .HasForeignKey(d => d.ParentPCBaseStructureID)
+                    .HasConstraintName("FK_PCBaseStructures_ParentPCBaseStructureID");
+            });
+
+            modelBuilder.Entity<PCCooldown>(entity =>
+            {
+                entity.HasKey(e => e.PCCooldownID);
+
+                entity.Property(e => e.PlayerID)
+                    .IsRequired()
+                    .HasMaxLength(60);
+
+                entity.HasOne(d => d.CooldownCategory)
+                    .WithMany(p => p.PCCooldowns)
+                    .HasForeignKey(d => d.CooldownCategoryID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_PCCooldowns_CooldownCategoryID");
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.PCCooldowns)
+                    .HasForeignKey(d => d.PlayerID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_PCCooldowns_PlayerID");
             });
 
             modelBuilder.Entity<PCCustomEffect>(entity =>
             {
-                entity.ToTable("PCCustomEffects");
                 entity.HasKey(e => e.PCCustomEffectID);
-                
-                entity.Property(e => e.PCCustomEffectID).HasColumnName("PCCustomEffectID");
 
-                entity.Property(e => e.CustomEffectID).HasColumnName("CustomEffectID");
+                entity.Property(e => e.CasterNWNObjectID)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .HasDefaultValueSql("('')");
+
+                entity.Property(e => e.Data)
+                    .IsRequired()
+                    .HasMaxLength(32)
+                    .HasDefaultValueSql("('')");
 
                 entity.Property(e => e.PlayerID)
                     .IsRequired()
-                    .HasColumnName("PlayerID")
                     .HasMaxLength(60);
+
+                entity.HasOne(d => d.CustomEffect)
+                    .WithMany(p => p.PCCustomEffects)
+                    .HasForeignKey(d => d.CustomEffectID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_PCCustomEffects_CustomEffectID");
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.PCCustomEffects)
+                    .HasForeignKey(d => d.PlayerID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_PCCustomEffects_PlayerID");
+            });
+
+            modelBuilder.Entity<PCImpoundedItem>(entity =>
+            {
+                entity.HasKey(e => e.PCImpoundedItemID);
+
+                entity.Property(e => e.DateImpounded).HasDefaultValueSql("(getutcdate())");
+
+                entity.Property(e => e.ItemName)
+                    .IsRequired()
+                    .HasMaxLength(64);
+
+                entity.Property(e => e.ItemObject).IsRequired();
+
+                entity.Property(e => e.ItemResref)
+                    .IsRequired()
+                    .HasMaxLength(16);
+
+                entity.Property(e => e.ItemTag)
+                    .IsRequired()
+                    .HasMaxLength(32);
+
+                entity.Property(e => e.PlayerID)
+                    .IsRequired()
+                    .HasMaxLength(60);
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.PCImpoundedItems)
+                    .HasForeignKey(d => d.PlayerID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCItemImpound_PlayerID");
             });
 
             modelBuilder.Entity<PCKeyItem>(entity =>
             {
-                entity.ToTable("PCKeyItems");
-
                 entity.HasKey(e => e.PCKeyItemID);
-                
-                entity.Property(e => e.PCKeyItemID).HasColumnName("PCKeyItemID");
 
                 entity.Property(e => e.AcquiredDate)
                     .HasColumnType("datetime2(0)")
                     .HasDefaultValueSql("(getutcdate())");
 
-                entity.Property(e => e.KeyItemID).HasColumnName("KeyItemID");
-
                 entity.Property(e => e.PlayerID)
                     .IsRequired()
-                    .HasColumnName("PlayerID")
                     .HasMaxLength(60);
+
+                entity.HasOne(d => d.KeyItem)
+                    .WithMany(p => p.PCKeyItems)
+                    .HasForeignKey(d => d.KeyItemID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_PCKeyItems_KeyItemID");
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.PCKeyItems)
+                    .HasForeignKey(d => d.PlayerID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_PCKeyItems_PlayerID");
             });
 
             modelBuilder.Entity<PCMapPin>(entity =>
             {
-                entity.ToTable("PCMapPins");
-
                 entity.HasKey(e => e.PCMapPinID);
-                
-                entity.Property(e => e.PCMapPinID).HasColumnName("PCMapPinID");
 
                 entity.Property(e => e.AreaTag)
                     .IsRequired()
@@ -812,20 +1000,20 @@ namespace SWLOR.Web.Data
 
                 entity.Property(e => e.PlayerID)
                     .IsRequired()
-                    .HasColumnName("PlayerID")
                     .HasMaxLength(60);
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.PCMapPins)
+                    .HasForeignKey(d => d.PlayerID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCMapPins_PlayerID");
             });
 
             modelBuilder.Entity<PCMigrationItem>(entity =>
             {
-                entity.ToTable("PCMigrationItems");
                 entity.HasKey(e => e.PCMigrationItemID);
-                
-                entity.Property(e => e.PCMigrationItemID)
-                    .HasColumnName("PCMigrationItemID")
-                    .ValueGeneratedNever();
 
-                entity.Property(e => e.BaseItemTypeID).HasColumnName("BaseItemTypeID");
+                entity.Property(e => e.PCMigrationItemID).ValueGeneratedNever();
 
                 entity.Property(e => e.CurrentResref)
                     .IsRequired()
@@ -835,10 +1023,14 @@ namespace SWLOR.Web.Data
                     .IsRequired()
                     .HasMaxLength(16);
 
-                entity.Property(e => e.PCMigrationID).HasColumnName("PCMigrationID");
-                
+                entity.HasOne(d => d.BaseItemType)
+                    .WithMany(p => p.PCMigrationItems)
+                    .HasForeignKey(d => d.BaseItemTypeID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_PCMigrationItems_BaseItemTypeID");
+
                 entity.HasOne(d => d.PCMigration)
-                    .WithMany(p => p.PcmigrationItems)
+                    .WithMany(p => p.PCMigrationItems)
                     .HasForeignKey(d => d.PCMigrationID)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_PCMigrationItems_PCMigrationID");
@@ -846,13 +1038,9 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCMigration>(entity =>
             {
-                entity.ToTable("PCMigrations");
-
                 entity.HasKey(e => e.PCMigrationID);
 
-                entity.Property(e => e.PCMigrationID)
-                    .HasColumnName("PCMigrationID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.PCMigrationID).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -861,25 +1049,46 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCOutfit>(entity =>
             {
-                entity.ToTable("PCOutfits");
                 entity.HasKey(e => e.PlayerID);
-                
+
                 entity.Property(e => e.PlayerID)
-                    .HasColumnName("PlayerID")
                     .HasMaxLength(60)
                     .ValueGeneratedNever();
+
+                entity.Property(e => e.Outfit1).IsUnicode(false);
+
+                entity.Property(e => e.Outfit10).IsUnicode(false);
+
+                entity.Property(e => e.Outfit2).IsUnicode(false);
+
+                entity.Property(e => e.Outfit3).IsUnicode(false);
+
+                entity.Property(e => e.Outfit4).IsUnicode(false);
+
+                entity.Property(e => e.Outfit5).IsUnicode(false);
+
+                entity.Property(e => e.Outfit6).IsUnicode(false);
+
+                entity.Property(e => e.Outfit7).IsUnicode(false);
+
+                entity.Property(e => e.Outfit8).IsUnicode(false);
+
+                entity.Property(e => e.Outfit9).IsUnicode(false);
+
+                entity.HasOne(d => d.Player)
+                    .WithOne(p => p.PCOutfit)
+                    .HasForeignKey<PCOutfit>(d => d.PlayerID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_PCOutfits_PlayerID");
             });
 
             modelBuilder.Entity<PCOverflowItem>(entity =>
             {
-                entity.ToTable("PCOverflowItems");
                 entity.HasKey(e => e.PCOverflowItemID);
-                
-                entity.Property(e => e.PCOverflowItemID).HasColumnName("PCOverflowItemID");
 
                 entity.Property(e => e.ItemName).IsRequired();
 
-                entity.Property(e => e.ItemObject).IsRequired();
+                entity.Property(e => e.ItemObject).IsUnicode(false);
 
                 entity.Property(e => e.ItemResref)
                     .IsRequired()
@@ -891,272 +1100,184 @@ namespace SWLOR.Web.Data
 
                 entity.Property(e => e.PlayerID)
                     .IsRequired()
-                    .HasColumnName("PlayerID")
                     .HasMaxLength(60);
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.PCOverflowItems)
+                    .HasForeignKey(d => d.PlayerID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_PCOverflowItems_PlayerID");
             });
 
             modelBuilder.Entity<PCPerk>(entity =>
             {
-                entity.ToTable("PCPerks");
                 entity.HasKey(e => e.PCPerkID);
-                
-                entity.Property(e => e.PCPerkID).HasColumnName("PCPerkID");
 
                 entity.Property(e => e.AcquiredDate).HasDefaultValueSql("(getutcdate())");
 
-                entity.Property(e => e.PerkID).HasColumnName("PerkID");
-
-                entity.Property(e => e.PerkLevel).HasDefaultValueSql("((0))");
-
                 entity.Property(e => e.PlayerID)
                     .IsRequired()
-                    .HasColumnName("PlayerID")
                     .HasMaxLength(60);
+
+                entity.HasOne(d => d.Perk)
+                    .WithMany(p => p.PCPerks)
+                    .HasForeignKey(d => d.PerkID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_PCPerks_PerkID");
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.PCPerks)
+                    .HasForeignKey(d => d.PlayerID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_PCPerks_PlayerID");
             });
 
             modelBuilder.Entity<PCQuestKillTargetProgress>(entity =>
             {
-                entity.ToTable("PCQuestKillTargetProgress");
-
-                entity.Property(e => e.PCQuestKillTargetProgressID).HasColumnName("PCQuestKillTargetProgressID");
-
-                entity.Property(e => e.NPCGroupID).HasColumnName("NPCGroupID");
-
-                entity.Property(e => e.PCQuestStatusID).HasColumnName("PCQuestStatusID");
-
                 entity.Property(e => e.PlayerID)
                     .IsRequired()
-                    .HasColumnName("PlayerID")
                     .HasMaxLength(60);
-                
+
+                entity.HasOne(d => d.NPCGroup)
+                    .WithMany(p => p.PCQuestKillTargetProgress)
+                    .HasForeignKey(d => d.NPCGroupID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCQuestKillTargetProgress_NPCGroupID");
+
                 entity.HasOne(d => d.PCQuestStatus)
                     .WithMany(p => p.PCQuestKillTargetProgress)
                     .HasForeignKey(d => d.PCQuestStatusID)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PCQuestKillTargetProgress_PCQuestStatusID");
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.PCQuestKillTargetProgress)
+                    .HasForeignKey(d => d.PlayerID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCQuestKillTargetProgress_PlayerID");
             });
 
             modelBuilder.Entity<PCQuestStatus>(entity =>
             {
-                entity.ToTable("PCQuestStatus");
-
-                entity.Property(e => e.PCQuestStatusID).HasColumnName("PCQuestStatusID");
-
-                entity.Property(e => e.CurrentQuestStateID).HasColumnName("CurrentQuestStateID");
-
                 entity.Property(e => e.PlayerID)
                     .IsRequired()
-                    .HasColumnName("PlayerID")
                     .HasMaxLength(60);
 
-                entity.Property(e => e.QuestID).HasColumnName("QuestID");
+                entity.HasOne(d => d.CurrentQuestState)
+                    .WithMany(p => p.PCQuestStatus)
+                    .HasForeignKey(d => d.CurrentQuestStateID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCQuestStatus_CurrentQuestStateID");
 
-                entity.Property(e => e.SelectedItemRewardID).HasColumnName("SelectedItemRewardID");
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.PCQuestStatus)
+                    .HasForeignKey(d => d.PlayerID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCQuestStatus_PlayerID");
+
+                entity.HasOne(d => d.Quest)
+                    .WithMany(p => p.PCQuestStatus)
+                    .HasForeignKey(d => d.QuestID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCQuestStatus_QuestID");
+
+                entity.HasOne(d => d.SelectedItemReward)
+                    .WithMany(p => p.PCQuestStatus)
+                    .HasForeignKey(d => d.SelectedItemRewardID)
+                    .HasConstraintName("FK_PCQuestStatus_SelectedRewardID");
             });
 
             modelBuilder.Entity<PCRegionalFame>(entity =>
             {
-                entity.ToTable("PCRegionalFame");
-
-                entity.Property(e => e.PCRegionalFameID).HasColumnName("PCRegionalFameID");
-
-                entity.Property(e => e.Amount).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.FameRegionID).HasColumnName("FameRegionID");
-
                 entity.Property(e => e.PlayerID)
                     .IsRequired()
-                    .HasColumnName("PlayerID")
                     .HasMaxLength(60);
+
+                entity.HasOne(d => d.FameRegion)
+                    .WithMany(p => p.PCRegionalFame)
+                    .HasForeignKey(d => d.FameRegionID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCRegionalFame_FameRegionID");
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.PCRegionalFame)
+                    .HasForeignKey(d => d.PlayerID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCRegionalFame_PlayerID");
             });
 
             modelBuilder.Entity<PCSearchSiteItem>(entity =>
             {
-                entity.ToTable("PCSearchSiteItems");
                 entity.HasKey(e => e.PCSearchSiteItemID);
-                
-                entity.Property(e => e.PCSearchSiteItemID).HasColumnName("PCSearchSiteItemID");
 
                 entity.Property(e => e.PlayerID)
                     .IsRequired()
-                    .HasColumnName("PlayerID")
                     .HasMaxLength(60);
 
-                entity.Property(e => e.SearchItem).IsRequired();
+                entity.Property(e => e.SearchItem).IsUnicode(false);
 
-                entity.Property(e => e.SearchSiteID).HasColumnName("SearchSiteID");
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.PCSearchSiteItems)
+                    .HasForeignKey(d => d.PlayerID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_PCSearchSiteItems_PlayerID");
             });
 
             modelBuilder.Entity<PCSearchSite>(entity =>
             {
-                entity.ToTable("PCSearchSites");
                 entity.HasKey(e => e.PCSearchSiteID);
-                
-                entity.Property(e => e.PCSearchSiteID).HasColumnName("PCSearchSiteID");
 
                 entity.Property(e => e.PlayerID)
                     .IsRequired()
-                    .HasColumnName("PlayerID")
                     .HasMaxLength(60);
 
-                entity.Property(e => e.SearchSiteID).HasColumnName("SearchSiteID");
-
                 entity.Property(e => e.UnlockDateTime).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.PCSearchSites)
+                    .HasForeignKey(d => d.PlayerID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_PCSearchSites_PlayerID");
             });
 
             modelBuilder.Entity<PCSkill>(entity =>
             {
-                entity.ToTable("PCSkills");
                 entity.HasKey(e => e.PCSkillID);
-                
-                entity.Property(e => e.PCSkillID).HasColumnName("PCSkillID");
 
                 entity.Property(e => e.PlayerID)
                     .IsRequired()
-                    .HasColumnName("PlayerID")
                     .HasMaxLength(60);
 
-                entity.Property(e => e.Rank).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.SkillID).HasColumnName("SkillID");
-
-                entity.Property(e => e.XP)
-                    .HasColumnName("XP")
-                    .HasDefaultValueSql("((0))");
-            });
-
-            modelBuilder.Entity<PCTerritoryFlag>(entity =>
-            {
-                entity.ToTable("PCTerritoryFlags");
-                entity.HasKey(e => e.PCTerritoryFlagID);
-                
-                entity.Property(e => e.PCTerritoryFlagID).HasColumnName("PCTerritoryFlagID");
-
-                entity.Property(e => e.BuildPrivacySettingID)
-                    .HasColumnName("BuildPrivacySettingID")
-                    .HasDefaultValueSql("((1))");
-
-                entity.Property(e => e.LocationAreaTag)
-                    .IsRequired()
-                    .HasMaxLength(64);
-
-                entity.Property(e => e.PlayerID)
-                    .IsRequired()
-                    .HasColumnName("PlayerID")
-                    .HasMaxLength(60);
-
-                entity.Property(e => e.StructureBlueprintID).HasColumnName("StructureBlueprintID");
-            });
-
-            modelBuilder.Entity<PCTerritoryFlagsPermission>(entity =>
-            {
-                entity.ToTable("PCTerritoryFlagsPermissions");
-                entity.HasKey(e => e.PCTerritoryFlagPermissionID);
-                
-                entity.Property(e => e.PCTerritoryFlagPermissionID).HasColumnName("PCTerritoryFlagPermissionID");
-
-                entity.Property(e => e.PCTerritoryFlagID).HasColumnName("PCTerritoryFlagID");
-
-                entity.Property(e => e.PlayerID)
-                    .IsRequired()
-                    .HasColumnName("PlayerID")
-                    .HasMaxLength(60);
-
-                entity.Property(e => e.TerritoryFlagPermissionID).HasColumnName("TerritoryFlagPermissionID");
-
-                entity.HasOne(d => d.PCTerritoryFlag)
-                    .WithMany(p => p.PCTerritoryFlagsPermissions)
-                    .HasForeignKey(d => d.PCTerritoryFlagID)
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.PCSkills)
+                    .HasForeignKey(d => d.PlayerID)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_PCTerritoryFlagsPermissions_PCTerritoryFlagID");
-            });
+                    .HasConstraintName("FK_PCSkills_PlayerID");
 
-            modelBuilder.Entity<PCTerritoryFlagsStructure>(entity =>
-            {
-                entity.HasKey(e => e.PCTerritoryFlagStructureID);
-
-                entity.ToTable("PCTerritoryFlagsStructures");
-
-                entity.Property(e => e.PCTerritoryFlagStructureID).HasColumnName("PCTerritoryFlagStructureID");
-
-                entity.Property(e => e.CreateDate)
-                    .HasColumnType("datetime2(0)")
-                    .HasDefaultValueSql("(getutcdate())");
-
-                entity.Property(e => e.CustomName)
-                    .IsRequired()
-                    .HasMaxLength(32)
-                    .HasDefaultValueSql("('')");
-
-                entity.Property(e => e.LocationAreaTag)
-                    .IsRequired()
-                    .HasMaxLength(64);
-
-                entity.Property(e => e.PCTerritoryFlagID).HasColumnName("PCTerritoryFlagID");
-
-                entity.Property(e => e.StructureBlueprintID).HasColumnName("StructureBlueprintID");
-
-                entity.HasOne(d => d.PCTerritoryFlag)
-                    .WithMany(p => p.PCTerritoryFlagsStructures)
-                    .HasForeignKey(d => d.PCTerritoryFlagID)
+                entity.HasOne(d => d.Skill)
+                    .WithMany(p => p.PCSkills)
+                    .HasForeignKey(d => d.SkillID)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_PCTerritoryFlagsStructures_PCTerritoryFlagID");
-            });
-
-            modelBuilder.Entity<PCTerritoryFlagsStructuresItem>(entity =>
-            {
-                entity.HasKey(e => e.PCStructureItemID);
-
-                entity.ToTable("PCTerritoryFlagsStructuresItems");
-
-                entity.Property(e => e.PCStructureItemID).HasColumnName("PCStructureItemID");
-
-                entity.Property(e => e.ItemName).IsRequired();
-
-                entity.Property(e => e.ItemObject).IsRequired();
-
-                entity.Property(e => e.ItemResref)
-                    .IsRequired()
-                    .HasMaxLength(16);
-
-                entity.Property(e => e.ItemTag)
-                    .IsRequired()
-                    .HasMaxLength(64);
-
-                entity.Property(e => e.PCStructureID).HasColumnName("PCStructureID");
-
-                entity.HasOne(d => d.PCStructure)
-                    .WithMany(p => p.PCTerritoryFlagsStructuresItems)
-                    .HasForeignKey(d => d.PCStructureID)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_PCTerritoryFlagsStructuresItems_PCStructureID");
+                    .HasConstraintName("FK_PCSkills_SkillID");
             });
 
             modelBuilder.Entity<PerkCategory>(entity =>
             {
-                entity.ToTable("PerkCategories");
                 entity.HasKey(e => e.PerkCategoryID);
 
-                entity.Property(e => e.PerkCategoryID)
-                    .HasColumnName("PerkCategoryID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.PerkCategoryID).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(64)
                     .HasDefaultValueSql("('')");
-
-                entity.Property(e => e.Sequence).HasDefaultValueSql("((0))");
             });
 
             modelBuilder.Entity<PerkExecutionType>(entity =>
             {
-                entity.ToTable("PerkExecutionTypes");
                 entity.HasKey(e => e.PerkExecutionTypeID);
 
-                entity.Property(e => e.PerkExecutionTypeID)
-                    .HasColumnName("PerkExecutionTypeID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.PerkExecutionTypeID).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -1166,71 +1287,53 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PerkLevel>(entity =>
             {
-                entity.ToTable("PerkLevels");
                 entity.HasKey(e => e.PerkLevelID);
 
-                entity.HasIndex(e => new { PerkId = e.PerkID, e.Level })
+                entity.HasIndex(e => new { e.PerkID, e.Level })
                     .HasName("uq_PerkLevels_PerkIDLevel")
                     .IsUnique();
-
-                entity.Property(e => e.PerkLevelID).HasColumnName("PerkLevelID");
 
                 entity.Property(e => e.Description)
                     .IsRequired()
                     .HasMaxLength(512)
                     .HasDefaultValueSql("('')");
 
-                entity.Property(e => e.Level).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.PerkID).HasColumnName("PerkID");
-
-                entity.Property(e => e.Price).HasDefaultValueSql("((0))");
+                entity.HasOne(d => d.Perk)
+                    .WithMany(p => p.PerkLevels)
+                    .HasForeignKey(d => d.PerkID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PerkLevels_PerkID");
             });
 
             modelBuilder.Entity<PerkLevelSkillRequirement>(entity =>
             {
-                entity.ToTable("PerkLevelSkillRequirements");
                 entity.HasKey(e => e.PerkLevelSkillRequirementID);
 
-                entity.Property(e => e.PerkLevelSkillRequirementID).HasColumnName("PerkLevelSkillRequirementID");
+                entity.HasOne(d => d.PerkLevel)
+                    .WithMany(p => p.PerkLevelSkillRequirements)
+                    .HasForeignKey(d => d.PerkLevelID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PerkLevelSkillRequirements_PerkLevelID");
 
-                entity.Property(e => e.PerkLevelID).HasColumnName("PerkLevelID");
-
-                entity.Property(e => e.RequiredRank).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.SkillID).HasColumnName("SkillID");
-
-                
-
+                entity.HasOne(d => d.Skill)
+                    .WithMany(p => p.PerkLevelSkillRequirements)
+                    .HasForeignKey(d => d.SkillID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PerkLevelSkillRequirements_SkillID");
             });
 
             modelBuilder.Entity<Perk>(entity =>
             {
-                entity.ToTable("Perks");
                 entity.HasKey(e => e.PerkID);
 
-                entity.Property(e => e.PerkID)
-                    .HasColumnName("PerkID")
-                    .ValueGeneratedNever();
-
-                entity.Property(e => e.BaseCastingTime).HasDefaultValueSql("((0.0))");
-
-                entity.Property(e => e.BaseManaCost).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.CooldownCategoryID).HasColumnName("CooldownCategoryID");
+                entity.Property(e => e.PerkID).ValueGeneratedNever();
 
                 entity.Property(e => e.Description)
                     .IsRequired()
                     .HasMaxLength(256)
                     .HasDefaultValueSql("('')");
 
-                entity.Property(e => e.ExecutionTypeID)
-                    .HasColumnName("ExecutionTypeID")
-                    .HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.FeatID)
-                    .HasColumnName("FeatID")
-                    .HasDefaultValueSql("((0))");
+                entity.Property(e => e.FeatID).HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.ItemResref).HasMaxLength(16);
 
@@ -1246,21 +1349,35 @@ namespace SWLOR.Web.Data
                     .IsUnicode(false)
                     .HasDefaultValueSql("('')");
 
-                entity.Property(e => e.PerkCategoryID).HasColumnName("PerkCategoryID");
+                entity.HasOne(d => d.CooldownCategory)
+                    .WithMany(p => p.Perks)
+                    .HasForeignKey(d => d.CooldownCategoryID)
+                    .HasConstraintName("fk_Perks_CooldownCategoryID");
+
+                entity.HasOne(d => d.EnmityAdjustmentRule)
+                    .WithMany(p => p.Perks)
+                    .HasForeignKey(d => d.EnmityAdjustmentRuleID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_Perks_EnmityAdjustmentRuleID");
+
+                entity.HasOne(d => d.ExecutionType)
+                    .WithMany(p => p.Perks)
+                    .HasForeignKey(d => d.ExecutionTypeID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_Perks_ExecutionTypeID");
+
+                entity.HasOne(d => d.PerkCategory)
+                    .WithMany(p => p.Perks)
+                    .HasForeignKey(d => d.PerkCategoryID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_Perks_PerkCategoryID");
             });
 
             modelBuilder.Entity<Plant>(entity =>
             {
-                entity.ToTable("Plants");
                 entity.HasKey(e => e.PlantID);
 
-                entity.Property(e => e.PlantID)
-                    .HasColumnName("PlantID")
-                    .ValueGeneratedNever();
-
-                entity.Property(e => e.BaseTicks).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.Level).HasDefaultValueSql("((0))");
+                entity.Property(e => e.PlantID).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -1272,106 +1389,50 @@ namespace SWLOR.Web.Data
                     .HasMaxLength(16)
                     .HasDefaultValueSql("('')");
 
-                entity.Property(e => e.WaterTicks).HasDefaultValueSql("((0))");
+                entity.Property(e => e.SeedResref)
+                    .IsRequired()
+                    .HasMaxLength(16)
+                    .HasDefaultValueSql("('')");
             });
 
             modelBuilder.Entity<PlayerCharacter>(entity =>
             {
-                entity.ToTable("PlayerCharacters");
                 entity.HasKey(e => e.PlayerID);
 
                 entity.Property(e => e.PlayerID)
-                    .HasColumnName("PlayerID")
                     .HasMaxLength(60)
                     .ValueGeneratedNever();
-
-                entity.Property(e => e.CHABase)
-                    .HasColumnName("CHABase")
-                    .HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.CONBase)
-                    .HasColumnName("CONBase")
-                    .HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.CreateTimestamp)
                     .HasColumnType("datetime2(0)")
                     .HasDefaultValueSql("(getutcdate())");
 
-                entity.Property(e => e.CurrentMana).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.CurrentManaTick).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.DateLastForcedSPReset).HasColumnName("DateLastForcedSPReset");
-
                 entity.Property(e => e.DateSanctuaryEnds).HasDefaultValueSql("(dateadd(hour,(72),getutcdate()))");
 
-                entity.Property(e => e.DEXBase)
-                    .HasColumnName("DEXBase")
-                    .HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.DisplayHelmet).HasDefaultValueSql("((1))");
-
-                entity.Property(e => e.HPRegenerationAmount).HasColumnName("HPRegenerationAmount");
-
-                entity.Property(e => e.INTBase)
-                    .HasColumnName("INTBase")
-                    .HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.LocationAreaTag)
+                entity.Property(e => e.DisplayHelmet)
                     .IsRequired()
-                    .HasMaxLength(64);
+                    .HasDefaultValueSql("((1))");
 
-                entity.Property(e => e.MaxMana).HasDefaultValueSql("((0))");
+                entity.Property(e => e.LocationAreaResref).HasMaxLength(16);
 
-                entity.Property(e => e.NextResetTokenReceiveDate).HasColumnType("datetime2(0)");
-
-                entity.Property(e => e.NextSPResetDate)
-                    .HasColumnName("NextSPResetDate")
-                    .HasColumnType("datetime2(0)");
-
-                entity.Property(e => e.NumberOfSPResets).HasColumnName("NumberOfSPResets");
-
-                entity.Property(e => e.RespawnAreaTag)
-                    .IsRequired()
-                    .HasMaxLength(64)
+                entity.Property(e => e.RespawnAreaResref)
+                    .HasMaxLength(16)
                     .HasDefaultValueSql("('')");
 
-                entity.Property(e => e.RespawnLocationOrientation).HasDefaultValueSql("((0.0))");
-
-                entity.Property(e => e.RespawnLocationX).HasDefaultValueSql("((0.0))");
-
-                entity.Property(e => e.RespawnLocationY).HasDefaultValueSql("((0.0))");
-
-                entity.Property(e => e.RespawnLocationZ).HasDefaultValueSql("((0.0))");
-
-                entity.Property(e => e.RevivalStoneCount).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.STRBase)
-                    .HasColumnName("STRBase")
-                    .HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.TotalSPAcquired)
-                    .HasColumnName("TotalSPAcquired")
-                    .HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.UnallocatedSP).HasColumnName("UnallocatedSP");
-
-                entity.Property(e => e.WISBase)
-                    .HasColumnName("WISBase")
-                    .HasDefaultValueSql("((0))");
+                entity.HasOne(d => d.PrimaryResidencePCBaseStructure)
+                    .WithMany(p => p.PlayerCharacters)
+                    .HasForeignKey(d => d.PrimaryResidencePCBaseStructureID)
+                    .HasConstraintName("FK_PlayerCharacters_PrimaryResidencePCBaseStructureID");
             });
 
             modelBuilder.Entity<QuestKillTargetList>(entity =>
             {
-                entity.ToTable("QuestKillTargetList");
-                entity.Property(e => e.QuestKillTargetListID).HasColumnName("QuestKillTargetListID");
+                entity.HasOne(d => d.NPCGroup)
+                    .WithMany(p => p.QuestKillTargetList)
+                    .HasForeignKey(d => d.NPCGroupID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_QuestKillTargetList_NPCGroupID");
 
-                entity.Property(e => e.NPCGroupID).HasColumnName("NPCGroupID");
-
-                entity.Property(e => e.QuestID).HasColumnName("QuestID");
-
-                entity.Property(e => e.QuestStateID).HasColumnName("QuestStateID");
-                
                 entity.HasOne(d => d.Quest)
                     .WithMany(p => p.QuestKillTargetList)
                     .HasForeignKey(d => d.QuestID)
@@ -1387,14 +1448,7 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<QuestPrerequisite>(entity =>
             {
-                entity.ToTable("QuestPrerequisites");
                 entity.HasKey(e => e.QuestPrerequisiteID);
-
-                entity.Property(e => e.QuestPrerequisiteID).HasColumnName("QuestPrerequisiteID");
-
-                entity.Property(e => e.QuestID).HasColumnName("QuestID");
-
-                entity.Property(e => e.RequiredQuestID).HasColumnName("RequiredQuestID");
 
                 entity.HasOne(d => d.Quest)
                     .WithMany(p => p.QuestPrerequisitesQuest)
@@ -1411,13 +1465,6 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<QuestRequiredItemList>(entity =>
             {
-                entity.ToTable("QuestRequiredItemList");
-                entity.Property(e => e.QuestRequiredItemListID).HasColumnName("QuestRequiredItemListID");
-
-                entity.Property(e => e.QuestID).HasColumnName("QuestID");
-
-                entity.Property(e => e.QuestStateID).HasColumnName("QuestStateID");
-
                 entity.Property(e => e.Resref)
                     .IsRequired()
                     .HasMaxLength(16);
@@ -1437,17 +1484,14 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<QuestRequiredKeyItemList>(entity =>
             {
-                entity.ToTable("QuestRequiredKeyItemList");
                 entity.HasKey(e => e.QuestRequiredKeyItemID);
 
-                entity.Property(e => e.QuestRequiredKeyItemID).HasColumnName("QuestRequiredKeyItemID");
+                entity.HasOne(d => d.KeyItem)
+                    .WithMany(p => p.QuestRequiredKeyItemList)
+                    .HasForeignKey(d => d.KeyItemID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_QuestRequiredKeyItemList_KeyItemID");
 
-                entity.Property(e => e.KeyItemID).HasColumnName("KeyItemID");
-
-                entity.Property(e => e.QuestID).HasColumnName("QuestID");
-
-                entity.Property(e => e.QuestStateID).HasColumnName("QuestStateID");
-                
                 entity.HasOne(d => d.Quest)
                     .WithMany(p => p.QuestRequiredKeyItemList)
                     .HasForeignKey(d => d.QuestID)
@@ -1463,12 +1507,7 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<QuestRewardItem>(entity =>
             {
-                entity.ToTable("QuestRewardItems");
                 entity.HasKey(e => e.QuestRewardItemID);
-
-                entity.Property(e => e.QuestRewardItemID).HasColumnName("QuestRewardItemID");
-
-                entity.Property(e => e.QuestID).HasColumnName("QuestID");
 
                 entity.Property(e => e.Resref)
                     .IsRequired()
@@ -1481,14 +1520,9 @@ namespace SWLOR.Web.Data
                     .HasConstraintName("FK_QuestRewards_QuestID");
             });
 
-            modelBuilder.Entity<Quests>(entity =>
+            modelBuilder.Entity<Quest>(entity =>
             {
-                entity.ToTable("Quests");
                 entity.HasKey(e => e.QuestID);
-
-                entity.Property(e => e.QuestID).HasColumnName("QuestID");
-
-                entity.Property(e => e.FameRegionID).HasColumnName("FameRegionID");
 
                 entity.Property(e => e.JournalTag)
                     .IsRequired()
@@ -1502,41 +1536,45 @@ namespace SWLOR.Web.Data
                     .IsRequired()
                     .HasMaxLength(100);
 
-                entity.Property(e => e.RewardKeyItemID).HasColumnName("RewardKeyItemID");
+                entity.HasOne(d => d.FameRegion)
+                    .WithMany(p => p.Quests)
+                    .HasForeignKey(d => d.FameRegionID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Quests_FameRegionID");
 
-                entity.Property(e => e.RewardXP).HasColumnName("RewardXP");
+                entity.HasOne(d => d.RewardKeyItem)
+                    .WithMany(p => p.QuestsRewardKeyItem)
+                    .HasForeignKey(d => d.RewardKeyItemID)
+                    .HasConstraintName("FK_Quests_RewardKeyItemID");
 
-                entity.Property(e => e.StartKeyItemID).HasColumnName("StartKeyItemID");
+                entity.HasOne(d => d.StartKeyItem)
+                    .WithMany(p => p.QuestsStartKeyItem)
+                    .HasForeignKey(d => d.StartKeyItemID)
+                    .HasConstraintName("FK_Quests_TemporaryKeyItemID");
             });
 
             modelBuilder.Entity<QuestState>(entity =>
             {
-                entity.ToTable("QuestStates");
                 entity.HasKey(e => e.QuestStateID);
-
-                entity.Property(e => e.QuestStateID).HasColumnName("QuestStateID");
-
-                entity.Property(e => e.JournalStateID).HasColumnName("JournalStateID");
-
-                entity.Property(e => e.QuestID).HasColumnName("QuestID");
-
-                entity.Property(e => e.QuestTypeID).HasColumnName("QuestTypeID");
 
                 entity.HasOne(d => d.Quest)
                     .WithMany(p => p.QuestStates)
                     .HasForeignKey(d => d.QuestID)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_QuestStates_QuestID");
+
+                entity.HasOne(d => d.QuestType)
+                    .WithMany(p => p.QuestStates)
+                    .HasForeignKey(d => d.QuestTypeID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_QuestStates_QuestTypeID");
             });
 
             modelBuilder.Entity<QuestTypeDomain>(entity =>
             {
-                entity.ToTable("QuestTypeDomain");
                 entity.HasKey(e => e.QuestTypeID);
 
-                entity.Property(e => e.QuestTypeID)
-                    .HasColumnName("QuestTypeID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.QuestTypeID).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -1545,10 +1583,9 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<ServerConfiguration>(entity =>
             {
-                entity.ToTable("ServerConfiguration");
-                entity.Property(e => e.ServerConfigurationID)
-                    .HasColumnName("ServerConfigurationID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.ServerConfigurationID).ValueGeneratedNever();
+
+                entity.Property(e => e.AreaBakeStep).HasDefaultValueSql("((2))");
 
                 entity.Property(e => e.MessageOfTheDay)
                     .IsRequired()
@@ -1565,80 +1602,130 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<SkillCategory>(entity =>
             {
-                entity.ToTable("SkillCategories");
                 entity.HasKey(e => e.SkillCategoryID);
 
-                entity.Property(e => e.SkillCategoryID)
-                    .HasColumnName("SkillCategoryID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.SkillCategoryID).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(32)
                     .HasDefaultValueSql("('')");
-
-                entity.Property(e => e.Sequence).HasDefaultValueSql("((0))");
             });
 
             modelBuilder.Entity<Skill>(entity =>
             {
-                entity.ToTable("Skills");
                 entity.HasKey(e => e.SkillID);
 
-                entity.Property(e => e.SkillID)
-                    .HasColumnName("SkillID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.SkillID).ValueGeneratedNever();
 
                 entity.Property(e => e.Description)
                     .IsRequired()
                     .HasMaxLength(1024)
                     .HasDefaultValueSql("('')");
 
-                entity.Property(e => e.MaxRank).HasDefaultValueSql("((0))");
-
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(32)
                     .HasDefaultValueSql("('')");
 
-                entity.Property(e => e.PrimaryID)
-                    .HasColumnName("Primary")
-                    .HasDefaultValueSql("('')");
+                entity.Property(e => e.Primary).HasDefaultValueSql("('')");
 
-                entity.Property(e => e.SecondaryID)
-                    .HasColumnName("Secondary")
-                    .HasDefaultValueSql("('')");
+                entity.Property(e => e.Secondary).HasDefaultValueSql("('')");
 
-                entity.Property(e => e.SkillCategoryID)
-                    .HasColumnName("SkillCategoryID");
+                entity.Property(e => e.Tertiary).HasDefaultValueSql("('')");
 
-                entity.Property(e => e.TertiaryID)
-                    .HasColumnName("Tertiary")
-                    .HasDefaultValueSql("('')");
-               
-                
-                
+                entity.HasOne(d => d.PrimaryNavigation)
+                    .WithMany(p => p.SkillsPrimaryNavigation)
+                    .HasForeignKey(d => d.Primary)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Skills_Primary");
+
+                entity.HasOne(d => d.SecondaryNavigation)
+                    .WithMany(p => p.SkillsSecondaryNavigation)
+                    .HasForeignKey(d => d.Secondary)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Skills_Secondary");
+
+                entity.HasOne(d => d.SkillCategory)
+                    .WithMany(p => p.Skills)
+                    .HasForeignKey(d => d.SkillCategoryID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Skills_SkillCategoryID");
+
+                entity.HasOne(d => d.TertiaryNavigation)
+                    .WithMany(p => p.SkillsTertiaryNavigation)
+                    .HasForeignKey(d => d.Tertiary)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Skills_Tertiary");
             });
 
             modelBuilder.Entity<SkillXPRequirement>(entity =>
             {
-                entity.ToTable("SkillXPRequirement");
+                entity.HasOne(d => d.Skill)
+                    .WithMany(p => p.SkillXPRequirement)
+                    .HasForeignKey(d => d.SkillID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_SkillXPRequirement_SkillID");
+            });
 
-                entity.Property(e => e.SkillXPRequirementID).HasColumnName("SkillXPRequirementID");
+            modelBuilder.Entity<SpawnObject>(entity =>
+            {
+                entity.HasKey(e => e.SpawnObjectID);
 
-                entity.Property(e => e.SkillID).HasColumnName("SkillID");
+                entity.Property(e => e.Resref)
+                    .IsRequired()
+                    .HasMaxLength(16);
 
-                entity.Property(e => e.XP).HasColumnName("XP");
+                entity.Property(e => e.SpawnRule)
+                    .IsRequired()
+                    .HasMaxLength(32)
+                    .HasDefaultValueSql("('')");
+
+                entity.Property(e => e.Weight).HasDefaultValueSql("((1))");
+
+                entity.HasOne(d => d.NPCGroup)
+                    .WithMany(p => p.SpawnObjects)
+                    .HasForeignKey(d => d.NPCGroupID)
+                    .HasConstraintName("FK_SpawnObjects_NPCGroupID");
+
+                entity.HasOne(d => d.Spawn)
+                    .WithMany(p => p.SpawnObjects)
+                    .HasForeignKey(d => d.SpawnID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_SpawnObjects_SpawnID");
+            });
+
+            modelBuilder.Entity<SpawnObjectType>(entity =>
+            {
+                entity.Property(e => e.SpawnObjectTypeID).ValueGeneratedNever();
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(64);
+            });
+
+            modelBuilder.Entity<Spawn>(entity =>
+            {
+                entity.HasKey(e => e.SpawnID);
+
+                entity.Property(e => e.SpawnID).ValueGeneratedNever();
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(64);
+
+                entity.HasOne(d => d.SpawnObjectType)
+                    .WithMany(p => p.Spawns)
+                    .HasForeignKey(d => d.SpawnObjectTypeID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Spawns_SpawnObjectTypeID");
             });
 
             modelBuilder.Entity<StorageContainer>(entity =>
             {
-                entity.ToTable("StorageContainers");
                 entity.HasKey(e => e.StorageContainerID);
 
-                entity.Property(e => e.StorageContainerID)
-                    .HasColumnName("StorageContainerID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.StorageContainerID).ValueGeneratedNever();
 
                 entity.Property(e => e.AreaName)
                     .IsRequired()
@@ -1655,14 +1742,15 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<StorageItem>(entity =>
             {
-                entity.ToTable("StorageItems");
                 entity.HasKey(e => e.StorageItemID);
 
-                entity.Property(e => e.StorageItemID).HasColumnName("StorageItemID");
+                entity.Property(e => e.GlobalID)
+                    .IsRequired()
+                    .HasMaxLength(60);
 
                 entity.Property(e => e.ItemName).IsRequired();
 
-                entity.Property(e => e.ItemObject).IsRequired();
+                entity.Property(e => e.ItemObject).IsUnicode(false);
 
                 entity.Property(e => e.ItemResref)
                     .IsRequired()
@@ -1672,8 +1760,6 @@ namespace SWLOR.Web.Data
                     .IsRequired()
                     .HasMaxLength(64);
 
-                entity.Property(e => e.StorageContainerID).HasColumnName("StorageContainerID");
-
                 entity.HasOne(d => d.StorageContainer)
                     .WithMany(p => p.StorageItems)
                     .HasForeignKey(d => d.StorageContainerID)
@@ -1681,134 +1767,15 @@ namespace SWLOR.Web.Data
                     .HasConstraintName("fk_StorageItems_StorageContainerID");
             });
 
-            modelBuilder.Entity<StructureBlueprint>(entity =>
-            {
-                entity.ToTable("StructureBlueprints");
-                entity.HasKey(e => e.StructureBlueprintID);
-
-                entity.Property(e => e.StructureBlueprintID)
-                    .HasColumnName("StructureBlueprintID")
-                    .ValueGeneratedNever();
-
-                entity.Property(e => e.CraftTierLevel).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.Description)
-                    .IsRequired()
-                    .HasMaxLength(255);
-
-                entity.Property(e => e.GivesSkillXP).HasColumnName("GivesSkillXP");
-
-                entity.Property(e => e.Level).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(64);
-
-                entity.Property(e => e.PerkID).HasColumnName("PerkID");
-
-                entity.Property(e => e.RequiredPerkLevel).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.Resref)
-                    .IsRequired()
-                    .HasMaxLength(16);
-
-                entity.Property(e => e.SpecialCount).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.StructureCategoryID).HasColumnName("StructureCategoryID");
-            });
-
-            modelBuilder.Entity<StructureCategory>(entity =>
-            {
-                entity.ToTable("StructureCategories");
-                entity.HasKey(e => e.StructureCategoryID);
-
-                entity.Property(e => e.StructureCategoryID).HasColumnName("StructureCategoryID");
-
-                entity.Property(e => e.Description)
-                    .IsRequired()
-                    .HasMaxLength(64);
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(64);
-            });
-
-            modelBuilder.Entity<StructureComponent>(entity =>
-            {
-                entity.ToTable("StructureComponents");
-                entity.HasKey(e => e.StructureComponentID);
-
-                entity.Property(e => e.StructureComponentID).HasColumnName("StructureComponentID");
-
-                entity.Property(e => e.Quantity).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.Resref)
-                    .IsRequired()
-                    .HasMaxLength(16)
-                    .HasDefaultValueSql("('')");
-
-                entity.Property(e => e.StructureBlueprintID).HasColumnName("StructureBlueprintID");
-
-                entity.HasOne(d => d.StructureBlueprint)
-                    .WithMany(p => p.StructureComponents)
-                    .HasForeignKey(d => d.StructureBlueprintID)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_StructureComponents_StructureBlueprintID");
-            });
-
-            modelBuilder.Entity<StructureQuickBuildAudit>(entity =>
-            {
-                entity.ToTable("StructureQuickBuildAudit");
-                entity.HasKey(e => e.StructureQuickBuildID);
-
-                entity.Property(e => e.StructureQuickBuildID).HasColumnName("StructureQuickBuildID");
-
-                entity.Property(e => e.DateBuilt).HasDefaultValueSql("(getutcdate())");
-
-                entity.Property(e => e.DMName)
-                    .IsRequired()
-                    .HasColumnName("DMName")
-                    .HasMaxLength(200)
-                    .HasDefaultValueSql("('')");
-
-                entity.Property(e => e.PCTerritoryFlagID).HasColumnName("PCTerritoryFlagID");
-
-                entity.Property(e => e.PCTerritoryFlagStructureID).HasColumnName("PCTerritoryFlagStructureID");
-
-                entity.HasOne(d => d.PCTerritoryFlag)
-                    .WithMany(p => p.StructureQuickBuildAudit)
-                    .HasForeignKey(d => d.PCTerritoryFlagID)
-                    .HasConstraintName("FK_StructureQuickBuildAudit_PCTerritoryFlagID");
-            });
-
-            modelBuilder.Entity<TerritoryFlagPermission>(entity =>
-            {
-                entity.ToTable("TerritoryFlagPermissions");
-                entity.HasKey(e => e.TerritoryFlagPermissionID);
-
-                entity.Property(e => e.TerritoryFlagPermissionID)
-                    .HasColumnName("TerritoryFlagPermissionID")
-                    .ValueGeneratedNever();
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(64);
-            });
-
             modelBuilder.Entity<User>(entity =>
             {
-                entity.ToTable("Users");
                 entity.HasKey(e => e.UserID);
-
-                entity.Property(e => e.UserID).HasColumnName("UserID");
 
                 entity.Property(e => e.AvatarHash).IsRequired();
 
                 entity.Property(e => e.DateRegistered).HasDefaultValueSql("(getutcdate())");
 
-                entity.Property(e => e.DiscordUserID)
-                    .IsRequired()
-                    .HasColumnName("DiscordUserID");
+                entity.Property(e => e.DiscordUserID).IsRequired();
 
                 entity.Property(e => e.Discriminator)
                     .IsRequired()
@@ -1816,14 +1783,22 @@ namespace SWLOR.Web.Data
 
                 entity.Property(e => e.Email).IsRequired();
 
-                entity.Property(e => e.RoleID)
-                    .HasColumnName("RoleID")
-                    .HasDefaultValueSql("((3))");
+                entity.Property(e => e.RoleID).HasDefaultValueSql("((3))");
 
                 entity.Property(e => e.Username)
                     .IsRequired()
                     .HasMaxLength(32);
+
+                entity.HasOne(d => d.Role)
+                    .WithMany(p => p.Users)
+                    .HasForeignKey(d => d.RoleID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_Users_RoleID");
             });
+
+            OnModelCreatingPartial(modelBuilder);
         }
+
+        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }

@@ -1,16 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.Collections.Generic;
 
 namespace SWLOR.Web.Data.Entities
 {
-    public class PerkLevelSkillRequirement
+    public partial class PerkLevelSkillRequirement
     {
         public int PerkLevelSkillRequirementID { get; set; }
         public int PerkLevelID { get; set; }
         public int SkillID { get; set; }
         public int RequiredRank { get; set; }
 
-        [ForeignKey("SkillID")]
+        public PerkLevel PerkLevel { get; set; }
         public Skill Skill { get; set; }
-
     }
 }
