@@ -20,11 +20,11 @@ export default class About extends React.Component {
                                     <br />
                                     <ul>
                                         <li><Link to="/skills">Skill-based progression</Link></li>
-                                        <li><Link to="/perks">Custom perks & magic system</Link></li>
-                                        <li><Link to="/lore">Unique setting</Link></li>
-                                        <li>Expansive sandbox</li>
-                                        <li><Link to="/survival">Survival gameplay</Link></li>
-                                        <li>Player-built bases</li>
+                                        <li><Link to="/perks">Custom perks & force ability system</Link></li>
+                                        <li><Link to="/lore">Unique Star Wars setting</Link></li>
+                                        <li><Link to="/sandbox">Expansive sandbox</Link></li>
+                                        <li><Link to="/crafting">Extensive crafting system</Link></li>
+                                        <li><Link to="/player-bases">Player-built bases</Link></li>
                                         <li>And much more!</li>
                                     </ul>
                                 </div>
@@ -38,7 +38,7 @@ export default class About extends React.Component {
                                 <div className="card-text">
                                     Direct Connect: TBA
                                     <br />
-                                    Downloads: <Link to="/downloads">Click Here</Link>
+                                    Discord: <a href="https://discord.gg/MyQAM6m" target="_blank">Click Here</a>
                                 </div>
                             </div>
                         </div>

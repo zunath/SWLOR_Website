@@ -14,7 +14,7 @@ export default class QuestRewards extends React.Component {
             KeyItems: [],
             EnableControls: false,
             OnUpdateParent: props.OnUpdateParent
-        }
+        };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleChangeNumeric = this.handleChangeNumeric.bind(this);
@@ -26,15 +26,15 @@ export default class QuestRewards extends React.Component {
 
     componentWillUnmount() {
 
-    }
+    };
 
     componentWillReceiveProps(newProps) {
         this.setState({
-            Gold: newProps.Rewards == null ? 0 : newProps.Rewards.Gold,
-            XP: newProps.Rewards == null ? 0 : newProps.Rewards.XP,
-            KeyItemID: newProps.Rewards == null ? -1 : newProps.Rewards.KeyItemID,
-            Fame: newProps.Rewards == null ? 0 : newProps.Rewards.Fame,
-            Items: newProps.Rewards == null ? [] : newProps.Rewards.RewardItems,
+            Gold: newProps.Rewards === null ? 0 : newProps.Rewards.Gold,
+            XP: newProps.Rewards === null ? 0 : newProps.Rewards.XP,
+            KeyItemID: newProps.Rewards === null ? -1 : newProps.Rewards.KeyItemID,
+            Fame: newProps.Rewards === null ? 0 : newProps.Rewards.Fame,
+            Items: newProps.Rewards === null ? [] : newProps.Rewards.RewardItems,
             KeyItems: newProps.KeyItems,
             EnableControls: newProps.EnableControls,
             OnUpdateParent: newProps.OnUpdateParent

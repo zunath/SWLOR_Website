@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace SWLOR.Web.Data.Entities
+﻿namespace SWLOR.Web.Data.Entities
 {
     public partial class GameTopic
     {

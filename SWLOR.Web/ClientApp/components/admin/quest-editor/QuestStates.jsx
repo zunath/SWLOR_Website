@@ -234,22 +234,22 @@ export default class QuestStates extends React.Component {
 
                                 <div className="row">
                                     <div className="col-11 offset-1">
-                                        {questState.QuestTypeID == 1 &&
+                                        {questState.QuestTypeID === 1 &&
                                             <QuestKillTarget
                                                 NPCGroups={this.state.NPCGroups}
                                                 KillTargets={questState.KillTargets} />}
-                                        {questState.QuestTypeID == 2 &&
+                                        {questState.QuestTypeID === 2 &&
                                             <QuestTalkToNPC />}
-                                        {questState.QuestTypeID == 3 &&
+                                        {questState.QuestTypeID === 3 &&
                                             <QuestUseObject />}
-                                        {questState.QuestTypeID == 4 &&
+                                        {questState.QuestTypeID === 4 &&
                                             <QuestCollectItems
                                                 KeyItems={this.state.KeyItems}
                                                 RequiredItems={questState.RequiredItems}
                                                 RequiredKeyItems={questState.RequiredKeyItems}/>}
-                                        {questState.QuestTypeID == 5 &&
+                                        {questState.QuestTypeID === 5 &&
                                             <QuestExploreArea />}
-                                        {questState.QuestTypeID == 6 &&
+                                        {questState.QuestTypeID === 6 &&
                                             <QuestUseItem />}
                                     </div>
 

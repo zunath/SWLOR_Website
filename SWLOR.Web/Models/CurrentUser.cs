@@ -3,7 +3,6 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using SWLOR.Web.Constants;
 using SWLOR.Web.Data;
-using SWLOR.Web.Data.Entities;
 using SWLOR.Web.Models.Contracts;
 
 namespace SWLOR.Web.Models

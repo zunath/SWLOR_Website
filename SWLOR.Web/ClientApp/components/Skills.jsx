@@ -46,15 +46,15 @@ export default class Skills extends React.Component {
                                 <h4 className="card-title">Skills</h4>
 
                                 <p>
-                                    Freescape introduces skill-based gameplay to NWN. Instead of being held back by restrictive classes, you define your character by playing it.
+                                    Star Wars: LOR introduces skill-based gameplay to NWN. Instead of being held back by restrictive classes, you define your character by playing it.
                                     <br />
-                                    Want to be a warrior? Equip some heavy armor and a melee weapon then start bashing heads.
+                                    Want to be a Jedi Sage? Practice your Light-Side force abilities, like Force Healing.
                                     <br />
-                                    How about a mage? Learn some magic and start casting spells.
+                                    How about a Sith Sorcerer? Hone your Dark-Side force abilities, like Force Lightning.
                                     <br />
-                                    Or perhaps the life of a simple farmer is more your style? Grab a shovel, some seeds, and get to planting!
+                                    Or perhaps you'd rather support the war efforts by crafting items and equipment to sell to other players.
                                     <br />
-                                    Specialize in a handful of skills or become a jack-of-all-trades. What you choose is entirely up to you.
+                                    Specialize in a handful of skills or become a jack-of-all-trades. What you choose is entirely up to you!
                                 </p>
                             </div>
                         </div>
@@ -128,25 +128,25 @@ export default class Skills extends React.Component {
                                 <b>Ranks:</b>
                             </div>
                             <div className="col-1">
-                                {this.state.SelectedSkill.MaxRank === undefined ? '' : this.state.SelectedSkill.MaxRank}
+                                {this.state.SelectedSkill.MaxRank}
                             </div>
                             <div className="col-1">
                                 <b>Primary:</b>
                             </div>
                             <div className="col-1">
-                                {this.state.SelectedSkill.Primary === undefined ? '' : this.state.SelectedSkill.Primary.Name}
+                                {this.state.SelectedSkill.PrimaryName}
                             </div>
                             <div className="col-1">
                                 <b>Secondary:</b>
                             </div>
                             <div className="col-1 pl-4">
-                                {this.state.SelectedSkill.Secondary === undefined ? '' : this.state.SelectedSkill.Secondary.Name}
+                                {this.state.SelectedSkill.SecondaryName}
                             </div>
                             <div className="col-1">
                                 <b>Tertiary:</b>
                             </div>
                             <div className="col-1">
-                                {this.state.SelectedSkill.Tertiary === undefined ? '' : this.state.SelectedSkill.Tertiary.Name}
+                                {this.state.SelectedSkill.TertiaryName}
                             </div>
                         </div>
                         

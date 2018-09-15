@@ -1,8 +1,8 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
+using SWLOR.Web.Data.Entities;
+using Attribute = SWLOR.Web.Data.Entities.Attribute;
 
-namespace SWLOR.Web.Data.Entities
+namespace SWLOR.Web.Data
 {
     public partial class DataContext : DbContext
     {
@@ -1628,21 +1628,21 @@ namespace SWLOR.Web.Data.Entities
                     .HasMaxLength(32)
                     .HasDefaultValueSql("('')");
 
-                entity.Property(e => e.Primary).HasDefaultValueSql("('')");
+                entity.Property(e => e.PrimaryAttributeID).HasDefaultValueSql("('')").HasColumnName("Primary");
 
-                entity.Property(e => e.Secondary).HasDefaultValueSql("('')");
+                entity.Property(e => e.SecondaryAttributeID).HasDefaultValueSql("('')").HasColumnName("Secondary");
 
-                entity.Property(e => e.Tertiary).HasDefaultValueSql("('')");
+                entity.Property(e => e.TertiaryAttributeID).HasDefaultValueSql("('')").HasColumnName("Tertiary");
 
-                entity.HasOne(d => d.PrimaryNavigation)
+                entity.HasOne(d => d.PrimaryAttribute)
                     .WithMany(p => p.SkillsPrimaryNavigation)
-                    .HasForeignKey(d => d.Primary)
+                    .HasForeignKey(d => d.PrimaryAttributeID)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Skills_Primary");
 
-                entity.HasOne(d => d.SecondaryNavigation)
+                entity.HasOne(d => d.SecondaryAttribute)
                     .WithMany(p => p.SkillsSecondaryNavigation)
-                    .HasForeignKey(d => d.Secondary)
+                    .HasForeignKey(d => d.SecondaryAttributeID)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Skills_Secondary");
 
@@ -1652,9 +1652,9 @@ namespace SWLOR.Web.Data.Entities
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Skills_SkillCategoryID");
 
-                entity.HasOne(d => d.TertiaryNavigation)
+                entity.HasOne(d => d.TertiaryAttribute)
                     .WithMany(p => p.SkillsTertiaryNavigation)
-                    .HasForeignKey(d => d.Tertiary)
+                    .HasForeignKey(d => d.TertiaryAttributeID)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Skills_Tertiary");
             });

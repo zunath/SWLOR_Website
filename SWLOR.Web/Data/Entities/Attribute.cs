@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace SWLOR.Web.Data.Entities
 {
@@ -16,8 +16,11 @@ namespace SWLOR.Web.Data.Entities
         public int NWNValue { get; set; }
         public string Name { get; set; }
 
+        [JsonIgnore]
         public ICollection<Skill> SkillsPrimaryNavigation { get; set; }
+        [JsonIgnore]
         public ICollection<Skill> SkillsSecondaryNavigation { get; set; }
+        [JsonIgnore]
         public ICollection<Skill> SkillsTertiaryNavigation { get; set; }
     }
 }

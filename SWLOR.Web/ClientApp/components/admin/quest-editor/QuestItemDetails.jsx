@@ -44,13 +44,13 @@ export default class QuestItemDetails extends React.Component {
     }
 
     raiseParentChange() {
-        if (this.state.OnChangeCallback != null) {
+        if (this.state.OnChangeCallback !== null) {
             this.state.OnChangeCallback(this.state.Index, this.state.Resref, this.state.Quantity);
         }
     }
 
     raiseDelete() {
-        if (this.state.OnDeleteCallback != null) {
+        if (this.state.OnDeleteCallback !== null) {
             this.state.OnDeleteCallback(this.state.Index);
         }
     }
