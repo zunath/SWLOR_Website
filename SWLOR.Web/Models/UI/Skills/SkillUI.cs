@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace SWLOR.Web.Models.UI.Skills
+﻿namespace SWLOR.Web.Models.UI.Skills
 {
-    public class SkillModel
+    public class SkillUI
     {
         public int SkillID { get; set; }
         public int SkillCategoryID { get; set; }

@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DotNetify;
 using Microsoft.EntityFrameworkCore;
 using SWLOR.Web.Data;
-using SWLOR.Web.Data.Entities;
+using SWLOR.Web.Models.UI.Perks;
 
 namespace SWLOR.Web.ViewModels
 {
@@ -11,17 +12,17 @@ namespace SWLOR.Web.ViewModels
     {
         private readonly DataContext _db;
 
-        public string PerkList_itemkey => nameof(Perk.PerkCategoryID);
-        public IEnumerable<Perk> PerkList
+        public string PerkList_itemkey => nameof(PerkUI.PerkCategoryID);
+        public IEnumerable<PerkUI> PerkList
         {
-            get => Get<IEnumerable<Perk>>();
+            get => Get<IEnumerable<PerkUI>>();
             set => Set(value);
         }
 
-        public string PerkCategoryList_itemkey => nameof(PerkCategory.PerkCategoryID);
-        public IEnumerable<PerkCategory> PerkCategoryList
+        public string PerkCategoryList_itemkey => nameof(PerkCategoryUI.PerkCategoryID);
+        public IEnumerable<PerkCategoryUI> PerkCategoryList
         {
-            get => Get<IEnumerable<PerkCategory>>();
+            get => Get<IEnumerable<PerkCategoryUI>>();
             set => Set(value);
         }
 
@@ -45,9 +46,15 @@ namespace SWLOR.Web.ViewModels
             }
         }
 
-        public Perk SelectedPerk
+        public bool IsInitialized
         {
-            get => Get<Perk>();
+            get => Get<bool>();
+            set => Set(value);
+        }
+
+        public PerkUI SelectedPerk
+        {
+            get => Get<PerkUI>();
             set => Set(value);
         }
 
@@ -57,11 +64,18 @@ namespace SWLOR.Web.ViewModels
 
             PerkCategoryList = db.PerkCategories
                 .Where(x => x.IsActive)
-                .OrderBy(o => o.Sequence)
+                .OrderBy(o => o.Name)
+                .Select(o => new PerkCategoryUI
+                {
+                    PerkCategoryID = o.PerkCategoryID,
+                    Name = o.Name,
+                })
                 .ToList();
 
             SelectedCategoryID = PerkCategoryList.First().PerkCategoryID;
             SelectedPerkID = PerkList.First().PerkID;
+
+            IsInitialized = true;
         }
 
         private void LoadPerkList()
@@ -74,7 +88,31 @@ namespace SWLOR.Web.ViewModels
                 .ThenInclude(i => i.Skill)
                 .Where(x => x.IsActive &&
                             x.PerkCategoryID == SelectedCategoryID)
-                .OrderBy(o => o.PerkID)
+                .OrderBy(o => o.Name)
+                .Select(o => new PerkUI
+                {
+                    Name = o.Name,
+                    PerkCategoryID = o.PerkCategoryID,
+                    PerkLevels = o.PerkLevels.Select(pl => new PerkLevelUI
+                    {
+                        SkillRequirements = pl.PerkLevelSkillRequirements.Select(req => new PerkSkillRequirementUI
+                        {
+                            PerkLevelSkillRequirementID = req.PerkLevelSkillRequirementID,
+                            SkillName = req.Skill.Name,
+                            RequiredRank = req.RequiredRank
+                        }),
+                        Description = pl.Description,
+                        Level = pl.Level,
+                        PerkLevelID = pl.PerkLevelID,
+                        Price = pl.Price
+                    }),
+                    Description = o.Description,
+                    BaseActivationTime = Convert.ToSingle(o.BaseCastingTime),
+                    BaseCooldownTime = o.CooldownCategory == null ? 0.0f : Convert.ToSingle(o.CooldownCategory.BaseCooldownTime),
+                    BaseFPCost = o.BaseFPCost,
+                    ExecutionTypeName = o.ExecutionType.Name,
+                    PerkID = o.PerkID
+                })
                 .ToList();
 
             SelectedPerkID = PerkList.First().PerkID;

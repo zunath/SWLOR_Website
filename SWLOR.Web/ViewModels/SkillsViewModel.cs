@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using DotNetify;
-using Microsoft.EntityFrameworkCore;
 using SWLOR.Web.Data;
-using SWLOR.Web.Data.Entities;
 using SWLOR.Web.Models.UI.Skills;
 
 namespace SWLOR.Web.ViewModels
@@ -13,17 +10,17 @@ namespace SWLOR.Web.ViewModels
     {
         private readonly DataContext _db;
 
-        public string SkillList_itemkey => nameof(Skill.SkillCategoryID);
-        public IEnumerable<SkillModel> SkillList
+        public string SkillList_itemkey => nameof(SkillUI.SkillCategoryID);
+        public IEnumerable<SkillUI> SkillList
         {
-            get => Get<IEnumerable<SkillModel>>();
+            get => Get<IEnumerable<SkillUI>>();
             set => Set(value);
         }
 
-        public string SkillCategoryList_itemkey => nameof(SkillCategory.SkillCategoryID);
-        public IEnumerable<dynamic> SkillCategoryList
+        public string SkillCategoryList_itemkey => nameof(SkillCategoryUI.SkillCategoryID);
+        public IEnumerable<SkillCategoryUI> SkillCategoryList
         {
-            get => Get<IEnumerable<dynamic>>();
+            get => Get<IEnumerable<SkillCategoryUI>>();
             set => Set(value);
         }
 
@@ -47,9 +44,9 @@ namespace SWLOR.Web.ViewModels
             }
         }
 
-        public SkillModel SelectedSkill
+        public SkillUI SelectedSkill
         {
-            get => Get<dynamic>();
+            get => Get<SkillUI>();
             set => Set(value);
         }
 
@@ -60,11 +57,11 @@ namespace SWLOR.Web.ViewModels
             SkillCategoryList = db.SkillCategories
                 .Where(x => x.IsActive)
                 .OrderBy(o => o.Sequence)
-                .Select(o => new
+                .Select(o => new SkillCategoryUI
                 {
-                    o.SkillCategoryID,
-                    o.Name,
-                    o.IsActive
+                    SkillCategoryID = o.SkillCategoryID,
+                    Name = o.Name,
+                    IsActive = o.IsActive
                 })
                 .ToList();
 
@@ -79,9 +76,11 @@ namespace SWLOR.Web.ViewModels
                 .Where(x => x.IsActive &&
                             x.SkillCategoryID == SelectedCategoryID)
                 .OrderBy(o => o.SkillID)
-                .Select(o => new SkillModel
+                .Select(o => new SkillUI
                 {
-                    SkillID = o.SkillID, SkillCategoryID = o.SkillCategoryID, Name = o.Name,
+                    SkillID = o.SkillID, 
+                    SkillCategoryID = o.SkillCategoryID, 
+                    Name = o.Name,
                     Description = o.Description,
                     MaxRank = o.MaxRank,
                     PrimaryName = o.PrimaryAttribute.Name,

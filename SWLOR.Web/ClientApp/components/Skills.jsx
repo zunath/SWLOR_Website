@@ -18,11 +18,11 @@ export default class Skills extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
     }
-    
+
     componentWillUnmount() {
         this.vm.$destroy();
     }
-    
+
     handleChange(event) {
         const target = event.target;
         var value = target.type === 'checkbox' ? target.checked : target.value;
@@ -30,12 +30,12 @@ export default class Skills extends React.Component {
 
         if (value === undefined)
             value = target.getAttribute('data-skillid');
-        
+
         this.setState({
             [name]: value
-        }, () => this.dispatch({[name]: value}));
+        }, () => this.dispatch({ [name]: value }));
     }
-    
+
     render() {
         return (
             <div>
@@ -67,13 +67,13 @@ export default class Skills extends React.Component {
                         <hr />
 
                         <div className="row">
-                            
+
 
                             <div className="col">
                                 <select className="form-control"
-                                        name="SelectedCategoryID"
-                                        onChange={this.handleChange}
-                                        value={this.state.SelectedCategoryID} >
+                                    name="SelectedCategoryID"
+                                    onChange={this.handleChange}
+                                    value={this.state.SelectedCategoryID} >
                                     {this.state.SkillCategoryList.map(obj =>
                                         <option key={obj.SkillCategoryID} value={obj.SkillCategoryID}>
                                             {obj.Name}
@@ -85,7 +85,7 @@ export default class Skills extends React.Component {
                         </div>
 
                         <div className="row">&nbsp;</div>
-                        
+
                         <div className="list-group">
                             {this.state.SkillList.map(obj =>
                                 <Link key={obj.SkillID}
@@ -149,7 +149,7 @@ export default class Skills extends React.Component {
                                 {this.state.SelectedSkill.TertiaryName}
                             </div>
                         </div>
-                        
+
                     </div>
 
                 </div>
