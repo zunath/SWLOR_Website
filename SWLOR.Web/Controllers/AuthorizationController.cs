@@ -32,16 +32,16 @@ namespace SWLOR.Web.Controllers
         {
             var claims = User.Claims.ToList();
 
-            Users user = new Users
+            User user = new User
             {
                 Username = claims.Where(x => x.Type == ClaimTypes.Name).Select(x => x.Value).Single(),
-                DiscordUserId = claims.Where(x => x.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).Single(),
+                DiscordUserID = claims.Where(x => x.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).Single(),
                 Email = claims.Where(x => x.Type == ClaimTypes.Email).Select(x => x.Value).Single(),
                 Discriminator = claims.Where(x => x.Type == "Discriminator").Select(x => x.Value).Single(),
                 AvatarHash = claims.Where(x => x.Type == "Avatar").Select(x => x.Value).Single()
             };
 
-            Users existingUser = _db.Users.SingleOrDefault(x => x.DiscordUserId == user.DiscordUserId);
+            User existingUser = _db.Users.SingleOrDefault(x => x.DiscordUserID == user.DiscordUserID);
             if (existingUser == null)
             {
                 _db.Users.Add(user);
@@ -51,10 +51,10 @@ namespace SWLOR.Web.Controllers
                 existingUser.Username = user.Username;
                 existingUser.Discriminator = user.Discriminator;
                 existingUser.Email = user.Email;
-                existingUser.DiscordUserId = user.DiscordUserId;
+                existingUser.DiscordUserID = user.DiscordUserID;
                 existingUser.AvatarHash = user.AvatarHash;
 
-                user.UserId = existingUser.UserId;
+                user.UserID = existingUser.UserID;
             }
 
             _db.SaveChanges();

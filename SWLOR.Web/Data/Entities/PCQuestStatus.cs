@@ -3,24 +3,24 @@ using System.Collections.Generic;
 
 namespace SWLOR.Web.Data.Entities
 {
-    public partial class PCQuestStatus
+    public class PCQuestStatus
     {
         public PCQuestStatus()
         {
-            PcquestKillTargetProgress = new HashSet<PCQuestKillTargetProgress>();
+            PCQuestKillTargetProgress = new HashSet<PCQuestKillTargetProgress>();
         }
 
-        public int PcquestStatusId { get; set; }
-        public string PlayerId { get; set; }
-        public int QuestId { get; set; }
-        public int CurrentQuestStateId { get; set; }
+        public int PCQuestStatusID { get; set; }
+        public string PlayerID { get; set; }
+        public int QuestID { get; set; }
+        public int CurrentQuestStateID { get; set; }
         public DateTime? CompletionDate { get; set; }
-        public int? SelectedItemRewardId { get; set; }
+        public int? SelectedItemRewardID { get; set; }
 
-        public QuestStates CurrentQuestState { get; set; }
-        public PlayerCharacters Player { get; set; }
+        public QuestState CurrentQuestState { get; set; }
+        public PlayerCharacter Player { get; set; }
         public Quests Quest { get; set; }
-        public QuestRewardItems SelectedItemReward { get; set; }
-        public ICollection<PCQuestKillTargetProgress> PcquestKillTargetProgress { get; set; }
+        public QuestRewardItem SelectedItemReward { get; set; }
+        public ICollection<PCQuestKillTargetProgress> PCQuestKillTargetProgress { get; set; }
     }
 }

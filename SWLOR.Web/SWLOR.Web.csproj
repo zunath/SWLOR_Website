@@ -11,6 +11,7 @@
     <PackageReference Include="AspNet.Security.OAuth.Discord" Version="2.0.0" />
     <PackageReference Include="AspNet.Security.OAuth.Validation" Version="2.0.0-rc1-final" />
     <PackageReference Include="DotNetify.SignalR" Version="3.0.1" />
+    <PackageReference Include="FluentValidation" Version="8.0.100" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.4" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.4" />
   </ItemGroup>
@@ -21,9 +22,6 @@
 
   <ItemGroup>
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
-    <Compile Remove="ClientApp\components\admin\dm-management\**" />
-    <Compile Remove="ClientApp\components\admin\loot-table-editor\**" />
-    <Compile Remove="ClientApp\components\admin\quest-editor\**" />
     <Compile Remove="Extensions\**" />
     <Compile Remove="Services\**" />
     <Compile Remove="Wiki\**" />
@@ -31,34 +29,20 @@
     <Content Remove="Extensions\**" />
     <Content Remove="Services\**" />
     <Content Remove="Wiki\**" />
-    <EmbeddedResource Remove="ClientApp\components\admin\dm-management\**" />
-    <EmbeddedResource Remove="ClientApp\components\admin\loot-table-editor\**" />
-    <EmbeddedResource Remove="ClientApp\components\admin\quest-editor\**" />
     <EmbeddedResource Remove="Extensions\**" />
     <EmbeddedResource Remove="Services\**" />
     <EmbeddedResource Remove="Wiki\**" />
-    <None Remove="ClientApp\components\admin\dm-management\**" />
-    <None Remove="ClientApp\components\admin\loot-table-editor\**" />
-    <None Remove="ClientApp\components\admin\quest-editor\**" />
     <None Remove="Extensions\**" />
     <None Remove="Services\**" />
     <None Remove="Wiki\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\components\Admin.tsx" />
-    <None Remove="ClientApp\components\admin\logs\Logs.tsx" />
-    <None Remove="ClientApp\components\Classes.tsx" />
-    <None Remove="ClientApp\components\ConnectionInfo.tsx" />
-    <None Remove="ClientApp\components\Footer.tsx" />
-    <None Remove="ClientApp\components\Header.tsx" />
-    <None Remove="ClientApp\components\NotFound.tsx" />
-    <None Remove="ClientApp\components\Races.tsx" />
-    <None Remove="ClientApp\components\Skills.tsx" />
-    <None Remove="ClientApp\components\Story.tsx" />
-    <None Remove="ClientApp\components\TeamMembers.tsx" />
-    <None Remove="ClientApp\components\UserProfile.tsx" />
     <None Remove="Properties\PublishProfiles\swlor-forums - Web Deploy.pubxml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ClientApp\dist\vendor-manifest.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -66,27 +50,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\components\Story.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Races.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Classes.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Skills.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\ConnectionInfo.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\TeamMembers.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\UserProfile.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Admin.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Downloads.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Features.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\admin\logs\ConnectionLogs.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\admin\logs\ChatLogs.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\admin\logs\Logs.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\admin\logs\QuickBuildLogs.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Footer.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Header.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\NotFound.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\AbilityViewer.tsx" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Folder Include="Data\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 

@@ -9,26 +9,17 @@ using SWLOR.Web.ViewModels.BaseViewModels;
 namespace SWLOR.Web.ViewModels
 {
     [RoleRequired(RoleType.Admin, RoleType.DM)]
-    public class ConnectionLogsViewModel: PaginateBaseVM
+    public class ConnectionLogsViewModel : PaginateBaseVM
     {
         public ConnectionLogsViewModel(DataContext db)
-            :base(BuildClientData(db),
-                 nameof(ClientLogEvents.ClientLogEventId))
+            : base(BuildClientData(db),
+                nameof(ClientLogEvent.ClientLogEventID))
         {
         }
 
         private static IEnumerable<dynamic> BuildClientData(DataContext db)
         {
-            return db.ClientLogEvents.OrderByDescending(o => o.DateOfEvent)
-                .Select(x => new
-                {
-                    ClientLogEventID = x.ClientLogEventId,
-                    DateOfEvent = x.DateOfEvent,
-                    EventTypeID = x.ClientLogEventTypeId,
-                    PlayerName = x.Player.CharacterName,
-                    CDKey = x.Cdkey,
-                    AccountName = x.AccountName
-                });
+            return db.ClientLogEvents.OrderByDescending(o => o.DateOfEvent);
         }
     }
 }

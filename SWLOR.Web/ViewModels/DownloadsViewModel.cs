@@ -8,7 +8,7 @@ namespace SWLOR.Web.ViewModels
 {
     public class DownloadsViewModel: BaseVM
     {
-        public IEnumerable<Downloads> DownloadList { get; set; }
+        public IEnumerable<Download> DownloadList { get; set; }
 
         public DownloadsViewModel(DataContext db)
         {

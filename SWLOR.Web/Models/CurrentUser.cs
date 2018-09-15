@@ -18,9 +18,9 @@ namespace SWLOR.Web.Models
 
             if (IsAuthenticated)
             {
-                var dbUser = db.Users.Single(x => x.DiscordUserId == DiscordUserID);
-                UserID = dbUser.UserId;
-                Role = (RoleType) dbUser.RoleId;
+                var dbUser = db.Users.Single(x => x.DiscordUserID == DiscordUserID);
+                UserID = dbUser.UserID;
+                Role = (RoleType) dbUser.RoleID;
             }
             else
             {
