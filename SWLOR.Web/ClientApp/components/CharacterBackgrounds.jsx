@@ -1,13 +1,11 @@
 ﻿import * as React from 'react';
+import GameTopic from './shared/GameTopic';
 
 export default class CharacterBackgrounds extends React.Component {
     constructor(props) {
         super(props);
     }
     
-    componentWillUnmount() {
-    }
-
     render() {
         return (
             <div>
@@ -18,7 +16,7 @@ export default class CharacterBackgrounds extends React.Component {
                                 <h4 className="card-title">Character Backgrounds</h4>
 
                                 <p>
-                                    All new characters have the option of picking from one of the predefined backgrounds.
+                                    There are no classes in Star Wars: Legends of the Old Republic. However, you may select a background for your character during creation.
                                     <br />
                                     These backgrounds give one temporary bonus and one permanent bonus.
                                     <br />
@@ -27,15 +25,14 @@ export default class CharacterBackgrounds extends React.Component {
                                     Permanent bonuses are benefits that will <b>never</b> be outpaced. They will always provide benefit to your character in some fashion.
                                     <br />
                                     If you don't like the predefined backgrounds you are highly encouraged to create your own. We offer a 'Freelancer' background for this scenario.
-                                    <br />
-                                    Be sure to check back later for the full list of character backgrounds!
                                 </p>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
+
+                <GameTopic ViewModelName="CharacterBackgroundViewModel" />
+
             </div>
         );
 

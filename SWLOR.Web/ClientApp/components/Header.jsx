@@ -58,10 +58,18 @@ export default class Header extends React.Component {
                                     <i className="fa fa-info-circle fa-lg" /> About
                                 </Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/lore">
-                                    <i className="fa fa-book fa-lg" /> Lore
+                            <li className="nav-item dropdown">
+                                <Link id="loreDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
+                                    <i className="fa fa-book fa-lg" /> &nbsp;Lore
                                 </Link>
+                                <div className="dropdown-menu">
+                                    <Link className="dropdown-item" to="/setting">
+                                        <i className="fa fa-bolt" /> &nbsp;Setting
+                                    </Link>
+                                    <Link className="dropdown-item" to="/species">
+                                        <i className="fa fa-level-up" /> &nbsp;Species
+                                    </Link>
+                                </div>
                             </li>
                             <li className="nav-item dropdown">
                                 <Link id="gameplayDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
@@ -77,8 +85,8 @@ export default class Header extends React.Component {
                                     <Link className="dropdown-item" to="/backgrounds">
                                         <i className="fa fa-user-secret" /> &nbsp;Character Backgrounds
                                     </Link>
-                                    <Link className="dropdown-item" to="/survival">
-                                        <i className="fa fa-compass" /> &nbsp;Survival Guide
+                                    <Link className="dropdown-item" to="/faq">
+                                        <i className="fa fa-compass" /> &nbsp;FAQ
                                     </Link>
 
                                 </div>

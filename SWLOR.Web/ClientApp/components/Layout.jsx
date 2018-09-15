@@ -19,6 +19,8 @@ export class Layout extends React.Component {
                 {this.props.children}
 
             </div>
+            
+           <div className="row">&nbsp;</div>
 
             <Footer />
 

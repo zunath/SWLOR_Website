@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import Home from './components/Home';
 import About from './components/About';
-import Lore from './components/Lore';
+import Setting from './components/Setting';
 import UserProfile from './components/UserProfile';
 import Logs from './components/admin/logs/Logs';
 import ChatLogs from './components/admin/logs/ChatLogs';
@@ -14,13 +14,13 @@ import QuestPrerequisites from './components/admin/quest-editor/QuestPrerequisit
 import QuestRewards from './components/admin/quest-editor/QuestRewards';
 import QuestStates from './components/admin/quest-editor/QuestStates';
 import Admin from './components/Admin';
-import Downloads from './components/Downloads';
 import NotFound from './components/NotFound';
 import CharacterBackgrounds from './components/CharacterBackgrounds';
 import Perks from './components/Perks';
 import Skills from './components/Skills';
-import Survival from './components/Survival';
+import FAQ from './components/FAQ';
 import LootTableEditor from './components/admin/loot-table-editor/LootTableEditor';
+import Species from './components/Species';
 
 export const routes =
     <Layout>
@@ -32,13 +32,14 @@ export const routes =
             <Route exact path="/" component={Home} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/about" component={About} />
-            <Route exact path="/lore" component={Lore} />
+            <Route exact path="/setting" component={Setting} />
             <Route exact path="/admin" component={Admin} />
-            <Route exact path="/downloads" component={Downloads} />
             <Route exact path="/backgrounds" component={CharacterBackgrounds} />
             <Route exact path="/perks" component={Perks} />
             <Route exact path="/skills" component={Skills} />
-            <Route exact path="/survival" component={Survival} />
+            <Route exact path="/faq" component={FAQ} />
+            <Route exact path="/setting" component={Setting} />
+            <Route exact path="/species" component={Species} />
             
             /* User Logged-In Routes */
             <Route exact path="/user-profile" component={UserProfile} />

@@ -4,7 +4,7 @@ export default class NotFound extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <div className="row">
                     We're sorry but we weren't able to find that page.
                 </div>
