@@ -6,7 +6,7 @@ export default class Home extends React.Component {
             <div>
                 <div className="row">
                     <div className="embed-responsive embed-responsive-21by9">
-                        <iframe className="embed-responsive-item" src="http://localhost:54908/Intro" />
+                        <iframe className="embed-responsive-item" src={'http://' + window.location.host + '/Intro'} />
                     </div>
                 </div>
                 <div className="row">&nbsp;</div>
