@@ -22,6 +22,8 @@ export default class Setting extends React.Component {
                                         Looking for some information on the module story? You've come to the right place.
                                         <br />
                                         Click on any of the topics below to learn more about the setting of SWLOR.
+                                        <br />
+                                        More information will be provided as we get closer to our official launch!
                                     </p>
                                 </div>
                             </div>

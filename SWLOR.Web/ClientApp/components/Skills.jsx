@@ -66,90 +66,99 @@ export default class Skills extends React.Component {
                         <h3 className="center">Skill List</h3>
                         <hr />
 
-                        <div className="row">
+                        <div className="card border-primary mb-3">
+                            <div className="card-body">
+                                <div className="row">
 
 
-                            <div className="col">
-                                <select className="form-control"
-                                    name="SelectedCategoryID"
-                                    onChange={this.handleChange}
-                                    value={this.state.SelectedCategoryID} >
-                                    {this.state.SkillCategoryList.map(obj =>
-                                        <option key={obj.SkillCategoryID} value={obj.SkillCategoryID}>
+                                    <div className="col">
+                                        <select className="form-control"
+                                            name="SelectedCategoryID"
+                                            onChange={this.handleChange}
+                                            value={this.state.SelectedCategoryID} >
+                                            {this.state.SkillCategoryList.map(obj =>
+                                                <option key={obj.SkillCategoryID} value={obj.SkillCategoryID}>
+                                                    {obj.Name}
+                                                </option>
+                                            )}
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <div className="row">&nbsp;</div>
+
+                                <div className="list-group">
+                                    {this.state.SkillList.map(obj =>
+                                        <Link key={obj.SkillID}
+                                            className={this.state.SelectedSkillID === obj.SkillID ? 'list-group-item list-group-item-action active' : 'list-group-item list-group-item-action'}
+                                            to="#"
+                                            onClick={this.handleChange}
+                                            name="SelectedSkillID"
+                                            data-skillid={obj.SkillID}>
                                             {obj.Name}
-                                        </option>
+                                        </Link>
                                     )}
-                                </select>
+                                </div>
                             </div>
-
-                        </div>
-
-                        <div className="row">&nbsp;</div>
-
-                        <div className="list-group">
-                            {this.state.SkillList.map(obj =>
-                                <Link key={obj.SkillID}
-                                    className={this.state.SelectedSkillID === obj.SkillID ? 'list-group-item list-group-item-action active' : 'list-group-item list-group-item-action'}
-                                    to="#"
-                                    onClick={this.handleChange}
-                                    name="SelectedSkillID"
-                                    data-skillid={obj.SkillID}>
-                                    {obj.Name}
-                                </Link>
-                            )}
                         </div>
                     </div>
                     <div className="col offset-1">
                         <h3 className="center">Details</h3>
                         <hr />
 
-                        <div className="row">
-                            <div className="col-3">
-                                <b>Name:</b>
-                            </div>
-                            <div className="col">
-                                {this.state.SelectedSkill.Name}
-                            </div>
 
-                        </div>
-                        <div className="row">&nbsp;</div>
-                        <div className="row">
-                            <div className="col-3">
-                                <b>Description:</b>
-                            </div>
-                            <div className="col">
-                                {this.state.SelectedSkill.Description}
-                            </div>
-                        </div>
+                        <div className="card border-primary mb-3">
+                            <div className="card-body">
+                                <div className="row">
+                                    <div className="col-2">
+                                        <b>Name:</b>
+                                    </div>
+                                    <div className="col">
+                                        {this.state.SelectedSkill.Name}
+                                    </div>
 
-                        <div className="row">&nbsp;</div>
-                        <div className="row">
-                            <div className="col-1">
-                                <b>Ranks:</b>
-                            </div>
-                            <div className="col-1">
-                                {this.state.SelectedSkill.MaxRank}
-                            </div>
-                            <div className="col-1">
-                                <b>Primary:</b>
-                            </div>
-                            <div className="col-1">
-                                {this.state.SelectedSkill.PrimaryName}
-                            </div>
-                            <div className="col-1">
-                                <b>Secondary:</b>
-                            </div>
-                            <div className="col-1 pl-4">
-                                {this.state.SelectedSkill.SecondaryName}
-                            </div>
-                            <div className="col-1">
-                                <b>Tertiary:</b>
-                            </div>
-                            <div className="col-1">
-                                {this.state.SelectedSkill.TertiaryName}
+                                </div>
+                                <div className="row">&nbsp;</div>
+                                <div className="row">
+                                    <div className="col-2">
+                                        <b>Description:</b>
+                                    </div>
+                                    <div className="col">
+                                        {this.state.SelectedSkill.Description}
+                                    </div>
+                                </div>
+
+                                <div className="row">&nbsp;</div>
+                                <div className="row">
+                                    <div className="col-2">
+                                        <b>Ranks:</b>
+                                    </div>
+                                    <div className="col-2">
+                                        {this.state.SelectedSkill.MaxRank}
+                                    </div>
+                                    <div className="col-2">
+                                        <b>Primary:</b>
+                                    </div>
+                                    <div className="col-2">
+                                        {this.state.SelectedSkill.PrimaryName}
+                                    </div>
+                                    <div className="col-2">
+                                        <b>Secondary:</b>
+                                    </div>
+                                    <div className="col-2 pl-4">
+                                        {this.state.SelectedSkill.SecondaryName}
+                                    </div>
+                                    <div className="col-2 offset-4">
+                                        <b>Tertiary:</b>
+                                    </div>
+                                    <div className="col-1">
+                                        {this.state.SelectedSkill.TertiaryName}
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-
                     </div>
 
                 </div>

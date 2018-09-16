@@ -21,6 +21,8 @@ import Skills from './components/Skills';
 import FAQ from './components/FAQ';
 import LootTableEditor from './components/admin/loot-table-editor/LootTableEditor';
 import Species from './components/Species';
+import Crafting from './components/Crafting';
+import GameplayInfo from './components/GameplayInfo';
 
 export const routes =
     <Layout>
@@ -40,6 +42,8 @@ export const routes =
             <Route exact path="/faq" component={FAQ} />
             <Route exact path="/setting" component={Setting} />
             <Route exact path="/species" component={Species} />
+            <Route exact path="/crafting" component={Crafting} />
+            <Route exact path="/gameplay-info" component={GameplayInfo} />
             
             /* User Logged-In Routes */
             <Route exact path="/user-profile" component={UserProfile} />

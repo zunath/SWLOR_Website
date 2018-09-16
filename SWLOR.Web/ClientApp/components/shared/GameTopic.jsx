@@ -50,7 +50,7 @@ export default class GameTopic extends React.Component {
                     <div className="row">
                         <div className="col-4">
                             <h3 className="center">Topics</h3>
-                            <div className="card">
+                            <div className="card border-primary">
                                 <div className="card-body">
                                     <div className="card-text">
                                         <div className="list-group">
@@ -77,7 +77,7 @@ export default class GameTopic extends React.Component {
                             <h3 className="center">Information</h3>
                             <hr />
 
-                            <div className="card">
+                            <div className="card border-primary">
                                 <div className="card-body">
                                     <div className="card-text">
                                         {this.state.SelectedTopic.Text && this.buildDescription()}

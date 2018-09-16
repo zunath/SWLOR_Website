@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import { Link } from 'react-router-dom';
 
 export default class Home extends React.Component {
     render() {
@@ -14,7 +12,7 @@ export default class Home extends React.Component {
                 <div className="row">&nbsp;</div>
                 <div className="row">
                     <div className="col-4 offset-8">
-                        <a href="https://codepen.io/TimPietrusky/pen/eHGfj" target="_blank">Video Credit: Tim Pietrusky</a>
+                        <a href="https://codepen.io/TimPietrusky/pen/eHGfj" target="_blank">Animation: Tim Pietrusky</a>
                     </div>
                 </div>
             </div>

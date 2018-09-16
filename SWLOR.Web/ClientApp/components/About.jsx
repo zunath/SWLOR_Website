@@ -50,6 +50,8 @@ export default class About extends React.Component {
                                     Buy on Steam: <a href="http://store.steampowered.com/app/704450/Neverwinter_Nights_Enhanced_Edition/" target="_blank">Click Here</a>
                                     <br />
                                     Buy from Beamdog: <a href="https://www.beamdog.com/products/neverwinter-nights-enhanced-edition#signup-form" target="_blank">Click Here</a>
+                                    <br />
+                                    Buy from GOG: TBA
                                 </div>
                             </div>
                         </div>
