@@ -1,4 +1,6 @@
-﻿namespace SWLOR.Web.Data.Entities
+﻿using Newtonsoft.Json;
+
+namespace SWLOR.Web.Data.Entities
 {
     public partial class LootTableItem
     {
@@ -9,6 +11,7 @@
         public byte Weight { get; set; }
         public bool IsActive { get; set; }
 
+        [JsonIgnore]
         public LootTable LootTable { get; set; }
     }
 }

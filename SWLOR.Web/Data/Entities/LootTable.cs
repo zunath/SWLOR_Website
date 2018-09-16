@@ -11,7 +11,7 @@ namespace SWLOR.Web.Data.Entities
 
         public int LootTableID { get; set; }
         public string Name { get; set; }
-
+        
         public ICollection<LootTableItem> LootTableItems { get; set; }
     }
 }

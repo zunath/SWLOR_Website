@@ -21,7 +21,7 @@ export default class Admin extends React.Component {
 
             if (self.state.Role === 1 || self.state.Role === 2) {
                 return <div className="col">
-                    <div className="card">
+                    <div className="card border-primary">
                         <div className="card-body center">
                             <h4 className="card-title">Logs</h4>
                             <p className="card-text">Search through log information collected on the server.</p>
@@ -41,7 +41,7 @@ export default class Admin extends React.Component {
 
             if (self.state.Role === 2) {
                 return <div className="col">
-                    <div className="card">
+                    <div className="card border-primary">
                         <div className="card-body center">
                             <h4 className="card-title">DM Management</h4>
                             <p className="card-text">Add, remove, activate, or deactivate accounts from logging in as Dungeon Masters.</p>
@@ -61,7 +61,7 @@ export default class Admin extends React.Component {
 
             if (self.state.Role === 2) {
                 return <div className="col">
-                    <div className="card">
+                    <div className="card border-primary">
                         <div className="card-body center">
                             <h4 className="card-title">Loot Tables</h4>
                             <p className="card-text">Adjust the items found in loot sites.</p>
@@ -80,7 +80,7 @@ export default class Admin extends React.Component {
 
             if (self.state.Role === 2) {
                 return <div className="col">
-                    <div className="card">
+                    <div className="card border-primary">
                         <div className="card-body center">
                             <h4 className="card-title">Quest Editor</h4>
                             <p className="card-text">Add, remove, and edit quest information.</p>

@@ -132,24 +132,6 @@ export default class QuestRewards extends React.Component {
                     </div>
                 </div>
                 <div className="row">&nbsp;</div>
-                <label htmlFor="xp">XP:</label>
-                <div className="row">
-                    <div className="col-12">
-                        <NumericInput 
-                            id="xp"
-                            name="XP"
-                            className="form-control"
-                            value={this.state.XP}
-                            min={0}
-                            max={9999}
-                            onChange={(value) => this.handleChangeNumeric('XP', value)}
-                            disabled={!this.state.EnableControls}
-                            required
-                            strict>
-                        </NumericInput>
-                    </div>
-                </div>
-                <div className="row">&nbsp;</div>
                 <label htmlFor="fame">Fame:</label>
                 <div className="row">
                     <div className="col-12">

@@ -12,6 +12,7 @@ export default class Footer extends React.Component {
         return (
             
             <div className="container">
+                
                 <div className="row">&nbsp;</div>
                 <footer>
                     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">

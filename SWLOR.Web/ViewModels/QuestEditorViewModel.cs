@@ -437,7 +437,6 @@ namespace SWLOR.Web.ViewModels
                 _db.Entry(dbReward).State = EntityState.Added;
             }
 
-
             if (quest.QuestID <= 0)
             {
                 _db.Quests.Add(quest);
@@ -452,7 +451,7 @@ namespace SWLOR.Web.ViewModels
                 ActiveQuestID = quest.QuestID;
                 ActiveQuest = BuildQuestUIObject(quest);
             }
-            catch
+            catch(Exception ex)
             {
                 NotificationMessage = "Failed to save changes. Ensure all fields are entered in properly.";
                 NotificationSuccessful = false;
