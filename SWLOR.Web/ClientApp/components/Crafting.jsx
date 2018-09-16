@@ -16,7 +16,7 @@ export default class Crafting extends React.Component {
                         <div className="col-12">
                             <div className="card border-primary mb-3 center">
                                 <div className="card-body">
-                                    <h4 className="card-title">Frequently Asked Questions</h4>
+                                    <h4 className="card-title">Crafting </h4>
 
                                     <p>
                                         Star Wars: Legends of the Old Republic offers an extensive crafting system.
