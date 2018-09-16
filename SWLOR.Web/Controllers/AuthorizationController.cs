@@ -38,8 +38,11 @@ namespace SWLOR.Web.Controllers
                 DiscordUserID = claims.Where(x => x.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).Single(),
                 Email = claims.Where(x => x.Type == ClaimTypes.Email).Select(x => x.Value).Single(),
                 Discriminator = claims.Where(x => x.Type == "Discriminator").Select(x => x.Value).Single(),
-                AvatarHash = claims.Where(x => x.Type == "Avatar").Select(x => x.Value).Single()
+                AvatarHash = claims.Where(x => x.Type == "Avatar").Select(x => x.Value).SingleOrDefault()
             };
+
+            if (user.AvatarHash == null)
+                user.AvatarHash = string.Empty;
 
             User existingUser = _db.Users.SingleOrDefault(x => x.DiscordUserID == user.DiscordUserID);
             if (existingUser == null)
