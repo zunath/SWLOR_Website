@@ -253,6 +253,10 @@ namespace SWLOR.Web.ViewModels
                 MapNoteTag = quest.MapNoteTag,
                 StartKeyItemID = quest.StartKeyItemID ?? -1,
                 RemoveStartKeyItemAfterCompletion = quest.RemoveStartKeyItemAfterCompletion,
+                OnAcceptRule = quest.OnAcceptRule,
+                OnCompleteRule = quest.OnCompleteRule,
+                OnAdvanceRule = quest.OnAdvanceRule,
+                OnKillTargetRule = quest.OnKillTargetRule,
                 Rewards = new QuestRewardsUI
                 {
                     Fame = quest.RewardFame,
@@ -332,6 +336,11 @@ namespace SWLOR.Web.ViewModels
             else quest.StartKeyItemID = questDetails.StartKeyItemID;
 
             quest.RemoveStartKeyItemAfterCompletion = questDetails.RemoveStartKeyItemAfterCompletion;
+
+            quest.OnAcceptRule = questDetails.OnAcceptRule;
+            quest.OnAdvanceRule = questDetails.OnAdvanceRule;
+            quest.OnCompleteRule = questDetails.OnCompleteRule;
+            quest.OnKillTargetRule = questDetails.OnKillTargetRule;
 
             // Prerequisites
             _db.QuestPrerequisites.RemoveRange(quest.QuestPrerequisitesQuest);

@@ -14,6 +14,10 @@ namespace SWLOR.Web.Models.UI.QuestEditor
         public string MapNoteTag { get; set; }
         public int StartKeyItemID { get; set; }
         public bool RemoveStartKeyItemAfterCompletion { get; set; }
+        public string OnAcceptRule { get; set; }
+        public string OnAdvanceRule { get; set; }
+        public string OnCompleteRule { get; set; }
+        public string OnKillTargetRule { get; set; }
 
         public List<int> PrerequisiteQuestIDs { get; set; }
         public QuestRewardsUI Rewards { get; set; }

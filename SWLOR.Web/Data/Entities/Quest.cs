@@ -29,6 +29,10 @@ namespace SWLOR.Web.Data.Entities
         public string MapNoteTag { get; set; }
         public int? StartKeyItemID { get; set; }
         public bool RemoveStartKeyItemAfterCompletion { get; set; }
+        public string OnAcceptRule { get; set; }
+        public string OnAdvanceRule { get; set; }
+        public string OnCompleteRule { get; set; }
+        public string OnKillTargetRule { get; set; }
 
         public FameRegion FameRegion { get; set; }
         public KeyItem RewardKeyItem { get; set; }

@@ -19,6 +19,10 @@ export default class QuestDetails extends React.Component {
             MapNoteTag: '',
             StartKeyItemID: -1,
             RemoveStartKeyItemAfterCompletion: false,
+            OnAcceptRule: '',
+            OnAdvanceRule: '',
+            OnCompleteRule: '',
+            OnKillTargetRule: '',
 
             KeyItems: [],
             FameRegions: [],
@@ -47,6 +51,10 @@ export default class QuestDetails extends React.Component {
             MapNoteTag: newProps.Details.MapNoteTag,
             StartKeyItemID: newProps.Details.StartKeyItemID,
             RemoveStartKeyItemAfterCompletion: newProps.Details.RemoveStartKeyItemAfterCompletion,
+            OnAcceptRule: newProps.Details.OnAcceptRule,
+            OnAdvanceRule: newProps.Details.OnAdvanceRule,
+            OnCompleteRule: newProps.Details.OnCompleteRule,
+            OnKillTargetRule: newProps.Details.OnKillTargetRule,
 
             KeyItems: newProps.KeyItems,
             FameRegions: newProps.FameRegions,
@@ -169,7 +177,42 @@ export default class QuestDetails extends React.Component {
                                         </option>;
                                     })};
                                 </select>
+                                
+                                <label htmlFor="onAcceptRule">On Accept Rule:</label>
+                                <input type="text" id="onAcceptRule" name="OnAcceptRule"
+                                       className="form-control"
+                                       value={this.state.QuestID === -1 ? '' : this.state.OnAcceptRule}
+                                       onChange={this.handleChange}
+                                       disabled={this.state.QuestID === -1 ? true : false}
+                                       maxLength="32">
+                                </input>
 
+                                <label htmlFor="onAdvanceRule">On Advance Rule:</label>
+                                <input type="text" id="onAdvanceRule" name="OnAdvanceRule"
+                                       className="form-control"
+                                       value={this.state.QuestID === -1 ? '' : this.state.OnAdvanceRule}
+                                       onChange={this.handleChange}
+                                       disabled={this.state.QuestID === -1 ? true : false}
+                                       maxLength="32">
+                                </input>
+
+                                <label htmlFor="onCompleteRule">On Complete Rule:</label>
+                                <input type="text" id="onCompleteRule" name="OnCompleteRule"
+                                       className="form-control"
+                                       value={this.state.QuestID === -1 ? '' : this.state.OnCompleteRule}
+                                       onChange={this.handleChange}
+                                       disabled={this.state.QuestID === -1 ? true : false}
+                                       maxLength="32">
+                                </input>
+
+                                <label htmlFor="onKillTargetRule">On Kill Target Rule:</label>
+                                <input type="text" id="onKillTargetRule" name="OnKillTargetRule"
+                                       className="form-control"
+                                       value={this.state.QuestID === -1 ? '' : this.state.OnKillTargetRule}
+                                       onChange={this.handleChange}
+                                       disabled={this.state.QuestID === -1 ? true : false}
+                                       maxLength="32">
+                                </input>
 
                             </div>
 

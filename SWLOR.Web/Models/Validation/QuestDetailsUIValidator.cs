@@ -47,6 +47,22 @@ namespace SWLOR.Web.Models.Validation
             RuleFor(x => x.RemoveStartKeyItemAfterCompletion)
                 .NotNull();
 
+            RuleFor(x => x.OnAcceptRule)
+                .NotNull()
+                .MaximumLength(32);
+            
+            RuleFor(x => x.OnAdvanceRule)
+                .NotNull()
+                .MaximumLength(32);
+            
+            RuleFor(x => x.OnCompleteRule)
+                .NotNull()
+                .MaximumLength(32);
+
+            RuleFor(x => x.OnKillTargetRule)
+                .NotNull()
+                .MaximumLength(32);
+
             RuleForEach(x => x.PrerequisiteQuestIDs)
                 .NotNull()
                 .NotEmpty()
