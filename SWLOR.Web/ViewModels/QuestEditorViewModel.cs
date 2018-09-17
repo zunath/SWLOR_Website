@@ -337,10 +337,10 @@ namespace SWLOR.Web.ViewModels
 
             quest.RemoveStartKeyItemAfterCompletion = questDetails.RemoveStartKeyItemAfterCompletion;
 
-            quest.OnAcceptRule = questDetails.OnAcceptRule;
-            quest.OnAdvanceRule = questDetails.OnAdvanceRule;
-            quest.OnCompleteRule = questDetails.OnCompleteRule;
-            quest.OnKillTargetRule = questDetails.OnKillTargetRule;
+            quest.OnAcceptRule = questDetails.OnAcceptRule ?? string.Empty;
+            quest.OnAdvanceRule = questDetails.OnAdvanceRule ?? string.Empty;
+            quest.OnCompleteRule = questDetails.OnCompleteRule  ?? string.Empty;
+            quest.OnKillTargetRule = questDetails.OnKillTargetRule ?? string.Empty;
 
             // Prerequisites
             _db.QuestPrerequisites.RemoveRange(quest.QuestPrerequisitesQuest);
