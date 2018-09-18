@@ -67,7 +67,9 @@ export default class Perks extends React.Component {
                                         Most Perks have multiple ranks so you can decide how deeply specialized you want to be.
                                     <br />
                                         Take a look at the available Perks below. New ones are being added all the time!
-                                </p>
+                                        <br />
+                                        NOTE: This list will change periodically as the server is under active development. This isn't a final set of perks.
+                                    </p>
                                 </div>
                             </div>
                         </div>

@@ -55,6 +55,8 @@ export default class Skills extends React.Component {
                                     Or perhaps you'd rather support the war efforts by crafting items and equipment to sell to other players.
                                     <br />
                                     Specialize in a handful of skills or become a jack-of-all-trades. What you choose is entirely up to you!
+                                    <br />
+                                    NOTE: This list will change periodically as the server is under active development. This isn't a final set of skills.
                                 </p>
                             </div>
                         </div>
