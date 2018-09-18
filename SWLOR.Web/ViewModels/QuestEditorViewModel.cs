@@ -269,7 +269,7 @@ namespace SWLOR.Web.ViewModels
                     }).ToList()
                 },
                 PrerequisiteQuestIDs = quest.QuestPrerequisitesQuest.Select(x => x.RequiredQuestID).ToList(),
-                QuestStates = quest.QuestStates.Select(x => new QuestStateUI
+                QuestStates = quest.QuestStates.OrderBy(o => o.Sequence).Select(x => new QuestStateUI
                 {
                     QuestTypeID = x.QuestTypeID,
                     JournalStateID = x.JournalStateID,
@@ -376,8 +376,7 @@ namespace SWLOR.Web.ViewModels
                     Quest = quest,
                     Sequence = sequence,
                     QuestTypeID = state.QuestTypeID,
-                    JournalStateID = state.JournalStateID,
-                    IsFinalState = sequence == questDetails.QuestStates.Count
+                    JournalStateID = state.JournalStateID
                 };
 
                 if (state.QuestTypeID == (int)QuestType.KillEnemies)

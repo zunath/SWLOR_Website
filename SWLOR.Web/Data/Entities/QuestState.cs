@@ -17,7 +17,6 @@ namespace SWLOR.Web.Data.Entities
         public int Sequence { get; set; }
         public int QuestTypeID { get; set; }
         public int JournalStateID { get; set; }
-        public bool IsFinalState { get; set; }
 
         public Quest Quest { get; set; }
         public QuestTypeDomain QuestType { get; set; }
