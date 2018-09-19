@@ -23,18 +23,22 @@ export default class QuestDetails extends React.Component {
             OnAdvanceRule: '',
             OnCompleteRule: '',
             OnKillTargetRule: '',
+            OnAcceptArgs: '',
+            OnAdvanceArgs: '',
+            OnCompleteArgs: '',
+            OnKillTargetArgs: '',
 
             KeyItems: [],
             FameRegions: [],
 
             OnUpdateParent: props.OnUpdateParent
         }
-        
+
         this.handleChange = this.handleChange.bind(this);
         this.raiseParentChanges = this.raiseParentChanges.bind(this);
         this.handleChangeRequiredFame = this.handleChangeRequiredFame.bind(this);
     }
-    
+
     componentWillReceiveProps(newProps) {
         this.setState({
             QuestID: newProps.Details.QuestID,
@@ -62,12 +66,12 @@ export default class QuestDetails extends React.Component {
             OnUpdateParent: newProps.OnUpdateParent
         });
     }
-    
+
     handleChange(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-        
+
         this.setState({
             [name]: value
         }, () => this.raiseParentChanges(name, value));
@@ -106,32 +110,32 @@ export default class QuestDetails extends React.Component {
                                 <div className="form-group">
                                     <label htmlFor="name">Name:</label>
                                     <input type="text" id="name" name="Name"
-                                           className="form-control"
-                                           value={this.state.QuestID === -1 ? '' : this.state.Name}
-                                           onChange={this.handleChange}
-                                           disabled={this.state.QuestID === -1 ? true : false}
-                                           maxLength="100"
-                                           required>
+                                        className="form-control"
+                                        value={this.state.QuestID === -1 ? '' : this.state.Name}
+                                        onChange={this.handleChange}
+                                        disabled={this.state.QuestID === -1 ? true : false}
+                                        maxLength="100"
+                                        required>
                                     </input>
                                     <div className="invalid-tooltip">Please enter a quest name.</div>
                                 </div>
-                                
+
                                 <label htmlFor="journalTag">Journal Tag:</label>
                                 <input type="text" id="journalTag" name="JournalTag"
-                                       className="form-control"
-                                       value={this.state.QuestID === -1 ? '' : this.state.JournalTag}
-                                       onChange={this.handleChange}
-                                       disabled={this.state.QuestID === -1 ? true : false}
-                                       required
-                                       maxLength="32">
+                                    className="form-control"
+                                    value={this.state.QuestID === -1 ? '' : this.state.JournalTag}
+                                    onChange={this.handleChange}
+                                    disabled={this.state.QuestID === -1 ? true : false}
+                                    required
+                                    maxLength="32">
                                 </input>
                                 <label htmlFor="fameRegion">Fame Region:</label>
                                 <select id="fameRegion"
-                                        name="FameRegionID"
-                                        className="form-control"
-                                        onChange={this.handleChange}
-                                        value={this.state.FameRegionID}
-                                        disabled={this.state.QuestID === -1 ? true : false}>
+                                    name="FameRegionID"
+                                    className="form-control"
+                                    onChange={this.handleChange}
+                                    value={this.state.FameRegionID}
+                                    disabled={this.state.QuestID === -1 ? true : false}>
                                     {this.state.FameRegions.map(function (fameRegion) {
                                         return <option
                                             key={fameRegion.FameRegionID}
@@ -156,11 +160,11 @@ export default class QuestDetails extends React.Component {
                                 </NumericInput>
                                 <label htmlFor="mapNoteTag">Map Note Tag:</label>
                                 <input type="text" id="mapNoteTag" name="MapNoteTag"
-                                       className="form-control"
-                                       value={this.state.QuestID === -1 ? '' : this.state.MapNoteTag}
-                                       onChange={this.handleChange}
-                                       disabled={this.state.QuestID === -1 ? true : false}
-                                       maxLength="32">
+                                    className="form-control"
+                                    value={this.state.QuestID === -1 ? '' : this.state.MapNoteTag}
+                                    onChange={this.handleChange}
+                                    disabled={this.state.QuestID === -1 ? true : false}
+                                    maxLength="32">
                                 </input>
                                 <label htmlFor="selectStartingKeyItem">Starting Key Item:</label>
                                 <select id="selectStartingKeyItem"
@@ -169,7 +173,7 @@ export default class QuestDetails extends React.Component {
                                     onChange={this.handleChange}
                                     value={this.state.StartKeyItemID}
                                     disabled={this.state.QuestID === -1 ? true : false}>
-                                    {this.state.KeyItems.map(function(keyItem) {
+                                    {this.state.KeyItems.map(function (keyItem) {
                                         return <option
                                             key={keyItem.KeyItemID}
                                             value={keyItem.KeyItemID}>
@@ -177,25 +181,43 @@ export default class QuestDetails extends React.Component {
                                         </option>;
                                     })};
                                 </select>
-                                
+
                                 <label htmlFor="onAcceptRule">On Accept Rule:</label>
                                 <input type="text" id="onAcceptRule" name="OnAcceptRule"
-                                       className="form-control"
-                                       value={this.state.QuestID === -1 ? '' : this.state.OnAcceptRule}
-                                       onChange={this.handleChange}
-                                       disabled={this.state.QuestID === -1 ? true : false}
-                                       maxLength="32">
+                                    className="form-control"
+                                    value={this.state.QuestID === -1 ? '' : this.state.OnAcceptRule}
+                                    onChange={this.handleChange}
+                                    disabled={this.state.QuestID === -1 ? true : false}
+                                    maxLength="32">
                                 </input>
+                                <label htmlFor="onAcceptArgs">On Accept Args:</label>
+                                <input type="text" id="onAcceptArgs" name="OnAcceptArgs"
+                                    className="form-control"
+                                    value={this.state.QuestID === -1 ? '' : this.state.OnAcceptArgs}
+                                    onChange={this.handleChange}
+                                    disabled={this.state.QuestID === -1 ? true : false}
+                                    maxLength="32">
+                                </input>
+
+
 
                                 <label htmlFor="onAdvanceRule">On Advance Rule:</label>
                                 <input type="text" id="onAdvanceRule" name="OnAdvanceRule"
+                                    className="form-control"
+                                    value={this.state.QuestID === -1 ? '' : this.state.OnAdvanceRule}
+                                    onChange={this.handleChange}
+                                    disabled={this.state.QuestID === -1 ? true : false}
+                                    maxLength="32">
+                                </input>
+                                <label htmlFor="onAdvanceArgs">On Advance Args:</label>
+                                <input type="text" id="onAdvanceArgs" name="OnAdvanceArgs"
                                        className="form-control"
-                                       value={this.state.QuestID === -1 ? '' : this.state.OnAdvanceRule}
+                                       value={this.state.QuestID === -1 ? '' : this.state.OnAdvanceArgs}
                                        onChange={this.handleChange}
                                        disabled={this.state.QuestID === -1 ? true : false}
                                        maxLength="32">
                                 </input>
-
+                                
                                 <label htmlFor="onCompleteRule">On Complete Rule:</label>
                                 <input type="text" id="onCompleteRule" name="OnCompleteRule"
                                        className="form-control"
@@ -204,11 +226,28 @@ export default class QuestDetails extends React.Component {
                                        disabled={this.state.QuestID === -1 ? true : false}
                                        maxLength="32">
                                 </input>
-
+                                <label htmlFor="onCompleteArgs">On Complete Args:</label>
+                                <input type="text" id="onCompleteArgs" name="OnCompleteArgs"
+                                       className="form-control"
+                                       value={this.state.QuestID === -1 ? '' : this.state.OnCompleteArgs}
+                                       onChange={this.handleChange}
+                                       disabled={this.state.QuestID === -1 ? true : false}
+                                       maxLength="32">
+                                </input>
+                                
                                 <label htmlFor="onKillTargetRule">On Kill Target Rule:</label>
                                 <input type="text" id="onKillTargetRule" name="OnKillTargetRule"
                                        className="form-control"
                                        value={this.state.QuestID === -1 ? '' : this.state.OnKillTargetRule}
+                                       onChange={this.handleChange}
+                                       disabled={this.state.QuestID === -1 ? true : false}
+                                       maxLength="32">
+                                </input>
+
+                                <label htmlFor="onKillTargetArgs">On Kill Target Args:</label>
+                                <input type="text" id="onKillTargetArgs" name="OnKillTargetArgs"
+                                       className="form-control"
+                                       value={this.state.QuestID === -1 ? '' : this.state.OnKillTargetArgs}
                                        onChange={this.handleChange}
                                        disabled={this.state.QuestID === -1 ? true : false}
                                        maxLength="32">

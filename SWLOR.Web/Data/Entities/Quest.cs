@@ -33,6 +33,10 @@ namespace SWLOR.Web.Data.Entities
         public string OnAdvanceRule { get; set; }
         public string OnCompleteRule { get; set; }
         public string OnKillTargetRule { get; set; }
+        public string OnAcceptArgs { get; set; }
+        public string OnAdvanceArgs { get; set; }
+        public string OnCompleteArgs { get; set; }
+        public string OnKillTargetArgs { get; set; }
 
         public FameRegion FameRegion { get; set; }
         public KeyItem RewardKeyItem { get; set; }

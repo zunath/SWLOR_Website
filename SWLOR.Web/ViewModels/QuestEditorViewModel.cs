@@ -257,6 +257,10 @@ namespace SWLOR.Web.ViewModels
                 OnCompleteRule = quest.OnCompleteRule,
                 OnAdvanceRule = quest.OnAdvanceRule,
                 OnKillTargetRule = quest.OnKillTargetRule,
+                OnAcceptArgs = quest.OnAcceptArgs,
+                OnAdvanceArgs = quest.OnAdvanceArgs,
+                OnCompleteArgs = quest.OnCompleteArgs,
+                OnKillTargetArgs = quest.OnKillTargetArgs,
                 Rewards = new QuestRewardsUI
                 {
                     Fame = quest.RewardFame,
@@ -341,6 +345,11 @@ namespace SWLOR.Web.ViewModels
             quest.OnAdvanceRule = questDetails.OnAdvanceRule ?? string.Empty;
             quest.OnCompleteRule = questDetails.OnCompleteRule  ?? string.Empty;
             quest.OnKillTargetRule = questDetails.OnKillTargetRule ?? string.Empty;
+
+            quest.OnAcceptArgs = questDetails.OnAcceptArgs ?? string.Empty;
+            quest.OnAdvanceArgs = questDetails.OnAdvanceArgs ?? string.Empty;
+            quest.OnCompleteArgs = questDetails.OnCompleteArgs ?? string.Empty;
+            quest.OnKillTargetArgs = questDetails.OnKillTargetArgs ?? string.Empty;
 
             // Prerequisites
             _db.QuestPrerequisites.RemoveRange(quest.QuestPrerequisitesQuest);
