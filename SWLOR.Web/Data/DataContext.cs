@@ -1337,7 +1337,7 @@ namespace SWLOR.Web.Data
 
                 entity.Property(e => e.ItemResref).HasMaxLength(16);
 
-                entity.Property(e => e.JavaScriptName)
+                entity.Property(e => e.ScriptName)
                     .IsRequired()
                     .HasMaxLength(64)
                     .IsUnicode(false)
