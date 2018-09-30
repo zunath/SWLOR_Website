@@ -132,6 +132,7 @@ export default class LootTableEditor extends React.Component {
             Resref: '',
             MaxQuantity: 1,
             Weight: 10,
+            SpawnRule: '',
             IsActive: true
         });
 
@@ -173,6 +174,7 @@ export default class LootTableEditor extends React.Component {
         item.Resref = record.Resref;
         item.MaxQuantity = record.MaxQuantity;
         item.Weight = record.Weight;
+        item.SpawnRule = record.SpawnRule;
         item.IsActive = record.IsActive;
 
         const lootTable = this.state.ActiveLootTable;
@@ -207,6 +209,7 @@ export default class LootTableEditor extends React.Component {
                             Resref={lti.Resref}
                             MaxQuantity={lti.MaxQuantity}
                             Weight={lti.Weight}
+                            SpawnRule={lti.SpawnRule}
                             IsActive={lti.IsActive}
                             OnUpdateParent={this.receiveItemChanges}
                             OnDelete={this.receiveDeleteItem}/>
@@ -322,7 +325,7 @@ export default class LootTableEditor extends React.Component {
                 <div className="row">&nbsp;</div>
 
                 <div className="row">
-                    <div className="col-6 center">
+                    <div className="col-4 center">
                         <b>Resref</b>
                         <hr />
                     </div>
@@ -336,6 +339,12 @@ export default class LootTableEditor extends React.Component {
                         <b>Weighted Chance</b>
                         <hr />
                     </div>
+
+                    <div className="col-2 center">
+                        <b>Spawn Rule</b>
+                        <hr />
+                    </div>
+
                     <div className="col-1 center">
                         <b>Is Active</b>
                         <hr />

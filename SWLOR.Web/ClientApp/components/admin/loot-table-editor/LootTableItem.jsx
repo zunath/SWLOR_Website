@@ -31,6 +31,7 @@ export default class LootTableItem extends React.Component {
             Resref: props.Resref,
             MaxQuantity: props.MaxQuantity,
             Weight: props.Weight,
+            SpawnRule: props.SpawnRule,
             IsActive: props.IsActive,
             OnUpdateParent: props.OnUpdateParent
         });
@@ -43,6 +44,7 @@ export default class LootTableItem extends React.Component {
                 Resref: this.state.Resref,
                 MaxQuantity: this.state.MaxQuantity,
                 Weight: this.state.Weight,
+                SpawnRule: this.state.SpawnRule,
                 IsActive: this.state.IsActive
             }
 
@@ -84,7 +86,7 @@ export default class LootTableItem extends React.Component {
         return (
             <div>
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-4">
                         <input
                             name="Resref"
                             className="form-control"
@@ -117,6 +119,16 @@ export default class LootTableItem extends React.Component {
                             required
                             strict />
                     </div>
+                    <div className="col-2">
+                        <input 
+                            name="SpawnRule"
+                            className="form-control"
+                            type="text"
+                            value={this.state.SpawnRule}
+                            onChange={this.handleChange}
+                            maxLength="64"/>
+                    </div>
+
                     <div className="col-1 form-check">
                         <label className="form-check-label">
                             <input

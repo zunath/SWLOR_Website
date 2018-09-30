@@ -21,6 +21,10 @@ namespace SWLOR.Web.Models.Validation
                 .NotNull()
                 .NotEmpty()
                 .GreaterThan((byte)0);
+
+            RuleFor(x => x.SpawnRule)
+                .MinimumLength(0)
+                .MaximumLength(64);
         }
     }
 }

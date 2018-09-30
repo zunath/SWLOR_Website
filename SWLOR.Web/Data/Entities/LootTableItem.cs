@@ -10,6 +10,7 @@ namespace SWLOR.Web.Data.Entities
         public int MaxQuantity { get; set; }
         public byte Weight { get; set; }
         public bool IsActive { get; set; }
+        public string SpawnRule { get; set; }
 
         [JsonIgnore]
         public LootTable LootTable { get; set; }
