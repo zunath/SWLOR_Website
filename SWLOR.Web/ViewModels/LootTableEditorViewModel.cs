@@ -154,6 +154,7 @@ namespace SWLOR.Web.ViewModels
             foreach (var lti in lootTable.LootTableItems)
             {
                 lti.LootTableItemID = 0;
+                lti.SpawnRule = lti.SpawnRule ?? string.Empty;
                 lt.LootTableItems.Add(lti);
             }
 
@@ -170,7 +171,7 @@ namespace SWLOR.Web.ViewModels
                 LoadLootTableOptions();
                 SelectedLootTableID = lt.LootTableID;
             }
-            catch
+            catch(Exception ex)
             {
                 NotificationMessage = "Failed to save changes. Ensure all fields are entered in properly.";
                 NotificationSuccessful = false;
