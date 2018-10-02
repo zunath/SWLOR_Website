@@ -10,6 +10,7 @@ export default class LootTableItem extends React.Component {
             Resref: props.Resref,
             MaxQuantity: props.MaxQuantity,
             Weight: props.Weight,
+            SpawnRule: props.SpawnRule,
             IsActive: props.IsActive,
             OnUpdateParent: props.OnUpdateParent,
             OnDelete: props.OnDelete
