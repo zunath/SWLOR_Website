@@ -196,7 +196,7 @@ export default class QuestDetails extends React.Component {
                                     value={this.state.QuestID === -1 ? '' : this.state.OnAcceptArgs}
                                     onChange={this.handleChange}
                                     disabled={this.state.QuestID === -1 ? true : false}
-                                    maxLength="32">
+                                    maxLength="256">
                                 </input>
 
 
@@ -215,7 +215,7 @@ export default class QuestDetails extends React.Component {
                                        value={this.state.QuestID === -1 ? '' : this.state.OnAdvanceArgs}
                                        onChange={this.handleChange}
                                        disabled={this.state.QuestID === -1 ? true : false}
-                                       maxLength="32">
+                                       maxLength="256">
                                 </input>
                                 
                                 <label htmlFor="onCompleteRule">On Complete Rule:</label>
@@ -232,7 +232,7 @@ export default class QuestDetails extends React.Component {
                                        value={this.state.QuestID === -1 ? '' : this.state.OnCompleteArgs}
                                        onChange={this.handleChange}
                                        disabled={this.state.QuestID === -1 ? true : false}
-                                       maxLength="32">
+                                       maxLength="256">
                                 </input>
                                 
                                 <label htmlFor="onKillTargetRule">On Kill Target Rule:</label>
@@ -250,7 +250,7 @@ export default class QuestDetails extends React.Component {
                                        value={this.state.QuestID === -1 ? '' : this.state.OnKillTargetArgs}
                                        onChange={this.handleChange}
                                        disabled={this.state.QuestID === -1 ? true : false}
-                                       maxLength="32">
+                                       maxLength="256">
                                 </input>
 
                             </div>

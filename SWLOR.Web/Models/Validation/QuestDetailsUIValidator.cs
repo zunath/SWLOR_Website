@@ -59,6 +59,18 @@ namespace SWLOR.Web.Models.Validation
             RuleFor(x => x.OnKillTargetRule)
                 .MaximumLength(32);
 
+            RuleFor(x => x.OnAcceptArgs)
+                .MaximumLength(256);
+
+            RuleFor(x => x.OnAdvanceArgs)
+                .MaximumLength(256);
+
+            RuleFor(x => x.OnCompleteArgs)
+                .MaximumLength(256);
+
+            RuleFor(x => x.OnKillTargetArgs)
+                .MaximumLength(256);
+
             RuleForEach(x => x.PrerequisiteQuestIDs)
                 .NotNull()
                 .NotEmpty()
