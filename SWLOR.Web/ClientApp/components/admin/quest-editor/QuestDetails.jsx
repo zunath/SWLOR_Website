@@ -59,6 +59,11 @@ export default class QuestDetails extends React.Component {
             OnAdvanceRule: newProps.Details.OnAdvanceRule,
             OnCompleteRule: newProps.Details.OnCompleteRule,
             OnKillTargetRule: newProps.Details.OnKillTargetRule,
+            OnAcceptArgs: newProps.Details.OnAcceptArgs,
+            OnAdvanceArgs: newProps.Details.OnAdvanceArgs,
+            OnCompleteArgs: newProps.Details.OnCompleteArgs,
+            OnKillTargetArgs: newProps.Details.OnKillTargetArgs,
+
 
             KeyItems: newProps.KeyItems,
             FameRegions: newProps.FameRegions,
