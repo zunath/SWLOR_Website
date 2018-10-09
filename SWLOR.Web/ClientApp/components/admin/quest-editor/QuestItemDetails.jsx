@@ -8,8 +8,10 @@ export default class QuestItemDetails extends React.Component {
             Index: props.Index,
             Resref: props.Resref,
             Quantity: props.Quantity,
+            MustBeCraftedByPlayer: props.MustBeCraftedByPlayer,
             OnDeleteCallback: props.OnDeleteCallback,
-            OnChangeCallback: props.OnChangeCallback
+            OnChangeCallback: props.OnChangeCallback,
+            ShowFlags: props.ShowFlags
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -23,15 +25,18 @@ export default class QuestItemDetails extends React.Component {
             Index: newProps.Index,
             Resref: newProps.Resref,
             Quantity: newProps.Quantity,
+            MustBeCraftedByPlayer: newProps.MustBeCraftedByPlayer,
             OnDeleteCallback: newProps.OnDeleteCallback,
-            OnChangeCallback: newProps.OnChangeCallback
+            OnChangeCallback: newProps.OnChangeCallback,
+            ShowFlags: newProps.ShowFlags
         });
     }
 
     handleChange(event) {
-        const name = event.target.name;
-        const value = event.target.value;
-        
+        const target = event.target;
+        const name = target.name;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+
         this.setState({
             [name]: value
         }, this.raiseParentChange);
@@ -45,7 +50,7 @@ export default class QuestItemDetails extends React.Component {
 
     raiseParentChange() {
         if (this.state.OnChangeCallback !== null) {
-            this.state.OnChangeCallback(this.state.Index, this.state.Resref, this.state.Quantity);
+            this.state.OnChangeCallback(this.state.Index, this.state.Resref, this.state.Quantity, this.state.MustBeCraftedByPlayer);
         }
     }
 
@@ -61,39 +66,55 @@ export default class QuestItemDetails extends React.Component {
                 <div className="row">
                     <div className="col-2">
                         <input type="text"
-                               className="form-control"
-                               readOnly={true}
-                               value={this.state.Index + 1} />
+                            className="form-control"
+                            readOnly={true}
+                            value={this.state.Index + 1} />
 
                     </div>
                     <div className="col-4">
                         <input type="text"
-                               className="form-control"
-                               name="Resref"
-                               value={this.state.Resref}
-                               onChange={(event) => this.handleChange(event)}
-                               placeholder="Resref"
-                               required
-                               maxLength="16">
+                            className="form-control"
+                            name="Resref"
+                            value={this.state.Resref}
+                            onChange={(event) => this.handleChange(event)}
+                            placeholder="Resref"
+                            required
+                            maxLength="16">
                         </input>
 
 
                     </div>
-                    <div className="col-4">
-                        <NumericInput 
-                               className="form-control"
-                               name="Quantity"
-                               value={this.state.Quantity}
-                               onChange={this.handleChangeQuantity}
-                               min={0}
-                               max={99}
-                               placeholder="Quantity"
-                               required
-                               strict>
+                    <div className={this.state.ShowFlags ? 'col-2' : 'col-4'}>
+                        <NumericInput
+                            className="form-control"
+                            name="Quantity"
+                            value={this.state.Quantity}
+                            onChange={this.handleChangeQuantity}
+                            min={0}
+                            max={99}
+                            placeholder="Quantity"
+                            required
+                            strict>
                         </NumericInput>
 
 
                     </div>
+
+                    {this.state.ShowFlags && <div className="col-2">
+                        <div className="form-check">
+                            <label className="form-check-label">
+                                <input
+                                    name="MustBeCraftedByPlayer"
+                                    className="form-check-input"
+                                    value=""
+                                    checked={this.state.MustBeCraftedByPlayer}
+                                    onChange={this.handleChange}
+                                    type="checkbox" />
+                                Must be crafted
+                            </label>
+                        </div>
+                    </div>}
+
                     <div className="col-2">
                         <button className="btn btn-outline-primary"
                             onClick={this.raiseDelete}>

@@ -285,7 +285,8 @@ namespace SWLOR.Web.ViewModels
                     RequiredItems = x.QuestRequiredItemList.Select(y => new QuestRequiredItemUI
                     {
                         Quantity = y.Quantity,
-                        Resref = y.Resref
+                        Resref = y.Resref,
+                        MustBeCraftedByPlayer = y.MustBeCraftedByPlayer
                     }).ToList(),
                     RequiredKeyItems = x.QuestRequiredKeyItemList.Select(y => new QuestRequiredKeyItemUI
                     {
@@ -412,6 +413,7 @@ namespace SWLOR.Web.ViewModels
                         {
                             Resref = ri.Resref,
                             Quantity = ri.Quantity,
+                            MustBeCraftedByPlayer = ri.MustBeCraftedByPlayer,
                             Quest = quest,
                             QuestState = dbState
                         };

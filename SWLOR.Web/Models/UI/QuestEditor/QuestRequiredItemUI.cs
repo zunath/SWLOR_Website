@@ -4,6 +4,7 @@
     {
         public string Resref { get; set; }
         public int Quantity { get; set; }
+        public bool MustBeCraftedByPlayer { get; set; }
 
         public QuestRequiredItemUI()
         {

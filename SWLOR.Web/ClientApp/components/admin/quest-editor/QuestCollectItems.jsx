@@ -19,10 +19,11 @@ export default class QuestCollectItems extends React.Component {
         this.handleDeleteKeyItem = this.handleDeleteKeyItem.bind(this);
     }
     
-    handleChange(index, resref, quantity) {
+    handleChange(index, resref, quantity, mustBeCraftedByPlayer) {
         const newRequiredItems = this.state.RequiredItems;
         newRequiredItems[index].Resref = resref;
         newRequiredItems[index].Quantity = quantity;
+        newRequiredItems[index].MustBeCraftedByPlayer = mustBeCraftedByPlayer;
         
         this.setState({
             RequiredItems: newRequiredItems
@@ -42,7 +43,8 @@ export default class QuestCollectItems extends React.Component {
 
         const newElement = {
             Resref: '',
-            Quantity: 0
+            Quantity: 0,
+            MustBeCraftedByPlayer: false
         };
 
         const newRequiredItems = this.state.RequiredItems;
@@ -100,11 +102,17 @@ export default class QuestCollectItems extends React.Component {
                             <label>Resref</label>
                         </div>
                     </div>
-                    <div className="col-4">
+                    <div className="col-2">
                         <div className="center">
                             <label>Quantity</label>
                         </div>
                     </div>
+                    <div className="col-2">
+                        <div className="center">
+                            <label>Flags</label>
+                        </div>
+                    </div>
+
                     <div className="col-2">
                         <div className="center">
                             <label>Actions</label>
@@ -128,8 +136,10 @@ export default class QuestCollectItems extends React.Component {
                         Index={index}
                         Resref={item.Resref}
                         Quantity={item.Quantity}
+                        MustBeCraftedByPlayer={item.MustBeCraftedByPlayer}
                         OnDeleteCallback={this.deleteRequiredItem}
-                        OnChangeCallback={this.handleChange}/>;
+                        OnChangeCallback={this.handleChange}
+                        ShowFlags={true}/>;
                 })}
 
             </div>
