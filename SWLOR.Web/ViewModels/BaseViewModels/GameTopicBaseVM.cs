@@ -33,7 +33,7 @@ namespace SWLOR.Web.ViewModels.BaseViewModels
 
         protected GameTopicBaseVM(DataContext db)
         {
-            TopicList = db.GameTopics.Where(x => x.GameTopicCategoryID == CategoryID).OrderBy(o => o.Sequence);
+            TopicList = db.GameTopics.Where(x => x.GameTopicCategoryID == CategoryID && x.IsActive).OrderBy(o => o.Sequence);
             
             var topic = TopicList.FirstOrDefault();
 
