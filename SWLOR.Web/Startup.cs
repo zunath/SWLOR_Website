@@ -115,13 +115,13 @@ namespace SWLOR.Web
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                //var rewriterOptions = new RewriteOptions()
-                //    .AddRedirectToHttps();
-                //app.UseRewriter(rewriterOptions);
+                app.UseHsts();
             }
 
             // MVC / Routing / Authentication
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseMvc(routes =>
             {
