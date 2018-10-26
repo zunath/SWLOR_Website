@@ -36,7 +36,7 @@ export default class About extends React.Component {
                             <div className="card-header">Connection Info</div>
                             <div className="card-body">
                                 <div className="card-text">
-                                    Direct Connect: TBA
+                                    Direct Connect: play.starwarsnwn.com:5121
                                     <br />
                                     Discord: <a href="https://discord.gg/MyQAM6m" target="_blank">Click Here</a>
                                 </div>
@@ -51,7 +51,7 @@ export default class About extends React.Component {
                                     <br />
                                     Buy from Beamdog: <a href="https://www.beamdog.com/products/neverwinter-nights-enhanced-edition#signup-form" target="_blank">Click Here</a>
                                     <br />
-                                    Buy from GOG: TBA
+                                    Buy from GOG: <a href="https://www.gog.com/game/neverwinter_nights_enhanced_edition_pack" target="_blank">Click Here</a>
                                 </div>
                             </div>
                         </div>
