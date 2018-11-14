@@ -8,7 +8,7 @@ namespace SWLOR.Web.ViewModels
 {
     public class LoreViewModel : BaseVM
     {
-        public string TopicList_itemkey => nameof(GameTopic.GameTopicID);
+        public string TopicList_itemkey => nameof(GameTopic.ID);
         public IEnumerable<GameTopic> TopicList
         {
             get => Get<IEnumerable<GameTopic>>();
@@ -33,13 +33,13 @@ namespace SWLOR.Web.ViewModels
 
         public LoreViewModel(DataContext db)
         {
-            TopicList = db.GameTopics.Where(x => x.GameTopicCategoryID == 2).OrderBy(o => o.Sequence);
-            SelectedTopicID = TopicList.First().GameTopicID;
+            TopicList = db.GameTopic.Where(x => x.GameTopicCategoryID == 2).OrderBy(o => o.Sequence);
+            SelectedTopicID = TopicList.First().ID;
         }
 
         private void LoadTopic()
         {
-            SelectedTopic = TopicList.Single(x => x.GameTopicID == SelectedTopicID);
+            SelectedTopic = TopicList.Single(x => x.ID == SelectedTopicID);
         }
 
     }

@@ -55,12 +55,12 @@ export default class GameTopic extends React.Component {
                                     <div className="card-text">
                                         <div className="list-group">
                                             {this.state.TopicList.map(obj =>
-                                                <Link key={obj.GameTopicID}
+                                                <Link key={obj.ID}
                                                     className={this.state.SelectedTopicID === obj.GameTopicID ? 'list-group-item list-group-item-action active' : 'list-group-item list-group-item-action'}
                                                     to="#"
                                                     onClick={this.handleChange}
                                                     name="SelectedTopicID"
-                                                    data-topicid={obj.GameTopicID}>
+                                                    data-topicid={obj.ID}>
                                                     <i className={'fa ' + obj.Icon}></i>&nbsp;&nbsp;{obj.Name}
                                                 </Link>
                                             )}

@@ -6,14 +6,14 @@ namespace SWLOR.Web.Data.Entities
     {
         public PerkCategory()
         {
-            Perks = new HashSet<Perk>();
+            Perk = new HashSet<Perk>();
         }
 
-        public int PerkCategoryID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
         public int Sequence { get; set; }
 
-        public ICollection<Perk> Perks { get; set; }
+        public ICollection<Perk> Perk { get; set; }
     }
 }

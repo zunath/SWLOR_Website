@@ -1,16 +1,19 @@
-﻿namespace SWLOR.Web.Data.Entities
+﻿using System;
+
+namespace SWLOR.Web.Data.Entities
 {
     public partial class PCCustomEffect
     {
-        public long PCCustomEffectID { get; set; }
-        public string PlayerID { get; set; }
-        public long CustomEffectID { get; set; }
+        public Guid ID { get; set; }
+        public Guid PlayerID { get; set; }
+        public int CustomEffectID { get; set; }
         public int Ticks { get; set; }
         public int EffectiveLevel { get; set; }
         public string Data { get; set; }
         public string CasterNWNObjectID { get; set; }
+        public int? StancePerkID { get; set; }
 
         public CustomEffect CustomEffect { get; set; }
-        public PlayerCharacter Player { get; set; }
+        public Player Player { get; set; }
     }
 }

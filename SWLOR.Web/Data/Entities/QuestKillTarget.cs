@@ -1,8 +1,8 @@
 ﻿namespace SWLOR.Web.Data.Entities
 {
-    public partial class QuestKillTargetList
+    public partial class QuestKillTarget
     {
-        public int QuestKillTargetListID { get; set; }
+        public int ID { get; set; }
         public int QuestID { get; set; }
         public int NPCGroupID { get; set; }
         public int Quantity { get; set; }

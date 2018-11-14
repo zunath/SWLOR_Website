@@ -7,12 +7,13 @@ namespace SWLOR.Web.Data.Entities
     {
         public PCBase()
         {
-            PCBasePermissions = new HashSet<PCBasePermission>();
-            PCBaseStructures = new HashSet<PCBaseStructure>();
+            PCBasePermission = new HashSet<PCBasePermission>();
+            PCBaseStructure = new HashSet<PCBaseStructure>();
+            PlayerNavigation = new HashSet<Player>();
         }
 
-        public int PCBaseID { get; set; }
-        public string PlayerID { get; set; }
+        public Guid ID { get; set; }
+        public Guid PlayerID { get; set; }
         public string AreaResref { get; set; }
         public string Sector { get; set; }
         public DateTime DateInitialPurchase { get; set; }
@@ -22,10 +23,18 @@ namespace SWLOR.Web.Data.Entities
         public int Fuel { get; set; }
         public int ReinforcedFuel { get; set; }
         public DateTime DateFuelEnds { get; set; }
+        public int PCBaseTypeID { get; set; }
+        public int? ApartmentBuildingID { get; set; }
+        public string CustomName { get; set; }
+        public int? BuildingStyleID { get; set; }
 
+        public ApartmentBuilding ApartmentBuilding { get; set; }
         public Area AreaResrefNavigation { get; set; }
-        public PlayerCharacter Player { get; set; }
-        public ICollection<PCBasePermission> PCBasePermissions { get; set; }
-        public ICollection<PCBaseStructure> PCBaseStructures { get; set; }
+        public BuildingStyle BuildingStyle { get; set; }
+        public PCBaseType PCBaseType { get; set; }
+        public Player Player { get; set; }
+        public ICollection<PCBasePermission> PCBasePermission { get; set; }
+        public ICollection<PCBaseStructure> PCBaseStructure { get; set; }
+        public ICollection<Player> PlayerNavigation { get; set; }
     }
 }

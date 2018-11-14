@@ -4,12 +4,12 @@ namespace SWLOR.Web.Data.Entities
 {
     public partial class ChatLog
     {
-        public long ChatLogID { get; set; }
+        public Guid ID { get; set; }
         public int ChatChannelID { get; set; }
-        public string SenderPlayerID { get; set; }
+        public Guid? SenderPlayerID { get; set; }
         public string SenderAccountName { get; set; }
         public string SenderCDKey { get; set; }
-        public string ReceiverPlayerID { get; set; }
+        public Guid? ReceiverPlayerID { get; set; }
         public string ReceiverAccountName { get; set; }
         public string ReceiverCDKey { get; set; }
         public string Message { get; set; }
@@ -17,8 +17,8 @@ namespace SWLOR.Web.Data.Entities
         public string SenderDMName { get; set; }
         public string ReceiverDMName { get; set; }
 
-        public ChatChannelsDomain ChatChannel { get; set; }
-        public PlayerCharacter ReceiverPlayer { get; set; }
-        public PlayerCharacter SenderPlayer { get; set; }
+        public ChatChannel ChatChannel { get; set; }
+        public Player ReceiverPlayer { get; set; }
+        public Player SenderPlayer { get; set; }
     }
 }

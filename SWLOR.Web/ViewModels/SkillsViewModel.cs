@@ -54,12 +54,12 @@ namespace SWLOR.Web.ViewModels
         {
             _db = db;
 
-            SkillCategoryList = db.SkillCategories
+            SkillCategoryList = db.SkillCategory
                 .Where(x => x.IsActive)
                 .OrderBy(o => o.Sequence)
                 .Select(o => new SkillCategoryUI
                 {
-                    SkillCategoryID = o.SkillCategoryID,
+                    SkillCategoryID = o.ID,
                     Name = o.Name,
                     IsActive = o.IsActive
                 })
@@ -72,13 +72,13 @@ namespace SWLOR.Web.ViewModels
 
         private void LoadSkillList()
         {
-            SkillList = _db.Skills
+            SkillList = _db.Skill
                 .Where(x => x.IsActive &&
                             x.SkillCategoryID == SelectedCategoryID)
-                .OrderBy(o => o.SkillID)
+                .OrderBy(o => o.ID)
                 .Select(o => new SkillUI
                 {
-                    SkillID = o.SkillID, 
+                    SkillID = o.ID, 
                     SkillCategoryID = o.SkillCategoryID, 
                     Name = o.Name,
                     Description = o.Description,

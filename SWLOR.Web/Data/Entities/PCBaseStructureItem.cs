@@ -1,9 +1,11 @@
-﻿namespace SWLOR.Web.Data.Entities
+﻿using System;
+
+namespace SWLOR.Web.Data.Entities
 {
     public partial class PCBaseStructureItem
     {
-        public int PCBaseStructureItemID { get; set; }
-        public int PCBaseStructureID { get; set; }
+        public Guid ID { get; set; }
+        public Guid PCBaseStructureID { get; set; }
         public string ItemGlobalID { get; set; }
         public string ItemName { get; set; }
         public string ItemTag { get; set; }

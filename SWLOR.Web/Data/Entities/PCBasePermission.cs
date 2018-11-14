@@ -1,10 +1,12 @@
-﻿namespace SWLOR.Web.Data.Entities
+﻿using System;
+
+namespace SWLOR.Web.Data.Entities
 {
     public partial class PCBasePermission
     {
-        public int PCBasePermissionID { get; set; }
-        public int PCBaseID { get; set; }
-        public string PlayerID { get; set; }
+        public Guid ID { get; set; }
+        public Guid PCBaseID { get; set; }
+        public Guid PlayerID { get; set; }
         public bool CanPlaceEditStructures { get; set; }
         public bool CanAccessStructureInventory { get; set; }
         public bool CanManageBaseFuel { get; set; }
@@ -18,6 +20,6 @@
         public bool CanRemovePrimaryResidence { get; set; }
 
         public PCBase PCBase { get; set; }
-        public PlayerCharacter Player { get; set; }
+        public Player Player { get; set; }
     }
 }

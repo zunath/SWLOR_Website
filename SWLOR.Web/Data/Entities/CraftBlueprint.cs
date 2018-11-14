@@ -1,9 +1,16 @@
-﻿namespace SWLOR.Web.Data.Entities
+﻿using System.Collections.Generic;
+
+namespace SWLOR.Web.Data.Entities
 {
     public partial class CraftBlueprint
     {
-        public long CraftBlueprintID { get; set; }
-        public long CraftCategoryID { get; set; }
+        public CraftBlueprint()
+        {
+            PCCraftedBlueprint = new HashSet<PCCraftedBlueprint>();
+        }
+
+        public int ID { get; set; }
+        public int CraftCategoryID { get; set; }
         public int BaseLevel { get; set; }
         public string ItemName { get; set; }
         public string ItemResref { get; set; }
@@ -33,5 +40,6 @@
         public ComponentType SecondaryComponentType { get; set; }
         public Skill Skill { get; set; }
         public ComponentType TertiaryComponentType { get; set; }
+        public ICollection<PCCraftedBlueprint> PCCraftedBlueprint { get; set; }
     }
 }

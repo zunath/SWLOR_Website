@@ -7,15 +7,15 @@ namespace SWLOR.Web.Data.Entities
         public NPCGroup()
         {
             PCQuestKillTargetProgress = new HashSet<PCQuestKillTargetProgress>();
-            QuestKillTargetList = new HashSet<QuestKillTargetList>();
-            SpawnObjects = new HashSet<SpawnObject>();
+            QuestKillTarget = new HashSet<QuestKillTarget>();
+            SpawnObject = new HashSet<SpawnObject>();
         }
 
-        public int NPCGroupID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
 
         public ICollection<PCQuestKillTargetProgress> PCQuestKillTargetProgress { get; set; }
-        public ICollection<QuestKillTargetList> QuestKillTargetList { get; set; }
-        public ICollection<SpawnObject> SpawnObjects { get; set; }
+        public ICollection<QuestKillTarget> QuestKillTarget { get; set; }
+        public ICollection<SpawnObject> SpawnObject { get; set; }
     }
 }

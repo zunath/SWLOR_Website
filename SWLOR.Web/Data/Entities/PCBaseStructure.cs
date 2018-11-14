@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace SWLOR.Web.Data.Entities
 {
@@ -7,13 +8,13 @@ namespace SWLOR.Web.Data.Entities
         public PCBaseStructure()
         {
             InverseParentPCBaseStructure = new HashSet<PCBaseStructure>();
-            PCBaseStructureItems = new HashSet<PCBaseStructureItem>();
-            PCBaseStructurePermissions = new HashSet<PCBaseStructurePermission>();
-            PlayerCharacters = new HashSet<PlayerCharacter>();
+            PCBaseStructureItem = new HashSet<PCBaseStructureItem>();
+            PCBaseStructurePermission = new HashSet<PCBaseStructurePermission>();
+            Player = new HashSet<Player>();
         }
 
-        public int PCBaseStructureID { get; set; }
-        public int PCBaseID { get; set; }
+        public Guid ID { get; set; }
+        public Guid PCBaseID { get; set; }
         public int BaseStructureID { get; set; }
         public double LocationX { get; set; }
         public double LocationY { get; set; }
@@ -22,9 +23,10 @@ namespace SWLOR.Web.Data.Entities
         public double Durability { get; set; }
         public int? InteriorStyleID { get; set; }
         public int? ExteriorStyleID { get; set; }
-        public int? ParentPCBaseStructureID { get; set; }
+        public Guid? ParentPCBaseStructureID { get; set; }
         public string CustomName { get; set; }
         public int StructureBonus { get; set; }
+        public DateTime? DateNextActivity { get; set; }
 
         public BaseStructure BaseStructure { get; set; }
         public BuildingStyle ExteriorStyle { get; set; }
@@ -32,8 +34,8 @@ namespace SWLOR.Web.Data.Entities
         public PCBase PCBase { get; set; }
         public PCBaseStructure ParentPCBaseStructure { get; set; }
         public ICollection<PCBaseStructure> InverseParentPCBaseStructure { get; set; }
-        public ICollection<PCBaseStructureItem> PCBaseStructureItems { get; set; }
-        public ICollection<PCBaseStructurePermission> PCBaseStructurePermissions { get; set; }
-        public ICollection<PlayerCharacter> PlayerCharacters { get; set; }
+        public ICollection<PCBaseStructureItem> PCBaseStructureItem { get; set; }
+        public ICollection<PCBaseStructurePermission> PCBaseStructurePermission { get; set; }
+        public ICollection<Player> Player { get; set; }
     }
 }

@@ -36,68 +36,7 @@ export default class Admin extends React.Component {
             }
             return '';
         }
-
-        function renderManageDMs() {
-
-            if (self.state.Role === 2) {
-                return <div className="col">
-                    <div className="card border-primary">
-                        <div className="card-body center">
-                            <h4 className="card-title">DM Management</h4>
-                            <p className="card-text">Add, remove, activate, or deactivate accounts from logging in as Dungeon Masters.</p>
-
-                            <Link className="btn btn-primary" to="/admin/dm-management" role="button">
-                                Manage DMs
-                            </Link>
-                        </div>
-
-                    </div>
-                </div>;
-            }
-            return '';
-        }
-
-        function renderManageLootTables() {
-
-            if (self.state.Role === 2) {
-                return <div className="col">
-                    <div className="card border-primary">
-                        <div className="card-body center">
-                            <h4 className="card-title">Loot Tables</h4>
-                            <p className="card-text">Adjust the items found in loot sites.</p>
-
-                            <Link className="btn btn-primary" to="/admin/loot-table-editor" role="button">
-                                Manage Loot Tables
-                            </Link>
-                        </div>
-
-                    </div>
-                </div>;
-            }
-            return '';
-        }
-        function renderEditQuests() {
-
-            if (self.state.Role === 2) {
-                return <div className="col">
-                    <div className="card border-primary">
-                        <div className="card-body center">
-                            <h4 className="card-title">Quest Editor</h4>
-                            <p className="card-text">Add, remove, and edit quest information.</p>
-
-                            <Link
-                                className="btn btn-primary"
-                                to="/admin/quest-editor"
-                                role="button">
-                                Edit Quests
-                            </Link>
-                        </div>
-
-                    </div>
-                </div>;
-            }
-            return '';
-        }
+        
         return (
             <div>
 
@@ -105,9 +44,6 @@ export default class Admin extends React.Component {
 
                 <div className="row">
                     {renderLogs()}
-                    {renderManageDMs()}
-                    {renderManageLootTables()}
-                    {renderEditQuests()}
 
                 </div>
 

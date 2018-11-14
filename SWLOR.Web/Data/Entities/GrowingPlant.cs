@@ -4,7 +4,7 @@ namespace SWLOR.Web.Data.Entities
 {
     public partial class GrowingPlant
     {
-        public int GrowingPlantID { get; set; }
+        public Guid ID { get; set; }
         public int PlantID { get; set; }
         public int RemainingTicks { get; set; }
         public string LocationAreaTag { get; set; }

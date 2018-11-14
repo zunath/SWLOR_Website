@@ -6,12 +6,12 @@ namespace SWLOR.Web.Data.Entities
     {
         public CraftDevice()
         {
-            CraftBlueprints = new HashSet<CraftBlueprint>();
+            CraftBlueprint = new HashSet<CraftBlueprint>();
         }
 
-        public int CraftDeviceID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
 
-        public ICollection<CraftBlueprint> CraftBlueprints { get; set; }
+        public ICollection<CraftBlueprint> CraftBlueprint { get; set; }
     }
 }

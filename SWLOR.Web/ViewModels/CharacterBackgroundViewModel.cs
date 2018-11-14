@@ -1,4 +1,5 @@
 ﻿using SWLOR.Web.Data;
+using SWLOR.Web.Data.Entities;
 using SWLOR.Web.ViewModels.BaseViewModels;
 
 namespace SWLOR.Web.ViewModels

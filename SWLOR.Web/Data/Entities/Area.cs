@@ -8,10 +8,10 @@ namespace SWLOR.Web.Data.Entities
         public Area()
         {
             AreaWalkmesh = new HashSet<AreaWalkmesh>();
-            PCBases = new HashSet<PCBase>();
+            PCBase = new HashSet<PCBase>();
         }
 
-        public string AreaID { get; set; }
+        public Guid ID { get; set; }
         public string Resref { get; set; }
         public string Name { get; set; }
         public string Tag { get; set; }
@@ -19,22 +19,33 @@ namespace SWLOR.Web.Data.Entities
         public int Width { get; set; }
         public int Height { get; set; }
         public bool IsBuildable { get; set; }
-        public string NorthwestOwner { get; set; }
-        public string NortheastOwner { get; set; }
-        public string SouthwestOwner { get; set; }
-        public string SoutheastOwner { get; set; }
+        public Guid? NorthwestOwner { get; set; }
+        public Guid? NortheastOwner { get; set; }
+        public Guid? SouthwestOwner { get; set; }
+        public Guid? SoutheastOwner { get; set; }
         public bool IsActive { get; set; }
         public int PurchasePrice { get; set; }
         public int DailyUpkeep { get; set; }
         public string Walkmesh { get; set; }
         public DateTime DateLastBaked { get; set; }
+        public bool AutoSpawnResources { get; set; }
+        public int ResourceQuality { get; set; }
+        public int? NorthwestLootTableID { get; set; }
+        public int? NortheastLootTableID { get; set; }
+        public int? SouthwestLootTableID { get; set; }
+        public int? SoutheastLootTableID { get; set; }
+        public int MaxResourceQuality { get; set; }
 
-        public PlayerCharacter NortheastOwnerNavigation { get; set; }
-        public PlayerCharacter NorthwestOwnerNavigation { get; set; }
+        public LootTable NortheastLootTable { get; set; }
+        public Player NortheastOwnerNavigation { get; set; }
+        public LootTable NorthwestLootTable { get; set; }
+        public Player NorthwestOwnerNavigation { get; set; }
         public Spawn ResourceSpawnTable { get; set; }
-        public PlayerCharacter SoutheastOwnerNavigation { get; set; }
-        public PlayerCharacter SouthwestOwnerNavigation { get; set; }
+        public LootTable SoutheastLootTable { get; set; }
+        public Player SoutheastOwnerNavigation { get; set; }
+        public LootTable SouthwestLootTable { get; set; }
+        public Player SouthwestOwnerNavigation { get; set; }
         public ICollection<AreaWalkmesh> AreaWalkmesh { get; set; }
-        public ICollection<PCBase> PCBases { get; set; }
+        public ICollection<PCBase> PCBase { get; set; }
     }
 }

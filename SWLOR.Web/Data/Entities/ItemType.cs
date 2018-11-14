@@ -2,7 +2,7 @@
 {
     public partial class ItemType
     {
-        public int ItemTypeID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
     }
 }

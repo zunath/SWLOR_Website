@@ -6,12 +6,13 @@ namespace SWLOR.Web.Data.Entities
     {
         public Perk()
         {
-            CraftBlueprints = new HashSet<CraftBlueprint>();
-            PCPerks = new HashSet<PCPerk>();
-            PerkLevels = new HashSet<PerkLevel>();
+            CraftBlueprint = new HashSet<CraftBlueprint>();
+            PCPerk = new HashSet<PCPerk>();
+            PCPerkRefund = new HashSet<PCPerkRefund>();
+            PerkLevel = new HashSet<PerkLevel>();
         }
 
-        public int PerkID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
         public int? FeatID { get; set; }
         public bool IsActive { get; set; }
@@ -26,13 +27,15 @@ namespace SWLOR.Web.Data.Entities
         public bool IsTargetSelfOnly { get; set; }
         public int Enmity { get; set; }
         public int EnmityAdjustmentRuleID { get; set; }
+        public int? CastAnimationID { get; set; }
 
         public CooldownCategory CooldownCategory { get; set; }
         public EnmityAdjustmentRule EnmityAdjustmentRule { get; set; }
         public PerkExecutionType ExecutionType { get; set; }
         public PerkCategory PerkCategory { get; set; }
-        public ICollection<CraftBlueprint> CraftBlueprints { get; set; }
-        public ICollection<PCPerk> PCPerks { get; set; }
-        public ICollection<PerkLevel> PerkLevels { get; set; }
+        public ICollection<CraftBlueprint> CraftBlueprint { get; set; }
+        public ICollection<PCPerk> PCPerk { get; set; }
+        public ICollection<PCPerkRefund> PCPerkRefund { get; set; }
+        public ICollection<PerkLevel> PerkLevel { get; set; }
     }
 }

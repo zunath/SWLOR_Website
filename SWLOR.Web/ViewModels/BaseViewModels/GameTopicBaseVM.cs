@@ -8,7 +8,7 @@ namespace SWLOR.Web.ViewModels.BaseViewModels
 {
     public abstract class GameTopicBaseVM : BaseVM
     {
-        public string TopicList_itemkey => nameof(GameTopic.GameTopicID);
+        public string TopicList_itemkey => nameof(GameTopic.ID);
         public IEnumerable<GameTopic> TopicList
         {
             get => Get<IEnumerable<GameTopic>>();
@@ -33,20 +33,20 @@ namespace SWLOR.Web.ViewModels.BaseViewModels
 
         protected GameTopicBaseVM(DataContext db)
         {
-            TopicList = db.GameTopics.Where(x => x.GameTopicCategoryID == CategoryID && x.IsActive).OrderBy(o => o.Sequence);
+            TopicList = db.GameTopic.Where(x => x.GameTopicCategoryID == CategoryID && x.IsActive).OrderBy(o => o.Sequence);
             
             var topic = TopicList.FirstOrDefault();
 
             if (topic != null)
             {
-                SelectedTopicID = topic.GameTopicID;
+                SelectedTopicID = topic.ID;
             }
 
         }
 
         private void LoadTopic()
         {
-            SelectedTopic = TopicList.Single(x => x.GameTopicID == SelectedTopicID);
+            SelectedTopic = TopicList.Single(x => x.ID == SelectedTopicID);
         }
 
         protected abstract int CategoryID { get; }

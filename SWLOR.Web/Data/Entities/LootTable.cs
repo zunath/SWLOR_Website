@@ -6,12 +6,20 @@ namespace SWLOR.Web.Data.Entities
     {
         public LootTable()
         {
-            LootTableItems = new HashSet<LootTableItem>();
+            AreaNortheastLootTable = new HashSet<Area>();
+            AreaNorthwestLootTable = new HashSet<Area>();
+            AreaSoutheastLootTable = new HashSet<Area>();
+            AreaSouthwestLootTable = new HashSet<Area>();
+            LootTableItem = new HashSet<LootTableItem>();
         }
 
-        public int LootTableID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
-        
-        public ICollection<LootTableItem> LootTableItems { get; set; }
+
+        public ICollection<Area> AreaNortheastLootTable { get; set; }
+        public ICollection<Area> AreaNorthwestLootTable { get; set; }
+        public ICollection<Area> AreaSoutheastLootTable { get; set; }
+        public ICollection<Area> AreaSouthwestLootTable { get; set; }
+        public ICollection<LootTableItem> LootTableItem { get; set; }
     }
 }

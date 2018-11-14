@@ -6,12 +6,12 @@ namespace SWLOR.Web.Data.Entities
     {
         public SpawnObjectType()
         {
-            Spawns = new HashSet<Spawn>();
+            Spawn = new HashSet<Spawn>();
         }
 
-        public int SpawnObjectTypeID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
 
-        public ICollection<Spawn> Spawns { get; set; }
+        public ICollection<Spawn> Spawn { get; set; }
     }
 }

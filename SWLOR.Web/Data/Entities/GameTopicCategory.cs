@@ -6,12 +6,12 @@ namespace SWLOR.Web.Data.Entities
     {
         public GameTopicCategory()
         {
-            GameTopics = new HashSet<GameTopic>();
+            GameTopic = new HashSet<GameTopic>();
         }
 
-        public int GameTopicCategoryID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
 
-        public ICollection<GameTopic> GameTopics { get; set; }
+        public ICollection<GameTopic> GameTopic { get; set; }
     }
 }

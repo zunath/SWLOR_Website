@@ -44,10 +44,11 @@ namespace SWLOR.Web.Controllers
             if (user.AvatarHash == null)
                 user.AvatarHash = string.Empty;
 
-            User existingUser = _db.Users.SingleOrDefault(x => x.DiscordUserID == user.DiscordUserID);
+            User existingUser = _db.User.SingleOrDefault(x => x.DiscordUserID == user.DiscordUserID);
             if (existingUser == null)
             {
-                _db.Users.Add(user);
+                user.RoleID = 3;
+                _db.User.Add(user);
             }
             else
             {
@@ -57,7 +58,7 @@ namespace SWLOR.Web.Controllers
                 existingUser.DiscordUserID = user.DiscordUserID;
                 existingUser.AvatarHash = user.AvatarHash;
 
-                user.UserID = existingUser.UserID;
+                user.ID = existingUser.ID;
             }
 
             _db.SaveChanges();

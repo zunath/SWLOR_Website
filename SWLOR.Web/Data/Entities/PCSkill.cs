@@ -1,15 +1,17 @@
-﻿namespace SWLOR.Web.Data.Entities
+﻿using System;
+
+namespace SWLOR.Web.Data.Entities
 {
     public partial class PCSkill
     {
-        public int PCSkillID { get; set; }
-        public string PlayerID { get; set; }
+        public Guid ID { get; set; }
+        public Guid PlayerID { get; set; }
         public int SkillID { get; set; }
         public int XP { get; set; }
         public int Rank { get; set; }
         public bool IsLocked { get; set; }
 
-        public PlayerCharacter Player { get; set; }
+        public Player Player { get; set; }
         public Skill Skill { get; set; }
     }
 }

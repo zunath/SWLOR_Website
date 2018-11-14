@@ -4,7 +4,7 @@ namespace SWLOR.Web.Data.Entities
 {
     public partial class User
     {
-        public long UserID { get; set; }
+        public int ID { get; set; }
         public string DiscordUserID { get; set; }
         public string Username { get; set; }
         public string AvatarHash { get; set; }
@@ -13,6 +13,6 @@ namespace SWLOR.Web.Data.Entities
         public int RoleID { get; set; }
         public DateTime DateRegistered { get; set; }
 
-        public DMRoleDomain Role { get; set; }
+        public DMRole Role { get; set; }
     }
 }

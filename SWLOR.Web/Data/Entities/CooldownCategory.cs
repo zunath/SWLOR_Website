@@ -6,15 +6,15 @@ namespace SWLOR.Web.Data.Entities
     {
         public CooldownCategory()
         {
-            PCCooldowns = new HashSet<PCCooldown>();
-            Perks = new HashSet<Perk>();
+            PCCooldown = new HashSet<PCCooldown>();
+            Perk = new HashSet<Perk>();
         }
 
-        public int CooldownCategoryID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
         public double BaseCooldownTime { get; set; }
 
-        public ICollection<PCCooldown> PCCooldowns { get; set; }
-        public ICollection<Perk> Perks { get; set; }
+        public ICollection<PCCooldown> PCCooldown { get; set; }
+        public ICollection<Perk> Perk { get; set; }
     }
 }

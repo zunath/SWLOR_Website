@@ -12,7 +12,7 @@ namespace SWLOR.Web.Models.Validation
                 .NotEmpty()
                 .MaximumLength(64);
 
-            RuleForEach(x => x.LootTableItems)
+            RuleForEach(x => x.LootTableItem)
                 .SetValidator(new LootTableItemValidator());
         }
 

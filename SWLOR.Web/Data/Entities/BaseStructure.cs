@@ -6,12 +6,12 @@ namespace SWLOR.Web.Data.Entities
     {
         public BaseStructure()
         {
-            BuildingStyles = new HashSet<BuildingStyle>();
-            CraftBlueprints = new HashSet<CraftBlueprint>();
-            PCBaseStructures = new HashSet<PCBaseStructure>();
+            BuildingStyle = new HashSet<BuildingStyle>();
+            CraftBlueprint = new HashSet<CraftBlueprint>();
+            PCBaseStructure = new HashSet<PCBaseStructure>();
         }
 
-        public int BaseStructureID { get; set; }
+        public int ID { get; set; }
         public int BaseStructureTypeID { get; set; }
         public string Name { get; set; }
         public string PlaceableResref { get; set; }
@@ -24,10 +24,13 @@ namespace SWLOR.Web.Data.Entities
         public bool HasAtmosphere { get; set; }
         public int ReinforcedStorage { get; set; }
         public bool RequiresBasePower { get; set; }
+        public int ResourceStorage { get; set; }
+        public int RetrievalRating { get; set; }
+        public int FuelRating { get; set; }
 
         public BaseStructureType BaseStructureType { get; set; }
-        public ICollection<BuildingStyle> BuildingStyles { get; set; }
-        public ICollection<CraftBlueprint> CraftBlueprints { get; set; }
-        public ICollection<PCBaseStructure> PCBaseStructures { get; set; }
+        public ICollection<BuildingStyle> BuildingStyle { get; set; }
+        public ICollection<CraftBlueprint> CraftBlueprint { get; set; }
+        public ICollection<PCBaseStructure> PCBaseStructure { get; set; }
     }
 }

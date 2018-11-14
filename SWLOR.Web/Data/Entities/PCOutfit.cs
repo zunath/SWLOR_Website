@@ -1,8 +1,10 @@
-﻿namespace SWLOR.Web.Data.Entities
+﻿using System;
+
+namespace SWLOR.Web.Data.Entities
 {
     public partial class PCOutfit
     {
-        public string PlayerID { get; set; }
+        public Guid PlayerID { get; set; }
         public string Outfit1 { get; set; }
         public string Outfit2 { get; set; }
         public string Outfit3 { get; set; }
@@ -14,6 +16,6 @@
         public string Outfit9 { get; set; }
         public string Outfit10 { get; set; }
 
-        public PlayerCharacter Player { get; set; }
+        public Player Player { get; set; }
     }
 }

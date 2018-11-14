@@ -13,7 +13,7 @@ namespace SWLOR.Web.ViewModels
     {
         public ChatLogsViewModel(DataContext db)
             : base(BuildClientData(db),
-                nameof(ChatLog.ChatLogID))
+                nameof(ChatLog.ID))
         {
 
         }

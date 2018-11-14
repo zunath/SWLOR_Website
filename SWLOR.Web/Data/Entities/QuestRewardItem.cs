@@ -9,7 +9,7 @@ namespace SWLOR.Web.Data.Entities
             PCQuestStatus = new HashSet<PCQuestStatus>();
         }
 
-        public int QuestRewardItemID { get; set; }
+        public int ID { get; set; }
         public int QuestID { get; set; }
         public string Resref { get; set; }
         public int Quantity { get; set; }

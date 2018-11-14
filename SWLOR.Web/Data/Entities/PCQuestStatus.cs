@@ -7,20 +7,22 @@ namespace SWLOR.Web.Data.Entities
     {
         public PCQuestStatus()
         {
+            PCQuestItemProgress = new HashSet<PCQuestItemProgress>();
             PCQuestKillTargetProgress = new HashSet<PCQuestKillTargetProgress>();
         }
 
-        public int PCQuestStatusID { get; set; }
-        public string PlayerID { get; set; }
+        public Guid ID { get; set; }
+        public Guid PlayerID { get; set; }
         public int QuestID { get; set; }
         public int CurrentQuestStateID { get; set; }
         public DateTime? CompletionDate { get; set; }
         public int? SelectedItemRewardID { get; set; }
 
         public QuestState CurrentQuestState { get; set; }
-        public PlayerCharacter Player { get; set; }
+        public Player Player { get; set; }
         public Quest Quest { get; set; }
         public QuestRewardItem SelectedItemReward { get; set; }
+        public ICollection<PCQuestItemProgress> PCQuestItemProgress { get; set; }
         public ICollection<PCQuestKillTargetProgress> PCQuestKillTargetProgress { get; set; }
     }
 }

@@ -7,16 +7,17 @@ namespace SWLOR.Web.Data.Entities
         public Quest()
         {
             PCQuestStatus = new HashSet<PCQuestStatus>();
-            QuestKillTargetList = new HashSet<QuestKillTargetList>();
-            QuestPrerequisitesQuest = new HashSet<QuestPrerequisite>();
-            QuestPrerequisitesRequiredQuest = new HashSet<QuestPrerequisite>();
-            QuestRequiredItemList = new HashSet<QuestRequiredItemList>();
-            QuestRequiredKeyItemList = new HashSet<QuestRequiredKeyItemList>();
-            QuestRewardItems = new HashSet<QuestRewardItem>();
-            QuestStates = new HashSet<QuestState>();
+            PerkLevelQuestRequirement = new HashSet<PerkLevelQuestRequirement>();
+            QuestKillTarget = new HashSet<QuestKillTarget>();
+            QuestPrerequisiteQuest = new HashSet<QuestPrerequisite>();
+            QuestPrerequisiteRequiredQuest = new HashSet<QuestPrerequisite>();
+            QuestRequiredItem = new HashSet<QuestRequiredItem>();
+            QuestRequiredKeyItem = new HashSet<QuestRequiredKeyItem>();
+            QuestRewardItem = new HashSet<QuestRewardItem>();
+            QuestState = new HashSet<QuestState>();
         }
 
-        public int QuestID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
         public string JournalTag { get; set; }
         public int FameRegionID { get; set; }
@@ -42,12 +43,13 @@ namespace SWLOR.Web.Data.Entities
         public KeyItem RewardKeyItem { get; set; }
         public KeyItem StartKeyItem { get; set; }
         public ICollection<PCQuestStatus> PCQuestStatus { get; set; }
-        public ICollection<QuestKillTargetList> QuestKillTargetList { get; set; }
-        public ICollection<QuestPrerequisite> QuestPrerequisitesQuest { get; set; }
-        public ICollection<QuestPrerequisite> QuestPrerequisitesRequiredQuest { get; set; }
-        public ICollection<QuestRequiredItemList> QuestRequiredItemList { get; set; }
-        public ICollection<QuestRequiredKeyItemList> QuestRequiredKeyItemList { get; set; }
-        public ICollection<QuestRewardItem> QuestRewardItems { get; set; }
-        public ICollection<QuestState> QuestStates { get; set; }
+        public ICollection<PerkLevelQuestRequirement> PerkLevelQuestRequirement { get; set; }
+        public ICollection<QuestKillTarget> QuestKillTarget { get; set; }
+        public ICollection<QuestPrerequisite> QuestPrerequisiteQuest { get; set; }
+        public ICollection<QuestPrerequisite> QuestPrerequisiteRequiredQuest { get; set; }
+        public ICollection<QuestRequiredItem> QuestRequiredItem { get; set; }
+        public ICollection<QuestRequiredKeyItem> QuestRequiredKeyItem { get; set; }
+        public ICollection<QuestRewardItem> QuestRewardItem { get; set; }
+        public ICollection<QuestState> QuestState { get; set; }
     }
 }

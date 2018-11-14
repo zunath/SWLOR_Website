@@ -1,8 +1,10 @@
-﻿namespace SWLOR.Web.Data.Entities
+﻿using System;
+
+namespace SWLOR.Web.Data.Entities
 {
-    public partial class Background
+    public partial class Backgrounds
     {
-        public int BackgroundID { get; set; }
+        public Guid ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Bonuses { get; set; }

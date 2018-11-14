@@ -1,8 +1,8 @@
 ﻿namespace SWLOR.Web.Data.Entities
 {
-    public partial class QuestRequiredItemList
+    public partial class QuestRequiredItem
     {
-        public int QuestRequiredItemListID { get; set; }
+        public int ID { get; set; }
         public int QuestID { get; set; }
         public string Resref { get; set; }
         public int Quantity { get; set; }

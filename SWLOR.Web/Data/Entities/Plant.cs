@@ -6,10 +6,10 @@ namespace SWLOR.Web.Data.Entities
     {
         public Plant()
         {
-            GrowingPlants = new HashSet<GrowingPlant>();
+            GrowingPlant = new HashSet<GrowingPlant>();
         }
 
-        public int PlantID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
         public int BaseTicks { get; set; }
         public string Resref { get; set; }
@@ -17,6 +17,6 @@ namespace SWLOR.Web.Data.Entities
         public int Level { get; set; }
         public string SeedResref { get; set; }
 
-        public ICollection<GrowingPlant> GrowingPlants { get; set; }
+        public ICollection<GrowingPlant> GrowingPlant { get; set; }
     }
 }

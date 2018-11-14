@@ -62,12 +62,12 @@ namespace SWLOR.Web.ViewModels
         {
             _db = db;
 
-            PerkCategoryList = db.PerkCategories
+            PerkCategoryList = db.PerkCategory
                 .Where(x => x.IsActive)
                 .OrderBy(o => o.Name)
                 .Select(o => new PerkCategoryUI
                 {
-                    PerkCategoryID = o.PerkCategoryID,
+                    PerkCategoryID = o.ID,
                     Name = o.Name,
                 })
                 .ToList();
@@ -80,11 +80,11 @@ namespace SWLOR.Web.ViewModels
 
         private void LoadPerkList()
         {
-            PerkList = _db.Perks
+            PerkList = _db.Perk
                 .Include(i => i.ExecutionType)
                 .Include(i => i.CooldownCategory)
-                .Include(i => i.PerkLevels)
-                .ThenInclude(i => i.PerkLevelSkillRequirements)
+                .Include(i => i.PerkLevel)
+                .ThenInclude(i => i.PerkLevelSkillRequirement)
                 .ThenInclude(i => i.Skill)
                 .Where(x => x.IsActive &&
                             x.PerkCategoryID == SelectedCategoryID)
@@ -93,17 +93,17 @@ namespace SWLOR.Web.ViewModels
                 {
                     Name = o.Name,
                     PerkCategoryID = o.PerkCategoryID,
-                    PerkLevels = o.PerkLevels.Select(pl => new PerkLevelUI
+                    PerkLevels = o.PerkLevel.Select(pl => new PerkLevelUI
                     {
-                        SkillRequirements = pl.PerkLevelSkillRequirements.Select(req => new PerkSkillRequirementUI
+                        SkillRequirements = pl.PerkLevelSkillRequirement.Select(req => new PerkSkillRequirementUI
                         {
-                            PerkLevelSkillRequirementID = req.PerkLevelSkillRequirementID,
+                            PerkLevelSkillRequirementID = req.ID,
                             SkillName = req.Skill.Name,
                             RequiredRank = req.RequiredRank
                         }),
                         Description = pl.Description,
                         Level = pl.Level,
-                        PerkLevelID = pl.PerkLevelID,
+                        PerkLevelID = pl.ID,
                         Price = pl.Price
                     }),
                     Description = o.Description,
@@ -111,7 +111,7 @@ namespace SWLOR.Web.ViewModels
                     BaseCooldownTime = o.CooldownCategory == null ? 0.0f : Convert.ToSingle(o.CooldownCategory.BaseCooldownTime),
                     BaseFPCost = o.BaseFPCost,
                     ExecutionTypeName = o.ExecutionType.Name,
-                    PerkID = o.PerkID
+                    PerkID = o.ID
                 })
                 .ToList();
 

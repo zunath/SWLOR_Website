@@ -13,13 +13,13 @@ namespace SWLOR.Web.ViewModels
     {
         public ConnectionLogsViewModel(DataContext db)
             : base(BuildClientData(db),
-                nameof(ClientLogEvent.ClientLogEventID))
+                nameof(ClientLogEvent.ID))
         {
         }
 
         private static IEnumerable<dynamic> BuildClientData(DataContext db)
         {
-            return db.ClientLogEvents.OrderByDescending(o => o.DateOfEvent);
+            return db.ClientLogEvent.OrderByDescending(o => o.DateOfEvent);
         }
     }
 }

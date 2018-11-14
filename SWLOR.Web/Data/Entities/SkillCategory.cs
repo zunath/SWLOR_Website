@@ -6,14 +6,14 @@ namespace SWLOR.Web.Data.Entities
     {
         public SkillCategory()
         {
-            Skills = new HashSet<Skill>();
+            Skill = new HashSet<Skill>();
         }
 
-        public int SkillCategoryID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
         public int Sequence { get; set; }
 
-        public ICollection<Skill> Skills { get; set; }
+        public ICollection<Skill> Skill { get; set; }
     }
 }

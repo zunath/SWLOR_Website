@@ -6,15 +6,15 @@ namespace SWLOR.Web.Data.Entities
     {
         public BaseStructureType()
         {
-            BaseStructures = new HashSet<BaseStructure>();
+            BaseStructure = new HashSet<BaseStructure>();
         }
 
-        public int BaseStructureTypeID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
         public bool CanPlaceInside { get; set; }
         public bool CanPlaceOutside { get; set; }
 
-        public ICollection<BaseStructure> BaseStructures { get; set; }
+        public ICollection<BaseStructure> BaseStructure { get; set; }
     }
 }

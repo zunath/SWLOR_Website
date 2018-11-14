@@ -7,13 +7,13 @@ namespace SWLOR.Web.Data.Entities
         public FameRegion()
         {
             PCRegionalFame = new HashSet<PCRegionalFame>();
-            Quests = new HashSet<Quest>();
+            Quest = new HashSet<Quest>();
         }
 
-        public int FameRegionID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
 
         public ICollection<PCRegionalFame> PCRegionalFame { get; set; }
-        public ICollection<Quest> Quests { get; set; }
+        public ICollection<Quest> Quest { get; set; }
     }
 }

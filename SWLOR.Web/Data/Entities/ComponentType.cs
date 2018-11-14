@@ -6,16 +6,16 @@ namespace SWLOR.Web.Data.Entities
     {
         public ComponentType()
         {
-            CraftBlueprintsMainComponentType = new HashSet<CraftBlueprint>();
-            CraftBlueprintsSecondaryComponentType = new HashSet<CraftBlueprint>();
-            CraftBlueprintsTertiaryComponentType = new HashSet<CraftBlueprint>();
+            CraftBlueprintMainComponentType = new HashSet<CraftBlueprint>();
+            CraftBlueprintSecondaryComponentType = new HashSet<CraftBlueprint>();
+            CraftBlueprintTertiaryComponentType = new HashSet<CraftBlueprint>();
         }
 
-        public int ComponentTypeID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
 
-        public ICollection<CraftBlueprint> CraftBlueprintsMainComponentType { get; set; }
-        public ICollection<CraftBlueprint> CraftBlueprintsSecondaryComponentType { get; set; }
-        public ICollection<CraftBlueprint> CraftBlueprintsTertiaryComponentType { get; set; }
+        public ICollection<CraftBlueprint> CraftBlueprintMainComponentType { get; set; }
+        public ICollection<CraftBlueprint> CraftBlueprintSecondaryComponentType { get; set; }
+        public ICollection<CraftBlueprint> CraftBlueprintTertiaryComponentType { get; set; }
     }
 }

@@ -59,6 +59,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Data\newschema\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 
