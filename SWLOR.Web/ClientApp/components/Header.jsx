@@ -60,7 +60,12 @@ export default class Header extends React.Component {
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/rules">
-                                    <i className="fa fa-info-circle fa-lg" /> Rules
+                                    <i className="fa fa-list-ul fa-lg" /> Rules
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/downloads">
+                                    <i className="fa fa-download fa-lg" /> Downloads
                                 </Link>
                             </li>
                             <li className="nav-item dropdown">

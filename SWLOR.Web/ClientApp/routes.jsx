@@ -18,6 +18,7 @@ import Species from './components/Species';
 import Crafting from './components/Crafting';
 import GameplayInfo from './components/GameplayInfo';
 import Rules from './components/Rules';
+import Downloads from './components/Downloads';
 
 export const routes =
     <Layout>
@@ -40,6 +41,7 @@ export const routes =
             <Route exact path="/crafting" component={Crafting} />
             <Route exact path="/gameplay-info" component={GameplayInfo} />
             <Route exact path="/rules" component={Rules} />
+            <Route exact path="/downloads" component={Downloads} />
             
             /* User Logged-In Routes */
             <Route exact path="/user-profile" component={UserProfile} />

@@ -55,6 +55,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Files\SWLOR_GUI.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\Scripts\star-wars.js" />
   </ItemGroup>
 
