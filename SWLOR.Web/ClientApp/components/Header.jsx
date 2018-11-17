@@ -58,6 +58,11 @@ export default class Header extends React.Component {
                                     <i className="fa fa-info-circle fa-lg" /> About
                                 </Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/rules">
+                                    <i className="fa fa-info-circle fa-lg" /> Rules
+                                </Link>
+                            </li>
                             <li className="nav-item dropdown">
                                 <Link id="loreDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
                                     <i className="fa fa-book fa-lg" /> &nbsp;Lore
