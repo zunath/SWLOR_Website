@@ -131,6 +131,7 @@ namespace SWLOR.Web
             });
 
             app.MapWhen(x => !x.Request.Path.Value.StartsWith("/dotnetify") &&
+                             !x.Request.Path.Value.StartsWith("/Download") &&
                              !x.Request.Path.Value.StartsWith("/forums"), builder =>
             {
                 builder.UseMvc(routes =>

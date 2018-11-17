@@ -6,7 +6,6 @@ export default class Rules extends React.Component {
         super(props);
     }
     
-
     render() {
         return (
             <div>

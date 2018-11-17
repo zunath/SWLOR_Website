@@ -1,10 +1,17 @@
 ﻿import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Downloads extends React.Component {
     constructor(props) {
         super(props);
+
+        this.download = this.download.bind(this);
     }
     
+    download(path) {
+        window.open(window.location.protocol + '//' + window.location.host + path);
+    }
+
 
     render() {
         return (
@@ -42,18 +49,15 @@ export default class Downloads extends React.Component {
                         <tbody>
                             <tr>
                                 <td>GUI Override</td>
-                                <td>This overrides the graphics of your user interface. It will affect all servers so you'll need to move it out of your override folder if you no longer wish to use it.</td>
+                                <td>This overrides the graphics of your user interface. It will affect all servers so you will need to move it out of your override folder if you no longer wish to use it.</td>
                                 <td>Extract all files to your My Documents/Neverwinter Nights/override directory.</td>
                                 <td>
-                                    <a className="btn btn-primary" href="/Download/GUIDownload">Download</a>
+                                    <a className="btn btn-primary" href="https://neverwintervault.org/sites/all/modules/pubdlcnt/pubdlcnt.php?file=https://neverwintervault.org/sites/neverwintervault.org/files/project/29362/files/swgui-2.zip&nid=29362">Download</a>
                                 </td>
                             </tr>
                         </tbody>
 
                     </table>
-
-                    
-
                 </div>
             </div>
         );
