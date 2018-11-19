@@ -261,6 +261,12 @@ export default class Perks extends React.Component {
                             </div>
                         </div>
                     </div>
+
+                    <div className="row">
+                        <div className="col-3">
+                            <a className="btn btn-primary btn-block" href="/DataExport/Perks">Export Data</a>
+                        </div>
+                    </div>
                 </div>}
 
 

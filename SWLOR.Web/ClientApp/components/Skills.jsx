@@ -164,6 +164,14 @@ export default class Skills extends React.Component {
                     </div>
 
                 </div>
+
+                <div className="row">
+                    <div className="col-3">
+                        <a className="btn btn-primary btn-block" href="/DataExport/Skills">Export Data</a>
+                    </div>
+                </div>
+
+
             </div>
         );
 
