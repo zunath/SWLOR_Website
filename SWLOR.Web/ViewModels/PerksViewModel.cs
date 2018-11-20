@@ -105,7 +105,7 @@ namespace SWLOR.Web.ViewModels
                         Level = pl.Level,
                         PerkLevelID = pl.ID,
                         Price = pl.Price
-                    }),
+                    }).OrderBy(levelOrder => levelOrder.Level),
                     Description = o.Description,
                     BaseActivationTime = Convert.ToSingle(o.BaseCastingTime),
                     BaseCooldownTime = o.CooldownCategory == null ? 0.0f : Convert.ToSingle(o.CooldownCategory.BaseCooldownTime),
