@@ -55,6 +55,15 @@ export default class Downloads extends React.Component {
                                     <a className="btn btn-primary" href="https://neverwintervault.org/sites/all/modules/pubdlcnt/pubdlcnt.php?file=https://neverwintervault.org/sites/neverwintervault.org/files/project/29362/files/swgui-2.zip&nid=29362">Download</a>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>Music Package</td>
+                                <td>This is all of the music we use on SWLOR. Because we cannot currently distribute music files via NWSync, you will need to download this separately. We highly recommend it, but the download is optional!</td>
+                                <td>Extract all files to your My Documents/Neverwinter Nights/music directory.</td>
+                                <td>
+                                    <a className="btn btn-primary" href="https://neverwintervault.org/sites/all/modules/pubdlcnt/pubdlcnt.php?file=https://neverwintervault.org/sites/neverwintervault.org/files/project/29427/files/swlormusic.7z&nid=29427">Download</a>
+                                </td>
+                            </tr>
+
                         </tbody>
 
                     </table>
