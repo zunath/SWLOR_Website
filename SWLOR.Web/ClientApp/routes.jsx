@@ -19,6 +19,7 @@ import Crafting from './components/Crafting';
 import GameplayInfo from './components/GameplayInfo';
 import Rules from './components/Rules';
 import Downloads from './components/Downloads';
+import Gallery from './components/Gallery';
 
 export const routes =
     <Layout>
@@ -42,6 +43,7 @@ export const routes =
             <Route exact path="/gameplay-info" component={GameplayInfo} />
             <Route exact path="/rules" component={Rules} />
             <Route exact path="/downloads" component={Downloads} />
+            <Route exact path="/gallery" component={Gallery} />
             
             /* User Logged-In Routes */
             <Route exact path="/user-profile" component={UserProfile} />

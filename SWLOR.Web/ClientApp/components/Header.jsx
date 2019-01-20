@@ -53,16 +53,23 @@ export default class Header extends React.Component {
                                     <i className="fa fa-home fa-lg" /> Home
                                 </Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/about">
-                                    <i className="fa fa-info-circle fa-lg" /> About
+                            <li className="nav-item dropdown">
+                                <Link id="loreDropdown" className="nav-link dropdown-toggle" to="#" data-toggle="dropdown" role="button">
+                                    <i className="fa fa-book fa-lg" /> &nbsp;Server Info
                                 </Link>
+                                <div className="dropdown-menu">
+                                    <Link className="dropdown-item" to="/about">
+                                        <i className="fa fa-info-circle fa-lg" /> &nbsp;About
+                                    </Link>
+                                    <Link className="dropdown-item" to="/rules">
+                                        <i className="fa fa-list-ul fa-lg" /> &nbsp;Rules
+                                    </Link>
+                                    <Link className="dropdown-item" to="/gallery">
+                                        <i className="fa fa-image fa-lg" /> &nbsp;Gallery
+                                    </Link>
+                                </div>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/rules">
-                                    <i className="fa fa-list-ul fa-lg" /> Rules
-                                </Link>
-                            </li>
+                            
                             <li className="nav-item">
                                 <Link className="nav-link" to="/downloads">
                                     <i className="fa fa-download fa-lg" /> Downloads
