@@ -2,7 +2,7 @@ import './css/site.css';
 import './css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as ReactDOM from '@hot-loader/react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';

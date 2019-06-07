@@ -16,8 +16,20 @@ module.exports = (env) => {
         },
         module: {
             rules: [
-                { test: /\.(js|jsx)$/, include: /ClientApp/, use: 'babel-loader' },
-                { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' }
+                {
+                    test: /\.(js|jsx)$/,
+                    include: /ClientApp/,
+                    use: 'babel-loader'
+                },
+                {
+                    test: /\.(png|jpg|jpeg|gif|svg)$/, use:
+                        [{
+                            loader: 'url-loader',
+                            options: {
+                                limit: 25000
+                            }
+                        }]
+                }
             ]
         },
         plugins: [],

@@ -4,6 +4,7 @@ import { routerReducer } from 'react-router-redux';
 import * as Store from './store';
 
 export default function configureStore(initialState) {
+    
     const windowIfDefined = typeof window === 'undefined' ? null : window;
 
     const rootReducer = buildRootReducer(Store.reducers);

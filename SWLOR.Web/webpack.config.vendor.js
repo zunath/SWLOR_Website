@@ -9,10 +9,18 @@ module.exports = (env) => {
 
     const sharedConfig = {
         stats: { modules: false },
-        resolve: { extensions: ['.js', '.js.map'] },
+        resolve: {
+            extensions: ['.js', '.js.map']
+        },
         module: {
             rules: [
-                { test: /\.(png|woff|woff2|eot|ttf|svg)(\?|$)/, use: 'url-loader?limit=100000' }
+                { test: /\.(png|woff|woff2|eot|ttf|svg)(\?|$)/, use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 100000
+                        }
+                    }]}
             ]
         },
         entry: {
@@ -23,7 +31,7 @@ module.exports = (env) => {
                 'event-source-polyfill',
                 'history',
                 'react',
-                'react-dom',
+                'react-hot-loader',
                 'react-router-dom',
                 'react-redux',
                 'redux',
@@ -84,7 +92,7 @@ module.exports = (env) => {
         module: {
             rules: [{ test: /\.css(\?|$)/, use: isDevBuild ? 'css-loader' : 'css-loader?minimize' }]
         },
-        entry: { vendor: ['aspnet-prerendering', 'react-dom/server'] },
+        entry: { vendor: ['aspnet-prerendering', '@hot-loader/react-dom/server'] },
         plugins: [
             new webpack.DllPlugin({
                 path: path.join(__dirname, 'ClientApp', 'dist', '[name]-manifest.json'),
