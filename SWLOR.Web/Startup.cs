@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -39,13 +40,20 @@ namespace SWLOR.Web
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             };
 
-            services.AddDistributedMemoryCache();
+            services.AddMemoryCache();
             services.AddSignalR();
             services.AddDotNetify();
            
-            services.AddMvc().AddJsonOptions(options =>
+            services.AddMvc()
+                .AddJsonOptions(options =>
+                {
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddSpaStaticFiles(configuration =>
             {
-                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                configuration.RootPath = "ClientApp/build";
             });
 
             services.AddDbContext<DataContext>(options =>
@@ -106,11 +114,6 @@ namespace SWLOR.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
-                {
-                    HotModuleReplacement = true,
-                    ReactHotModuleReplacement = true
-                });
             }
             else
             {
@@ -118,9 +121,18 @@ namespace SWLOR.Web
                 app.UseHsts();
             }
 
+            // Dotnetify / SignalR / WebSockets
+            app.UseWebSockets();
+            app.UseSignalR(routes => routes.MapDotNetifyHub());
+            app.UseDotNetify(config =>
+            {
+                config.UseMiddleware<AuthorizationMiddleware>();
+            });
+
             // MVC / Routing / Authentication
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSpaStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseMvc(routes =>
@@ -130,25 +142,16 @@ namespace SWLOR.Web
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            app.MapWhen(x => !x.Request.Path.Value.StartsWith("/dotnetify") &&
-                             !x.Request.Path.Value.StartsWith("/Download") &&
-                             !x.Request.Path.Value.StartsWith("/forums"), builder =>
+            app.UseSpa(spa =>
             {
-                builder.UseMvc(routes =>
-                {
-                    routes.MapSpaFallbackRoute(
-                        name: "spa-fallback",
-                        defaults: new { controller = "Home", action = "Index" });
-                });
-            });
+                spa.Options.SourcePath = "ClientApp";
 
-            // Dotnetify / SignalR / WebSockets
-            app.UseWebSockets();
-            app.UseSignalR(routes => routes.MapDotNetifyHub());
-            app.UseDotNetify(config =>
-            {
-                config.UseMiddleware<AuthorizationMiddleware>();
+                if (env.IsDevelopment())
+                {
+                    spa.UseReactDevelopmentServer(npmScript: "start");
+                }
             });
+            
         }
     }
 }
