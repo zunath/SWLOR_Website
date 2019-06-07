@@ -74,7 +74,6 @@ namespace SWLOR.Web.Controllers
                     Description = o.Description,
                     BaseActivationTime = Convert.ToSingle(o.BaseCastingTime),
                     BaseCooldownTime = o.CooldownCategory == null ? 0.0f : Convert.ToSingle(o.CooldownCategory.BaseCooldownTime),
-                    BaseFPCost = o.BaseFPCost,
                     ExecutionTypeName = o.ExecutionType.Name,
                     PerkID = o.ID
                 })

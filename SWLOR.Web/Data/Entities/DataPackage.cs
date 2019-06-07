@@ -13,5 +13,6 @@ namespace SWLOR.Web.Data.Entities
         public string Content { get; set; }
         public bool ImportedSuccessfully { get; set; }
         public string ErrorMessage { get; set; }
+        public int ClusterID { get; set; }
     }
 }

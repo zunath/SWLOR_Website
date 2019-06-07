@@ -27,14 +27,17 @@ namespace SWLOR.Web.Data.Entities
         public int? ApartmentBuildingID { get; set; }
         public string CustomName { get; set; }
         public int? BuildingStyleID { get; set; }
+        public string ShipLocation { get; set; }
+        public int? Starcharts { get; set; }
+        public int ClusterID { get; set; }
 
-        public ApartmentBuilding ApartmentBuilding { get; set; }
-        public Area AreaResrefNavigation { get; set; }
-        public BuildingStyle BuildingStyle { get; set; }
-        public PCBaseType PCBaseType { get; set; }
-        public Player Player { get; set; }
-        public ICollection<PCBasePermission> PCBasePermission { get; set; }
-        public ICollection<PCBaseStructure> PCBaseStructure { get; set; }
-        public ICollection<Player> PlayerNavigation { get; set; }
+        public virtual ApartmentBuilding ApartmentBuilding { get; set; }
+        public virtual Area AreaResrefNavigation { get; set; }
+        public virtual BuildingStyle BuildingStyle { get; set; }
+        public virtual PCBaseType PCBaseType { get; set; }
+        public virtual Player Player { get; set; }
+        public virtual ICollection<PCBasePermission> PCBasePermission { get; set; }
+        public virtual ICollection<PCBaseStructure> PCBaseStructure { get; set; }
+        public virtual ICollection<Player> PlayerNavigation { get; set; }
     }
 }

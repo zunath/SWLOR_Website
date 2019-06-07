@@ -10,8 +10,9 @@ namespace SWLOR.Web.Data.Entities
         public int XP { get; set; }
         public int Rank { get; set; }
         public bool IsLocked { get; set; }
+        public int ClusterID { get; set; }
 
-        public Player Player { get; set; }
-        public Skill Skill { get; set; }
+        public virtual Player Player { get; set; }
+        public virtual Skill Skill { get; set; }
     }
 }

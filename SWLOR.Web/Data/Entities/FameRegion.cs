@@ -13,7 +13,7 @@ namespace SWLOR.Web.Data.Entities
         public int ID { get; set; }
         public string Name { get; set; }
 
-        public ICollection<PCRegionalFame> PCRegionalFame { get; set; }
-        public ICollection<Quest> Quest { get; set; }
+        public virtual ICollection<PCRegionalFame> PCRegionalFame { get; set; }
+        public virtual ICollection<Quest> Quest { get; set; }
     }
 }

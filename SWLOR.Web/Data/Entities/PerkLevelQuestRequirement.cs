@@ -6,7 +6,7 @@
         public int PerkLevelID { get; set; }
         public int RequiredQuestID { get; set; }
 
-        public PerkLevel PerkLevel { get; set; }
-        public Quest RequiredQuest { get; set; }
+        public virtual PerkLevel PerkLevel { get; set; }
+        public virtual Quest RequiredQuest { get; set; }
     }
 }

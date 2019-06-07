@@ -10,8 +10,9 @@ namespace SWLOR.Web.Data.Entities
         public string Resref { get; set; }
         public int Remaining { get; set; }
         public bool MustBeCraftedByPlayer { get; set; }
+        public int ClusterID { get; set; }
 
-        public PCQuestStatus PCQuestStatus { get; set; }
-        public Player Player { get; set; }
+        public virtual PCQuestStatus PCQuestStatus { get; set; }
+        public virtual Player Player { get; set; }
     }
 }

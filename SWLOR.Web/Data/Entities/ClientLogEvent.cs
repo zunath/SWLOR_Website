@@ -10,8 +10,9 @@ namespace SWLOR.Web.Data.Entities
         public string CDKey { get; set; }
         public string AccountName { get; set; }
         public DateTime DateOfEvent { get; set; }
+        public int ClusterID { get; set; }
 
-        public ClientLogEventType ClientLogEventType { get; set; }
-        public Player Player { get; set; }
+        public virtual ClientLogEventType ClientLogEventType { get; set; }
+        public virtual Player Player { get; set; }
     }
 }

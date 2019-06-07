@@ -164,15 +164,6 @@ export default class Perks extends React.Component {
                                     </div>
 
                                     <div className="row">
-                                        {this.state.SelectedPerk.BaseManaCost > 0 && [
-                                            <div className="col-2 pl-5">
-                                                <b>Mana:</b>
-                                            </div>,
-                                            <div className="col-1">
-                                                {this.state.SelectedPerk.BaseFPCost}
-
-                                            </div>
-                                        ]}
 
                                         {this.state.SelectedPerk.BaseCastingTime > 0.0 && [
                                             <div className="col-2 pl-5">

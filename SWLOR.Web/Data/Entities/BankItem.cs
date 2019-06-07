@@ -13,8 +13,9 @@ namespace SWLOR.Web.Data.Entities
         public string ItemResref { get; set; }
         public string ItemObject { get; set; }
         public DateTime DateStored { get; set; }
+        public int ClusterID { get; set; }
 
-        public Bank Bank { get; set; }
-        public Player Player { get; set; }
+        public virtual Bank Bank { get; set; }
+        public virtual Player Player { get; set; }
     }
 }

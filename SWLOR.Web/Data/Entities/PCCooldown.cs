@@ -8,8 +8,9 @@ namespace SWLOR.Web.Data.Entities
         public Guid PlayerID { get; set; }
         public int CooldownCategoryID { get; set; }
         public DateTime DateUnlocked { get; set; }
+        public int ClusterID { get; set; }
 
-        public CooldownCategory CooldownCategory { get; set; }
-        public Player Player { get; set; }
+        public virtual CooldownCategory CooldownCategory { get; set; }
+        public virtual Player Player { get; set; }
     }
 }

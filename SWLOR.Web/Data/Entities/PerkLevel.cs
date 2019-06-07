@@ -15,9 +15,11 @@ namespace SWLOR.Web.Data.Entities
         public int Level { get; set; }
         public int Price { get; set; }
         public string Description { get; set; }
+        public int SpecializationID { get; set; }
 
-        public Perk Perk { get; set; }
-        public ICollection<PerkLevelQuestRequirement> PerkLevelQuestRequirement { get; set; }
-        public ICollection<PerkLevelSkillRequirement> PerkLevelSkillRequirement { get; set; }
+        public virtual Perk Perk { get; set; }
+        public virtual Specialization Specialization { get; set; }
+        public virtual ICollection<PerkLevelQuestRequirement> PerkLevelQuestRequirement { get; set; }
+        public virtual ICollection<PerkLevelSkillRequirement> PerkLevelSkillRequirement { get; set; }
     }
 }

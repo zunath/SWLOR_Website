@@ -12,7 +12,8 @@ namespace SWLOR.Web.Data.Entities
         public string ItemObject { get; set; }
         public DateTime DateImpounded { get; set; }
         public DateTime? DateRetrieved { get; set; }
+        public int ClusterID { get; set; }
 
-        public Player Player { get; set; }
+        public virtual Player Player { get; set; }
     }
 }

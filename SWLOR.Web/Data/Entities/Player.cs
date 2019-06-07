@@ -16,6 +16,7 @@ namespace SWLOR.Web.Data.Entities
             ChatLogReceiverPlayer = new HashSet<ChatLog>();
             ChatLogSenderPlayer = new HashSet<ChatLog>();
             ClientLogEvent = new HashSet<ClientLogEvent>();
+            Message = new HashSet<Message>();
             PCBase = new HashSet<PCBase>();
             PCBasePermission = new HashSet<PCBasePermission>();
             PCBaseStructurePermission = new HashSet<PCBaseStructurePermission>();
@@ -26,6 +27,8 @@ namespace SWLOR.Web.Data.Entities
             PCKeyItem = new HashSet<PCKeyItem>();
             PCMapPin = new HashSet<PCMapPin>();
             PCMapProgression = new HashSet<PCMapProgression>();
+            PCMarketListingBuyerPlayer = new HashSet<PCMarketListing>();
+            PCMarketListingSellerPlayer = new HashSet<PCMarketListing>();
             PCObjectVisibility = new HashSet<PCObjectVisibility>();
             PCOverflowItem = new HashSet<PCOverflowItem>();
             PCPerk = new HashSet<PCPerk>();
@@ -37,6 +40,7 @@ namespace SWLOR.Web.Data.Entities
             PCSearchSite = new HashSet<PCSearchSite>();
             PCSearchSiteItem = new HashSet<PCSearchSiteItem>();
             PCSkill = new HashSet<PCSkill>();
+            PCSkillPool = new HashSet<PCSkillPool>();
         }
 
         public Guid ID { get; set; }
@@ -79,40 +83,56 @@ namespace SWLOR.Web.Data.Entities
         public Guid? PrimaryResidencePCBaseID { get; set; }
         public bool IsUsingNovelEmoteStyle { get; set; }
         public bool IsDeleted { get; set; }
+        public int XPBonus { get; set; }
+        public int LeaseRate { get; set; }
+        public Guid? LocationInstanceID { get; set; }
+        public int GoldTill { get; set; }
+        public int RoleplayPoints { get; set; }
+        public int RoleplayXP { get; set; }
+        public int ClusterID { get; set; }
+        public int SpecializationID { get; set; }
+        public int? ActiveConcentrationPerkID { get; set; }
+        public int ActiveConcentrationTier { get; set; }
 
-        public Association Association { get; set; }
-        public PCBase PrimaryResidencePCBase { get; set; }
-        public PCBaseStructure PrimaryResidencePCBaseStructure { get; set; }
-        public PCOutfit PCOutfit { get; set; }
-        public ICollection<Area> AreaNortheastOwnerNavigation { get; set; }
-        public ICollection<Area> AreaNorthwestOwnerNavigation { get; set; }
-        public ICollection<Area> AreaSoutheastOwnerNavigation { get; set; }
-        public ICollection<Area> AreaSouthwestOwnerNavigation { get; set; }
-        public ICollection<BankItem> BankItem { get; set; }
-        public ICollection<BugReport> BugReport { get; set; }
-        public ICollection<ChatLog> ChatLogReceiverPlayer { get; set; }
-        public ICollection<ChatLog> ChatLogSenderPlayer { get; set; }
-        public ICollection<ClientLogEvent> ClientLogEvent { get; set; }
-        public ICollection<PCBase> PCBase { get; set; }
-        public ICollection<PCBasePermission> PCBasePermission { get; set; }
-        public ICollection<PCBaseStructurePermission> PCBaseStructurePermission { get; set; }
-        public ICollection<PCCooldown> PCCooldown { get; set; }
-        public ICollection<PCCraftedBlueprint> PCCraftedBlueprint { get; set; }
-        public ICollection<PCCustomEffect> PCCustomEffect { get; set; }
-        public ICollection<PCImpoundedItem> PCImpoundedItem { get; set; }
-        public ICollection<PCKeyItem> PCKeyItem { get; set; }
-        public ICollection<PCMapPin> PCMapPin { get; set; }
-        public ICollection<PCMapProgression> PCMapProgression { get; set; }
-        public ICollection<PCObjectVisibility> PCObjectVisibility { get; set; }
-        public ICollection<PCOverflowItem> PCOverflowItem { get; set; }
-        public ICollection<PCPerk> PCPerk { get; set; }
-        public ICollection<PCPerkRefund> PCPerkRefund { get; set; }
-        public ICollection<PCQuestItemProgress> PCQuestItemProgress { get; set; }
-        public ICollection<PCQuestKillTargetProgress> PCQuestKillTargetProgress { get; set; }
-        public ICollection<PCQuestStatus> PCQuestStatus { get; set; }
-        public ICollection<PCRegionalFame> PCRegionalFame { get; set; }
-        public ICollection<PCSearchSite> PCSearchSite { get; set; }
-        public ICollection<PCSearchSiteItem> PCSearchSiteItem { get; set; }
-        public ICollection<PCSkill> PCSkill { get; set; }
+        public virtual Perk ActiveConcentrationPerk { get; set; }
+        public virtual Association Association { get; set; }
+        public virtual PCBase PrimaryResidencePCBase { get; set; }
+        public virtual PCBaseStructure PrimaryResidencePCBaseStructure { get; set; }
+        public virtual Specialization Specialization { get; set; }
+        public virtual PCOutfit PCOutfit { get; set; }
+        public virtual ICollection<Area> AreaNortheastOwnerNavigation { get; set; }
+        public virtual ICollection<Area> AreaNorthwestOwnerNavigation { get; set; }
+        public virtual ICollection<Area> AreaSoutheastOwnerNavigation { get; set; }
+        public virtual ICollection<Area> AreaSouthwestOwnerNavigation { get; set; }
+        public virtual ICollection<BankItem> BankItem { get; set; }
+        public virtual ICollection<BugReport> BugReport { get; set; }
+        public virtual ICollection<ChatLog> ChatLogReceiverPlayer { get; set; }
+        public virtual ICollection<ChatLog> ChatLogSenderPlayer { get; set; }
+        public virtual ICollection<ClientLogEvent> ClientLogEvent { get; set; }
+        public virtual ICollection<Message> Message { get; set; }
+        public virtual ICollection<PCBase> PCBase { get; set; }
+        public virtual ICollection<PCBasePermission> PCBasePermission { get; set; }
+        public virtual ICollection<PCBaseStructurePermission> PCBaseStructurePermission { get; set; }
+        public virtual ICollection<PCCooldown> PCCooldown { get; set; }
+        public virtual ICollection<PCCraftedBlueprint> PCCraftedBlueprint { get; set; }
+        public virtual ICollection<PCCustomEffect> PCCustomEffect { get; set; }
+        public virtual ICollection<PCImpoundedItem> PCImpoundedItem { get; set; }
+        public virtual ICollection<PCKeyItem> PCKeyItem { get; set; }
+        public virtual ICollection<PCMapPin> PCMapPin { get; set; }
+        public virtual ICollection<PCMapProgression> PCMapProgression { get; set; }
+        public virtual ICollection<PCMarketListing> PCMarketListingBuyerPlayer { get; set; }
+        public virtual ICollection<PCMarketListing> PCMarketListingSellerPlayer { get; set; }
+        public virtual ICollection<PCObjectVisibility> PCObjectVisibility { get; set; }
+        public virtual ICollection<PCOverflowItem> PCOverflowItem { get; set; }
+        public virtual ICollection<PCPerk> PCPerk { get; set; }
+        public virtual ICollection<PCPerkRefund> PCPerkRefund { get; set; }
+        public virtual ICollection<PCQuestItemProgress> PCQuestItemProgress { get; set; }
+        public virtual ICollection<PCQuestKillTargetProgress> PCQuestKillTargetProgress { get; set; }
+        public virtual ICollection<PCQuestStatus> PCQuestStatus { get; set; }
+        public virtual ICollection<PCRegionalFame> PCRegionalFame { get; set; }
+        public virtual ICollection<PCSearchSite> PCSearchSite { get; set; }
+        public virtual ICollection<PCSearchSiteItem> PCSearchSiteItem { get; set; }
+        public virtual ICollection<PCSkill> PCSkill { get; set; }
+        public virtual ICollection<PCSkillPool> PCSkillPool { get; set; }
     }
 }

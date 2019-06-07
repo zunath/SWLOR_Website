@@ -10,6 +10,6 @@
         public int Sequence { get; set; }
         public string Icon { get; set; }
 
-        public GameTopicCategory GameTopicCategory { get; set; }
+        public virtual GameTopicCategory GameTopicCategory { get; set; }
     }
 }

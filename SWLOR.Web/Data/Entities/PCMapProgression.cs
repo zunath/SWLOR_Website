@@ -8,7 +8,8 @@ namespace SWLOR.Web.Data.Entities
         public Guid PlayerID { get; set; }
         public string AreaResref { get; set; }
         public string Progression { get; set; }
+        public int ClusterID { get; set; }
 
-        public Player Player { get; set; }
+        public virtual Player Player { get; set; }
     }
 }

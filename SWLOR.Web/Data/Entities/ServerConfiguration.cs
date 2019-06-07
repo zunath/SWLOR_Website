@@ -6,5 +6,6 @@
         public string ServerName { get; set; }
         public string MessageOfTheDay { get; set; }
         public int AreaBakeStep { get; set; }
+        public int ModuleVersion { get; set; }
     }
 }

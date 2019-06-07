@@ -12,6 +12,6 @@ namespace SWLOR.Web.Data.Entities
         public int ID { get; set; }
         public string Name { get; set; }
 
-        public ICollection<CustomEffect> CustomEffect { get; set; }
+        public virtual ICollection<CustomEffect> CustomEffect { get; set; }
     }
 }

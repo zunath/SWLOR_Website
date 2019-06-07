@@ -9,7 +9,6 @@ namespace SWLOR.Web.Models.UI.Perks
         public string Name { get; set; }
         public string ExecutionTypeName { get; set; }
         public string Description { get; set; }
-        public int BaseFPCost { get; set; }
         public float BaseActivationTime { get; set; }
         public float BaseCooldownTime { get; set; }
 

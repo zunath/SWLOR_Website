@@ -17,12 +17,13 @@ namespace SWLOR.Web.Data.Entities
         public int CurrentQuestStateID { get; set; }
         public DateTime? CompletionDate { get; set; }
         public int? SelectedItemRewardID { get; set; }
+        public int ClusterID { get; set; }
 
-        public QuestState CurrentQuestState { get; set; }
-        public Player Player { get; set; }
-        public Quest Quest { get; set; }
-        public QuestRewardItem SelectedItemReward { get; set; }
-        public ICollection<PCQuestItemProgress> PCQuestItemProgress { get; set; }
-        public ICollection<PCQuestKillTargetProgress> PCQuestKillTargetProgress { get; set; }
+        public virtual QuestState CurrentQuestState { get; set; }
+        public virtual Player Player { get; set; }
+        public virtual Quest Quest { get; set; }
+        public virtual QuestRewardItem SelectedItemReward { get; set; }
+        public virtual ICollection<PCQuestItemProgress> PCQuestItemProgress { get; set; }
+        public virtual ICollection<PCQuestKillTargetProgress> PCQuestKillTargetProgress { get; set; }
     }
 }

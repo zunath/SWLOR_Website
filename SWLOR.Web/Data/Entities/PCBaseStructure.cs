@@ -27,15 +27,18 @@ namespace SWLOR.Web.Data.Entities
         public string CustomName { get; set; }
         public int StructureBonus { get; set; }
         public DateTime? DateNextActivity { get; set; }
+        public int StructureModeID { get; set; }
+        public int ClusterID { get; set; }
 
-        public BaseStructure BaseStructure { get; set; }
-        public BuildingStyle ExteriorStyle { get; set; }
-        public BuildingStyle InteriorStyle { get; set; }
-        public PCBase PCBase { get; set; }
-        public PCBaseStructure ParentPCBaseStructure { get; set; }
-        public ICollection<PCBaseStructure> InverseParentPCBaseStructure { get; set; }
-        public ICollection<PCBaseStructureItem> PCBaseStructureItem { get; set; }
-        public ICollection<PCBaseStructurePermission> PCBaseStructurePermission { get; set; }
-        public ICollection<Player> Player { get; set; }
+        public virtual BaseStructure BaseStructure { get; set; }
+        public virtual BuildingStyle ExteriorStyle { get; set; }
+        public virtual BuildingStyle InteriorStyle { get; set; }
+        public virtual PCBase PCBase { get; set; }
+        public virtual PCBaseStructure ParentPCBaseStructure { get; set; }
+        public virtual StructureMode StructureMode { get; set; }
+        public virtual ICollection<PCBaseStructure> InverseParentPCBaseStructure { get; set; }
+        public virtual ICollection<PCBaseStructureItem> PCBaseStructureItem { get; set; }
+        public virtual ICollection<PCBaseStructurePermission> PCBaseStructurePermission { get; set; }
+        public virtual ICollection<Player> Player { get; set; }
     }
 }

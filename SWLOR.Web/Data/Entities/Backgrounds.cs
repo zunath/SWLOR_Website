@@ -9,5 +9,6 @@ namespace SWLOR.Web.Data.Entities
         public string Description { get; set; }
         public string Bonuses { get; set; }
         public bool IsActive { get; set; }
+        public int ClusterID { get; set; }
     }
 }

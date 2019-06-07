@@ -6,6 +6,7 @@ namespace SWLOR.Web.Data.Entities
     {
         public SkillCategory()
         {
+            PCSkillPool = new HashSet<PCSkillPool>();
             Skill = new HashSet<Skill>();
         }
 
@@ -14,6 +15,7 @@ namespace SWLOR.Web.Data.Entities
         public bool IsActive { get; set; }
         public int Sequence { get; set; }
 
-        public ICollection<Skill> Skill { get; set; }
+        public virtual ICollection<PCSkillPool> PCSkillPool { get; set; }
+        public virtual ICollection<Skill> Skill { get; set; }
     }
 }

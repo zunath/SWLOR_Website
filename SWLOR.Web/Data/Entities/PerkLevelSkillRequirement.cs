@@ -7,7 +7,7 @@
         public int SkillID { get; set; }
         public int RequiredRank { get; set; }
 
-        public PerkLevel PerkLevel { get; set; }
-        public Skill Skill { get; set; }
+        public virtual PerkLevel PerkLevel { get; set; }
+        public virtual Skill Skill { get; set; }
     }
 }

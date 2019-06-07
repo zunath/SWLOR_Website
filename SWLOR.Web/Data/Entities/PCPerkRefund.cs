@@ -10,8 +10,9 @@ namespace SWLOR.Web.Data.Entities
         public int Level { get; set; }
         public DateTime DateAcquired { get; set; }
         public DateTime DateRefunded { get; set; }
+        public int ClusterID { get; set; }
 
-        public Perk Perk { get; set; }
-        public Player Player { get; set; }
+        public virtual Perk Perk { get; set; }
+        public virtual Player Player { get; set; }
     }
 }

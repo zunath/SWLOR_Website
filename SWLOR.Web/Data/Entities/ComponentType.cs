@@ -13,9 +13,10 @@ namespace SWLOR.Web.Data.Entities
 
         public int ID { get; set; }
         public string Name { get; set; }
+        public string ReassembledResref { get; set; }
 
-        public ICollection<CraftBlueprint> CraftBlueprintMainComponentType { get; set; }
-        public ICollection<CraftBlueprint> CraftBlueprintSecondaryComponentType { get; set; }
-        public ICollection<CraftBlueprint> CraftBlueprintTertiaryComponentType { get; set; }
+        public virtual ICollection<CraftBlueprint> CraftBlueprintMainComponentType { get; set; }
+        public virtual ICollection<CraftBlueprint> CraftBlueprintSecondaryComponentType { get; set; }
+        public virtual ICollection<CraftBlueprint> CraftBlueprintTertiaryComponentType { get; set; }
     }
 }

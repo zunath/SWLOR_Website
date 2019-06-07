@@ -17,10 +17,10 @@ namespace SWLOR.Web.Data.Entities
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public KeyItemCategory KeyItemCategory { get; set; }
-        public ICollection<PCKeyItem> PCKeyItem { get; set; }
-        public ICollection<QuestRequiredKeyItem> QuestRequiredKeyItem { get; set; }
-        public ICollection<Quest> QuestRewardKeyItem { get; set; }
-        public ICollection<Quest> QuestStartKeyItem { get; set; }
+        public virtual KeyItemCategory KeyItemCategory { get; set; }
+        public virtual ICollection<PCKeyItem> PCKeyItem { get; set; }
+        public virtual ICollection<QuestRequiredKeyItem> QuestRequiredKeyItem { get; set; }
+        public virtual ICollection<Quest> QuestRewardKeyItem { get; set; }
+        public virtual ICollection<Quest> QuestStartKeyItem { get; set; }
     }
 }

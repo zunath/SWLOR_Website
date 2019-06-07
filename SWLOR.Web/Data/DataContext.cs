@@ -40,23 +40,29 @@ namespace SWLOR.Web.Data
         public virtual DbSet<CraftDevice> CraftDevice { get; set; }
         public virtual DbSet<CustomEffect> CustomEffect { get; set; }
         public virtual DbSet<CustomEffectCategory> CustomEffectCategory { get; set; }
-        public virtual DbSet<DatabaseVersion> DatabaseVersion { get; set; }
-        public virtual DbSet<DataPackage> DataPackage { get; set; }
-        public virtual DbSet<DiscordChatQueue> DiscordChatQueue { get; set; }
+        public virtual DbSet<DMAction> DMAction { get; set; }
+        public virtual DbSet<DMActionType> DMActionType { get; set; }
         public virtual DbSet<DMRole> DMRole { get; set; }
+        public virtual DbSet<DataPackage> DataPackage { get; set; }
+        public virtual DbSet<DatabaseVersion> DatabaseVersion { get; set; }
+        public virtual DbSet<DiscordChatQueue> DiscordChatQueue { get; set; }
         public virtual DbSet<Download> Download { get; set; }
         public virtual DbSet<EnmityAdjustmentRule> EnmityAdjustmentRule { get; set; }
         public virtual DbSet<Error> Error { get; set; }
         public virtual DbSet<FameRegion> FameRegion { get; set; }
+        public virtual DbSet<ForceBalanceType> ForceBalanceType { get; set; }
         public virtual DbSet<GameTopic> GameTopic { get; set; }
         public virtual DbSet<GameTopicCategory> GameTopicCategory { get; set; }
         public virtual DbSet<GrowingPlant> GrowingPlant { get; set; }
         public virtual DbSet<ItemType> ItemType { get; set; }
+        public virtual DbSet<JukeboxSong> JukeboxSong { get; set; }
         public virtual DbSet<KeyItem> KeyItem { get; set; }
         public virtual DbSet<KeyItemCategory> KeyItemCategory { get; set; }
         public virtual DbSet<LootTable> LootTable { get; set; }
         public virtual DbSet<LootTableItem> LootTableItem { get; set; }
-        public virtual DbSet<Mod> Mod { get; set; }
+        public virtual DbSet<MarketCategory> MarketCategory { get; set; }
+        public virtual DbSet<MarketRegion> MarketRegion { get; set; }
+        public virtual DbSet<Message> Message { get; set; }
         public virtual DbSet<NPCGroup> NPCGroup { get; set; }
         public virtual DbSet<PCBase> PCBase { get; set; }
         public virtual DbSet<PCBasePermission> PCBasePermission { get; set; }
@@ -71,6 +77,7 @@ namespace SWLOR.Web.Data
         public virtual DbSet<PCKeyItem> PCKeyItem { get; set; }
         public virtual DbSet<PCMapPin> PCMapPin { get; set; }
         public virtual DbSet<PCMapProgression> PCMapProgression { get; set; }
+        public virtual DbSet<PCMarketListing> PCMarketListing { get; set; }
         public virtual DbSet<PCObjectVisibility> PCObjectVisibility { get; set; }
         public virtual DbSet<PCOutfit> PCOutfit { get; set; }
         public virtual DbSet<PCOverflowItem> PCOverflowItem { get; set; }
@@ -83,9 +90,11 @@ namespace SWLOR.Web.Data
         public virtual DbSet<PCSearchSite> PCSearchSite { get; set; }
         public virtual DbSet<PCSearchSiteItem> PCSearchSiteItem { get; set; }
         public virtual DbSet<PCSkill> PCSkill { get; set; }
+        public virtual DbSet<PCSkillPool> PCSkillPool { get; set; }
         public virtual DbSet<Perk> Perk { get; set; }
         public virtual DbSet<PerkCategory> PerkCategory { get; set; }
         public virtual DbSet<PerkExecutionType> PerkExecutionType { get; set; }
+        public virtual DbSet<PerkFeat> PerkFeat { get; set; }
         public virtual DbSet<PerkLevel> PerkLevel { get; set; }
         public virtual DbSet<PerkLevelQuestRequirement> PerkLevelQuestRequirement { get; set; }
         public virtual DbSet<PerkLevelSkillRequirement> PerkLevelSkillRequirement { get; set; }
@@ -102,21 +111,17 @@ namespace SWLOR.Web.Data
         public virtual DbSet<ServerConfiguration> ServerConfiguration { get; set; }
         public virtual DbSet<Skill> Skill { get; set; }
         public virtual DbSet<SkillCategory> SkillCategory { get; set; }
-        public virtual DbSet<SkillXPRequirement> SkillXPRequirement { get; set; }
         public virtual DbSet<Spawn> Spawn { get; set; }
         public virtual DbSet<SpawnObject> SpawnObject { get; set; }
         public virtual DbSet<SpawnObjectType> SpawnObjectType { get; set; }
+        public virtual DbSet<Specialization> Specialization { get; set; }
+        public virtual DbSet<StructureMode> StructureMode { get; set; }
         public virtual DbSet<User> User { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-            }
-        }
-
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
+
             modelBuilder.Entity<ApartmentBuilding>(entity =>
             {
                 entity.Property(e => e.ID).ValueGeneratedNever();
@@ -128,11 +133,22 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<Area>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__Area__3214EC27D140AB70")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_Area_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
                 entity.HasIndex(e => e.Resref)
                     .HasName("UQ_Area_Resref")
                     .IsUnique();
 
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.DateLastBaked).HasDefaultValueSql("(getutcdate())");
 
@@ -197,7 +213,18 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<AreaWalkmesh>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__AreaWalk__3214EC27F740B883")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_AreaWalkmesh_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.HasOne(d => d.Area)
                     .WithMany(p => p.AreaWalkmesh)
@@ -240,12 +267,23 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<Backgrounds>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__Backgrou__3214EC276D377700")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_Backgrounds_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
 
                 entity.Property(e => e.Bonuses)
                     .IsRequired()
                     .HasMaxLength(512)
                     .HasDefaultValueSql("('')");
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Description)
                     .IsRequired()
@@ -277,7 +315,25 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<BankItem>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__BankItem__3214EC275A3A2DB4")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_BankItem_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.HasIndex(e => e.ItemID)
+                    .HasName("UQ_BankItem_ItemID")
+                    .IsUnique();
+
+                entity.HasIndex(e => new { e.BankID, e.DateStored, e.ItemID, e.ItemName, e.ItemObject, e.ItemResref, e.ItemTag, e.PlayerID })
+                    .HasName("IX_BankItem_PlayerID");
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.DateStored).HasDefaultValueSql("(getutcdate())");
 
@@ -285,9 +341,13 @@ namespace SWLOR.Web.Data
                     .IsRequired()
                     .HasMaxLength(60);
 
-                entity.Property(e => e.ItemName).IsRequired();
+                entity.Property(e => e.ItemName)
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                entity.Property(e => e.ItemObject).IsRequired();
+                entity.Property(e => e.ItemObject)
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
                 entity.Property(e => e.ItemResref)
                     .IsRequired()
@@ -343,6 +403,12 @@ namespace SWLOR.Web.Data
                     .HasForeignKey(d => d.BaseStructureTypeID)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_BaseStructure_BaseStructureTypeID");
+
+                entity.HasOne(d => d.DefaultStructureMode)
+                    .WithMany(p => p.BaseStructure)
+                    .HasForeignKey(d => d.DefaultStructureModeID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_BaseStructure_DefaultStructureModeID");
             });
 
             modelBuilder.Entity<BaseStructureType>(entity =>
@@ -357,6 +423,15 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<BugReport>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__BugRepor__3214EC27F3E9B54E")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_BugReport_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
 
                 entity.Property(e => e.AreaResref)
@@ -366,6 +441,8 @@ namespace SWLOR.Web.Data
                 entity.Property(e => e.CDKey)
                     .IsRequired()
                     .HasMaxLength(20);
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.DateSubmitted).HasDefaultValueSql("(getutcdate())");
 
@@ -435,7 +512,18 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<ChatLog>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__ChatLog__454604C4BBAF0C10")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_ChatLog_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.DateSent).HasDefaultValueSql("(getutcdate())");
 
@@ -480,6 +568,15 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<ClientLogEvent>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK_ClientLogEvent_ClientLogEventID")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_ClientLogEvent_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
 
                 entity.Property(e => e.AccountName)
@@ -489,6 +586,8 @@ namespace SWLOR.Web.Data
                 entity.Property(e => e.CDKey)
                     .IsRequired()
                     .HasMaxLength(20);
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.DateOfEvent).HasDefaultValueSql("(getutcdate())");
 
@@ -521,6 +620,11 @@ namespace SWLOR.Web.Data
                     .IsRequired()
                     .HasMaxLength(32)
                     .HasDefaultValueSql("('')");
+
+                entity.Property(e => e.ReassembledResref)
+                    .IsRequired()
+                    .HasMaxLength(16)
+                    .HasDefaultValueSql("('')");
             });
 
             modelBuilder.Entity<CooldownCategory>(entity =>
@@ -548,7 +652,7 @@ namespace SWLOR.Web.Data
                 entity.HasOne(d => d.BaseStructure)
                     .WithMany(p => p.CraftBlueprint)
                     .HasForeignKey(d => d.BaseStructureID)
-                    .HasConstraintName("FK__CraftBlue__BaseS__5D2BD0E6");
+                    .HasConstraintName("FK__CraftBlue__BaseS__4A18FC72");
 
                 entity.HasOne(d => d.CraftCategory)
                     .WithMany(p => p.CraftBlueprint)
@@ -615,25 +719,9 @@ namespace SWLOR.Web.Data
             {
                 entity.Property(e => e.ID).ValueGeneratedNever();
 
-                entity.Property(e => e.ContinueMessage)
-                    .IsRequired()
-                    .HasMaxLength(64);
-
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(32);
-
-                entity.Property(e => e.ScriptHandler)
-                    .IsRequired()
-                    .HasMaxLength(64);
-
-                entity.Property(e => e.StartMessage)
-                    .IsRequired()
-                    .HasMaxLength(64);
-
-                entity.Property(e => e.WornOffMessage)
-                    .IsRequired()
-                    .HasMaxLength(64);
 
                 entity.HasOne(d => d.CustomEffectCategory)
                     .WithMany(p => p.CustomEffect)
@@ -652,25 +740,76 @@ namespace SWLOR.Web.Data
                     .HasDefaultValueSql("('')");
             });
 
-            modelBuilder.Entity<DatabaseVersion>(entity =>
+            modelBuilder.Entity<DMAction>(entity =>
+            {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__DMAction__3214EC27CB2BB88D")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_DMAction_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.CDKey)
+                    .IsRequired()
+                    .HasMaxLength(20);
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
+
+                entity.Property(e => e.Details)
+                    .IsRequired()
+                    .HasDefaultValueSql("('')");
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(128);
+
+                entity.HasOne(d => d.DMActionType)
+                    .WithMany(p => p.DMAction)
+                    .HasForeignKey(d => d.DMActionTypeID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_DMAction_DMActionTypeID");
+            });
+
+            modelBuilder.Entity<DMActionType>(entity =>
             {
                 entity.Property(e => e.ID).ValueGeneratedNever();
 
-                entity.Property(e => e.DateApplied).HasDefaultValueSql("(getutcdate())");
-
-                entity.Property(e => e.ScriptName)
+                entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasMaxLength(100)
-                    .HasDefaultValueSql("('')");
+                    .HasMaxLength(32);
+            });
+
+            modelBuilder.Entity<DMRole>(entity =>
+            {
+                entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.Description)
+                    .IsRequired()
+                    .HasMaxLength(255);
             });
 
             modelBuilder.Entity<DataPackage>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__DataPack__3214EC27CEB99341")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_DataPackage_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
 
                 entity.Property(e => e.Checksum)
                     .IsRequired()
                     .HasMaxLength(40);
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Content).IsRequired();
 
@@ -687,9 +826,43 @@ namespace SWLOR.Web.Data
                     .HasMaxLength(64);
             });
 
+            modelBuilder.Entity<DatabaseVersion>(entity =>
+            {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__Database__3214EC2779AE4B51")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_DatabaseVersion_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
+
+                entity.Property(e => e.DateApplied).HasDefaultValueSql("(getutcdate())");
+
+                entity.Property(e => e.ScriptName)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .HasDefaultValueSql("('')");
+            });
+
             modelBuilder.Entity<DiscordChatQueue>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__DiscordC__3214EC27D414AE20")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_DiscordChatQueue_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.DateSent).HasDefaultValueSql("(getutcdate())");
 
@@ -708,15 +881,6 @@ namespace SWLOR.Web.Data
                     .HasDefaultValueSql("('')");
 
                 entity.Property(e => e.SenderName)
-                    .IsRequired()
-                    .HasMaxLength(255);
-            });
-
-            modelBuilder.Entity<DMRole>(entity =>
-            {
-                entity.Property(e => e.ID).ValueGeneratedNever();
-
-                entity.Property(e => e.Description)
                     .IsRequired()
                     .HasMaxLength(255);
             });
@@ -753,9 +917,20 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<Error>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__Error__3214EC27894FE627")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_Error_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
 
                 entity.Property(e => e.Caller).IsRequired();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Message).IsRequired();
 
@@ -763,6 +938,15 @@ namespace SWLOR.Web.Data
             });
 
             modelBuilder.Entity<FameRegion>(entity =>
+            {
+                entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(32);
+            });
+
+            modelBuilder.Entity<ForceBalanceType>(entity =>
             {
                 entity.Property(e => e.ID).ValueGeneratedNever();
 
@@ -804,7 +988,18 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<GrowingPlant>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__GrowingP__807B119175152584")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_GrowingPlant_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.DateCreated).HasDefaultValueSql("(getutcdate())");
 
@@ -832,6 +1027,19 @@ namespace SWLOR.Web.Data
                     .IsRequired()
                     .HasMaxLength(32)
                     .HasDefaultValueSql("('')");
+            });
+
+            modelBuilder.Entity<JukeboxSong>(entity =>
+            {
+                entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.DisplayName)
+                    .IsRequired()
+                    .HasMaxLength(64);
+
+                entity.Property(e => e.FileName)
+                    .IsRequired()
+                    .HasMaxLength(32);
             });
 
             modelBuilder.Entity<KeyItem>(entity =>
@@ -890,19 +1098,54 @@ namespace SWLOR.Web.Data
                     .HasConstraintName("fk_LootTableItem_LootTableID");
             });
 
-            modelBuilder.Entity<Mod>(entity =>
+            modelBuilder.Entity<MarketCategory>(entity =>
             {
                 entity.Property(e => e.ID).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasMaxLength(64)
-                    .HasDefaultValueSql("('')");
+                    .HasMaxLength(64);
+            });
 
-                entity.Property(e => e.Script)
+            modelBuilder.Entity<MarketRegion>(entity =>
+            {
+                entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasMaxLength(100)
-                    .HasDefaultValueSql("('')");
+                    .HasMaxLength(32);
+            });
+
+            modelBuilder.Entity<Message>(entity =>
+            {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__Message__3214EC2744B74F26")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_Message_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
+
+                entity.Property(e => e.DatePosted).HasDefaultValueSql("(getutcdate())");
+
+                entity.Property(e => e.Text)
+                    .IsRequired()
+                    .HasMaxLength(4000);
+
+                entity.Property(e => e.Title)
+                    .IsRequired()
+                    .HasMaxLength(256);
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.Message)
+                    .HasForeignKey(d => d.PlayerID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Message_PlayerID");
             });
 
             modelBuilder.Entity<NPCGroup>(entity =>
@@ -916,11 +1159,22 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCBase>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCBase__3214EC27967FE422")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCBase_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
 
                 entity.Property(e => e.AreaResref)
                     .IsRequired()
                     .HasMaxLength(16);
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.CustomName)
                     .IsRequired()
@@ -935,6 +1189,8 @@ namespace SWLOR.Web.Data
                     .IsRequired()
                     .HasMaxLength(2)
                     .IsUnicode(false);
+
+                entity.Property(e => e.ShipLocation).HasMaxLength(64);
 
                 entity.HasOne(d => d.ApartmentBuilding)
                     .WithMany(p => p.PCBase)
@@ -968,7 +1224,18 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCBasePermission>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCBasePe__3214EC27CBDF68E7")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCBasePermission_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.HasOne(d => d.PCBase)
                     .WithMany(p => p.PCBasePermission)
@@ -985,7 +1252,18 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCBaseStructure>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCBaseSt__3214EC278A17DD69")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCBaseStructure_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.CustomName)
                     .IsRequired()
@@ -1018,11 +1296,32 @@ namespace SWLOR.Web.Data
                     .WithMany(p => p.InverseParentPCBaseStructure)
                     .HasForeignKey(d => d.ParentPCBaseStructureID)
                     .HasConstraintName("FK_PCBaseStructure_ParentPCBaseStructureID");
+
+                entity.HasOne(d => d.StructureMode)
+                    .WithMany(p => p.PCBaseStructure)
+                    .HasForeignKey(d => d.StructureModeID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCBaseStructure_StructureModeID");
             });
 
             modelBuilder.Entity<PCBaseStructureItem>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCBaseSt__3214EC27BC034627")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCBaseStructureItem_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.HasIndex(e => e.ItemGlobalID)
+                    .HasName("UQ_PCBaseStructureItem_ItemGlobalID")
+                    .IsUnique();
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.ItemGlobalID)
                     .IsRequired()
@@ -1051,7 +1350,18 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCBaseStructurePermission>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCBaseSt__3214EC2792CE3656")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCBaseStructurePermission_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.HasOne(d => d.PCBaseStructure)
                     .WithMany(p => p.PCBaseStructurePermission)
@@ -1077,7 +1387,21 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCCooldown>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCCooldo__61BCE64547547BE9")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCCooldown_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.HasIndex(e => new { e.CooldownCategoryID, e.DateUnlocked, e.PlayerID })
+                    .HasName("IX_PCCooldown_PlayerID");
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.HasOne(d => d.CooldownCategory)
                     .WithMany(p => p.PCCooldown)
@@ -1094,7 +1418,21 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCCraftedBlueprint>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCCrafte__3214EC276BE96701")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCCraftedBlueprint_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.HasIndex(e => new { e.CraftBlueprintID, e.DateFirstCrafted, e.PlayerID })
+                    .HasName("IX_PCCraftedBlueprint_PlayerID");
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.DateFirstCrafted).HasDefaultValueSql("(getutcdate())");
 
@@ -1113,6 +1451,18 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCCustomEffect>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCCustom__40F2132E1A5F30A2")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCCustomEffect_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.HasIndex(e => new { e.CasterNWNObjectID, e.CustomEffectID, e.Data, e.EffectiveLevel, e.StancePerkID, e.Ticks, e.PlayerID })
+                    .HasName("IX_PCCustomEffect_PlayerID");
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
 
                 entity.Property(e => e.CasterNWNObjectID)
@@ -1120,8 +1470,11 @@ namespace SWLOR.Web.Data
                     .HasMaxLength(10)
                     .HasDefaultValueSql("('')");
 
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
+
                 entity.Property(e => e.Data)
                     .IsRequired()
+                    .HasColumnType("nvarchar(max)")
                     .HasDefaultValueSql("('')");
 
                 entity.HasOne(d => d.CustomEffect)
@@ -1139,7 +1492,29 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCImpoundedItem>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCImpoun__3214EC27CB8A90C0")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCImpoundedItem_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.HasIndex(e => new { e.PlayerID, e.DateRetrieved });
+
+                entity.HasIndex(e => new { e.DateImpounded, e.DateRetrieved, e.ItemName, e.ItemObject, e.ItemResref, e.ItemTag, e.PlayerID })
+                    .HasName("IX_PCImpoundedItem_PlayerID");
+
+                entity.HasIndex(e => new { e.DateImpounded, e.ItemName, e.ItemObject, e.ItemResref, e.ItemTag, e.PlayerID, e.DateRetrieved })
+                    .HasName("IX_PCImpoundedItem_DateRetrieved");
+
+                entity.HasIndex(e => new { e.DateRetrieved, e.ItemName, e.ItemObject, e.ItemResref, e.ItemTag, e.PlayerID, e.DateImpounded })
+                    .HasName("IX_PCImpoundedItem_DateImpounded");
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.DateImpounded).HasDefaultValueSql("(getutcdate())");
 
@@ -1147,7 +1522,9 @@ namespace SWLOR.Web.Data
                     .IsRequired()
                     .HasMaxLength(64);
 
-                entity.Property(e => e.ItemObject).IsRequired();
+                entity.Property(e => e.ItemObject)
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
                 entity.Property(e => e.ItemResref)
                     .IsRequired()
@@ -1166,11 +1543,25 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCKeyItem>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCKeyIte__36A246562715831F")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCKeyItem_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.HasIndex(e => new { e.KeyItemID, e.AcquiredDate, e.PlayerID })
+                    .HasName("IX_PCKeyItem_PlayerID");
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
 
                 entity.Property(e => e.AcquiredDate)
                     .HasColumnType("datetime2(0)")
                     .HasDefaultValueSql("(getutcdate())");
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.HasOne(d => d.KeyItem)
                     .WithMany(p => p.PCKeyItem)
@@ -1187,11 +1578,25 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCMapPin>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCMapPin__3214EC27B16600FE")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCMapPin_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.HasIndex(e => new { e.AreaTag, e.PositionX, e.PositionY, e.NoteText, e.PlayerID })
+                    .HasName("IX_PCMapPin_PlayerID");
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
 
                 entity.Property(e => e.AreaTag)
                     .IsRequired()
                     .HasMaxLength(32);
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.NoteText)
                     .IsRequired()
@@ -1206,11 +1611,25 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCMapProgression>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCMapPro__3214EC27C86C8D06")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCMapProgression_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.HasIndex(e => new { e.AreaResref, e.Progression, e.PlayerID })
+                    .HasName("IX_PCMapProgression_PlayerID");
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
 
                 entity.Property(e => e.AreaResref)
                     .IsRequired()
                     .HasMaxLength(16);
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Progression)
                     .IsRequired()
@@ -1223,9 +1642,83 @@ namespace SWLOR.Web.Data
                     .HasConstraintName("FK_PCMapProgression_PlayerID");
             });
 
+            modelBuilder.Entity<PCMarketListing>(entity =>
+            {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCMarket__3214EC272E848B52")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCMarketListing_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
+
+                entity.Property(e => e.ItemID)
+                    .IsRequired()
+                    .HasMaxLength(60);
+
+                entity.Property(e => e.ItemName).IsRequired();
+
+                entity.Property(e => e.ItemObject).IsRequired();
+
+                entity.Property(e => e.ItemResref)
+                    .IsRequired()
+                    .HasMaxLength(16);
+
+                entity.Property(e => e.ItemTag)
+                    .IsRequired()
+                    .HasMaxLength(32);
+
+                entity.Property(e => e.Note)
+                    .IsRequired()
+                    .HasMaxLength(1024)
+                    .HasDefaultValueSql("('')");
+
+                entity.HasOne(d => d.BuyerPlayer)
+                    .WithMany(p => p.PCMarketListingBuyerPlayer)
+                    .HasForeignKey(d => d.BuyerPlayerID)
+                    .HasConstraintName("FK_PCMarketListing_BuyerPlayerID");
+
+                entity.HasOne(d => d.MarketCategory)
+                    .WithMany(p => p.PCMarketListing)
+                    .HasForeignKey(d => d.MarketCategoryID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCMarketListing_MarketCategoryID");
+
+                entity.HasOne(d => d.MarketRegion)
+                    .WithMany(p => p.PCMarketListing)
+                    .HasForeignKey(d => d.MarketRegionID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCMarketListing_MarketRegionID");
+
+                entity.HasOne(d => d.SellerPlayer)
+                    .WithMany(p => p.PCMarketListingSellerPlayer)
+                    .HasForeignKey(d => d.SellerPlayerID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCMarketListing_PlayerID");
+            });
+
             modelBuilder.Entity<PCObjectVisibility>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCObject__3214EC27ED5BDBF2")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCObjectVisibility_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.HasIndex(e => new { e.IsVisible, e.VisibilityObjectID, e.PlayerID })
+                    .HasName("IX_PCObjectVisibility_PlayerID");
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.VisibilityObjectID)
                     .IsRequired()
@@ -1240,29 +1733,41 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCOutfit>(entity =>
             {
-                entity.HasKey(e => e.PlayerID);
+                entity.HasKey(e => e.PlayerID)
+                    .HasName("PK__PCOutfit__4A4E74A8B41DD37A")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCOutfit_PlayerID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.HasIndex(e => new { e.Outfit1, e.Outfit2, e.Outfit3, e.Outfit4, e.Outfit5, e.Outfit6, e.Outfit7, e.Outfit8, e.Outfit9, e.Outfit10, e.PlayerID })
+                    .HasName("IX_PCOutfit_PlayerID");
 
                 entity.Property(e => e.PlayerID).ValueGeneratedNever();
 
-                entity.Property(e => e.Outfit1).IsUnicode(false);
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
-                entity.Property(e => e.Outfit10).IsUnicode(false);
+                entity.Property(e => e.Outfit1).HasColumnType("varchar(max)");
 
-                entity.Property(e => e.Outfit2).IsUnicode(false);
+                entity.Property(e => e.Outfit10).HasColumnType("varchar(max)");
 
-                entity.Property(e => e.Outfit3).IsUnicode(false);
+                entity.Property(e => e.Outfit2).HasColumnType("varchar(max)");
 
-                entity.Property(e => e.Outfit4).IsUnicode(false);
+                entity.Property(e => e.Outfit3).HasColumnType("varchar(max)");
 
-                entity.Property(e => e.Outfit5).IsUnicode(false);
+                entity.Property(e => e.Outfit4).HasColumnType("varchar(max)");
 
-                entity.Property(e => e.Outfit6).IsUnicode(false);
+                entity.Property(e => e.Outfit5).HasColumnType("varchar(max)");
 
-                entity.Property(e => e.Outfit7).IsUnicode(false);
+                entity.Property(e => e.Outfit6).HasColumnType("varchar(max)");
 
-                entity.Property(e => e.Outfit8).IsUnicode(false);
+                entity.Property(e => e.Outfit7).HasColumnType("varchar(max)");
 
-                entity.Property(e => e.Outfit9).IsUnicode(false);
+                entity.Property(e => e.Outfit8).HasColumnType("varchar(max)");
+
+                entity.Property(e => e.Outfit9).HasColumnType("varchar(max)");
 
                 entity.HasOne(d => d.Player)
                     .WithOne(p => p.PCOutfit)
@@ -1273,11 +1778,27 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCOverflowItem>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCOverfl__F923885539F635E2")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCOverflowItem_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.HasIndex(e => new { e.ItemName, e.ItemTag, e.ItemResref, e.ItemObject, e.PlayerID })
+                    .HasName("IX_PCOverflowItem_PlayerID");
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
 
-                entity.Property(e => e.ItemName).IsRequired();
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
-                entity.Property(e => e.ItemObject).IsUnicode(false);
+                entity.Property(e => e.ItemName)
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                entity.Property(e => e.ItemObject).HasColumnType("varchar(max)");
 
                 entity.Property(e => e.ItemResref)
                     .IsRequired()
@@ -1296,9 +1817,23 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCPerk>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCPerk__0BA6BCB6B49FBD5D")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCPerk_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.HasIndex(e => new { e.AcquiredDate, e.PerkID, e.PerkLevel, e.PlayerID })
+                    .HasName("IX_PCPerk_PlayerID");
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
 
                 entity.Property(e => e.AcquiredDate).HasDefaultValueSql("(getutcdate())");
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.HasOne(d => d.Perk)
                     .WithMany(p => p.PCPerk)
@@ -1315,7 +1850,18 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCPerkRefund>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCPerkRe__3214EC272CBA17C4")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCPerkRefund_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.DateRefunded).HasDefaultValueSql("(getutcdate())");
 
@@ -1334,7 +1880,21 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCQuestItemProgress>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCQuestI__3214EC27A92B69DD")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCQuestItemProgress_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.HasIndex(e => new { e.MustBeCraftedByPlayer, e.PCQuestStatusID, e.Remaining, e.Resref, e.PlayerID })
+                    .HasName("IX_PCQuestItemProgress_PlayerID");
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Resref)
                     .IsRequired()
@@ -1355,7 +1915,21 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCQuestKillTargetProgress>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK_PCQuestKillTargetProgress_PCQuestKillTargetProgressID")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCQuestKillTargetProgress_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.HasIndex(e => new { e.PCQuestStatusID, e.NPCGroupID, e.RemainingToKill, e.PlayerID })
+                    .HasName("IX_PCQuestKillTargetProgress_PlayerID");
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.HasOne(d => d.NPCGroup)
                     .WithMany(p => p.PCQuestKillTargetProgress)
@@ -1378,7 +1952,21 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCQuestStatus>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK_PCQuesttatus_PCQuesttatusID")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCQuestStatus_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.HasIndex(e => new { e.QuestID, e.CurrentQuestStateID, e.CompletionDate, e.SelectedItemRewardID, e.PlayerID })
+                    .HasName("IX_PCQuestStatus_PlayerID");
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.HasOne(d => d.CurrentQuestState)
                     .WithMany(p => p.PCQuestStatus)
@@ -1406,7 +1994,21 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCRegionalFame>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK_PCRegionalFame_PCRegionalFameID")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCRegionalFame_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.HasIndex(e => new { e.FameRegionID, e.Amount, e.PlayerID })
+                    .HasName("IX_PCRegionalFame_PlayerID");
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.HasOne(d => d.FameRegion)
                     .WithMany(p => p.PCRegionalFame)
@@ -1423,7 +2025,21 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCSearchSite>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCSearch__B988F45255B968F1")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCSearchSite_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.HasIndex(e => new { e.SearchSiteID, e.UnlockDateTime, e.PlayerID })
+                    .HasName("IX_PCSearchSite_PlayerID");
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.UnlockDateTime).HasColumnType("datetime");
 
@@ -1436,7 +2052,18 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCSearchSiteItem>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCSearch__001EF3E36436B4F3")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCSearchSiteItem_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.SearchItem).IsUnicode(false);
 
@@ -1449,7 +2076,21 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<PCSkill>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCSkill__F00838A44ECEB5BD")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCSkill_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.HasIndex(e => new { e.SkillID, e.XP, e.Rank, e.IsLocked, e.PlayerID })
+                    .HasName("IX_PCSkill_PlayerID");
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.HasOne(d => d.Player)
                     .WithMany(p => p.PCSkill)
@@ -1464,6 +2105,41 @@ namespace SWLOR.Web.Data
                     .HasConstraintName("FK_PCSkill_SkillID");
             });
 
+            modelBuilder.Entity<PCSkillPool>(entity =>
+            {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PCSkillP__3214EC270F867847")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_PCSkillPool_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
+                entity.HasIndex(e => new { e.PlayerID, e.SkillCategoryID })
+                    .HasName("UQ_PCSkillPool")
+                    .IsUnique();
+
+                entity.HasIndex(e => new { e.SkillCategoryID, e.Levels, e.PlayerID })
+                    .HasName("IX_PCSkillPool_PlayerID");
+
+                entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.PCSkillPool)
+                    .HasForeignKey(d => d.PlayerID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCSkillPool_PlayerID");
+
+                entity.HasOne(d => d.SkillCategory)
+                    .WithMany(p => p.PCSkillPool)
+                    .HasForeignKey(d => d.SkillCategoryID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PCSkillPool_SkillCategoryID");
+            });
+
             modelBuilder.Entity<Perk>(entity =>
             {
                 entity.Property(e => e.ID).ValueGeneratedNever();
@@ -1473,17 +2149,7 @@ namespace SWLOR.Web.Data
                     .HasMaxLength(256)
                     .HasDefaultValueSql("('')");
 
-                entity.Property(e => e.FeatID).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.ItemResref).HasMaxLength(16);
-
                 entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(64)
-                    .IsUnicode(false)
-                    .HasDefaultValueSql("('')");
-
-                entity.Property(e => e.ScriptName)
                     .IsRequired()
                     .HasMaxLength(64)
                     .IsUnicode(false)
@@ -1506,11 +2172,23 @@ namespace SWLOR.Web.Data
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Perk_ExecutionTypeID");
 
+                entity.HasOne(d => d.ForceBalanceType)
+                    .WithMany(p => p.Perk)
+                    .HasForeignKey(d => d.ForceBalanceTypeID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Perk_ForceBalanceTypeID");
+
                 entity.HasOne(d => d.PerkCategory)
                     .WithMany(p => p.Perk)
                     .HasForeignKey(d => d.PerkCategoryID)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Perk_PerkCategoryID");
+
+                entity.HasOne(d => d.Specialization)
+                    .WithMany(p => p.Perk)
+                    .HasForeignKey(d => d.SpecializationID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Perk_SpecializationID");
             });
 
             modelBuilder.Entity<PerkCategory>(entity =>
@@ -1533,6 +2211,23 @@ namespace SWLOR.Web.Data
                     .HasDefaultValueSql("('')");
             });
 
+            modelBuilder.Entity<PerkFeat>(entity =>
+            {
+                entity.HasIndex(e => e.FeatID)
+                    .HasName("UQ_PerkFeat_FeatID")
+                    .IsUnique();
+
+                entity.HasIndex(e => new { e.PerkID, e.PerkLevelUnlocked })
+                    .HasName("UQ_PerkFeat_SurrogateKey")
+                    .IsUnique();
+
+                entity.HasOne(d => d.Perk)
+                    .WithMany(p => p.PerkFeat)
+                    .HasForeignKey(d => d.PerkID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PerkFeat_PerkID");
+            });
+
             modelBuilder.Entity<PerkLevel>(entity =>
             {
                 entity.HasIndex(e => new { e.PerkID, e.Level })
@@ -1549,6 +2244,12 @@ namespace SWLOR.Web.Data
                     .HasForeignKey(d => d.PerkID)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PerkLevel_PerkID");
+
+                entity.HasOne(d => d.Specialization)
+                    .WithMany(p => p.PerkLevel)
+                    .HasForeignKey(d => d.SpecializationID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PerkLevel_SpecializationID");
             });
 
             modelBuilder.Entity<PerkLevelQuestRequirement>(entity =>
@@ -1603,7 +2304,18 @@ namespace SWLOR.Web.Data
 
             modelBuilder.Entity<Player>(entity =>
             {
+                entity.HasKey(e => e.ID)
+                    .HasName("PK__PlayerCh__4A4E74A8046BDEBE")
+                    .ForSqlServerIsClustered(false);
+
+                entity.HasIndex(e => e.ClusterID)
+                    .HasName("CIX_Player_ID")
+                    .IsUnique()
+                    .ForSqlServerIsClustered();
+
                 entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.ClusterID).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.CreateTimestamp)
                     .HasColumnType("datetime2(0)")
@@ -1629,6 +2341,11 @@ namespace SWLOR.Web.Data
                     .HasMaxLength(16)
                     .HasDefaultValueSql("('')");
 
+                entity.HasOne(d => d.ActiveConcentrationPerk)
+                    .WithMany(p => p.Player)
+                    .HasForeignKey(d => d.ActiveConcentrationPerkID)
+                    .HasConstraintName("FK_Player_ActiveConcentrationPerkID");
+
                 entity.HasOne(d => d.Association)
                     .WithMany(p => p.Player)
                     .HasForeignKey(d => d.AssociationID)
@@ -1644,6 +2361,12 @@ namespace SWLOR.Web.Data
                     .WithMany(p => p.Player)
                     .HasForeignKey(d => d.PrimaryResidencePCBaseStructureID)
                     .HasConstraintName("FK_Player_PrimaryResidencePCBaseStructureID");
+
+                entity.HasOne(d => d.Specialization)
+                    .WithMany(p => p.Player)
+                    .HasForeignKey(d => d.SpecializationID)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Player_SpecializationID");
             });
 
             modelBuilder.Entity<Quest>(entity =>
@@ -1912,15 +2635,6 @@ namespace SWLOR.Web.Data
                     .HasDefaultValueSql("('')");
             });
 
-            modelBuilder.Entity<SkillXPRequirement>(entity =>
-            {
-                entity.HasOne(d => d.Skill)
-                    .WithMany(p => p.SkillXPRequirement)
-                    .HasForeignKey(d => d.SkillID)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_SkillXPRequirement_SkillID");
-            });
-
             modelBuilder.Entity<Spawn>(entity =>
             {
                 entity.Property(e => e.ID).ValueGeneratedNever();
@@ -1975,6 +2689,24 @@ namespace SWLOR.Web.Data
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(64);
+            });
+
+            modelBuilder.Entity<Specialization>(entity =>
+            {
+                entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(32);
+            });
+
+            modelBuilder.Entity<StructureMode>(entity =>
+            {
+                entity.Property(e => e.ID).ValueGeneratedNever();
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(32);
             });
 
             modelBuilder.Entity<User>(entity =>

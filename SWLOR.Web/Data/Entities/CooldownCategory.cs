@@ -14,7 +14,7 @@ namespace SWLOR.Web.Data.Entities
         public string Name { get; set; }
         public double BaseCooldownTime { get; set; }
 
-        public ICollection<PCCooldown> PCCooldown { get; set; }
-        public ICollection<Perk> Perk { get; set; }
+        public virtual ICollection<PCCooldown> PCCooldown { get; set; }
+        public virtual ICollection<Perk> Perk { get; set; }
     }
 }
