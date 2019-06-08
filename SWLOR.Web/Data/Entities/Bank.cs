@@ -14,6 +14,6 @@ namespace SWLOR.Web.Data.Entities
         public string AreaTag { get; set; }
         public string AreaResref { get; set; }
 
-        public ICollection<BankItem> BankItem { get; set; }
+        public virtual ICollection<BankItem> BankItem { get; set; }
     }
 }

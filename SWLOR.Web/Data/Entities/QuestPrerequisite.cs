@@ -6,7 +6,7 @@
         public int QuestID { get; set; }
         public int RequiredQuestID { get; set; }
 
-        public Quest Quest { get; set; }
-        public Quest RequiredQuest { get; set; }
+        public virtual Quest Quest { get; set; }
+        public virtual Quest RequiredQuest { get; set; }
     }
 }

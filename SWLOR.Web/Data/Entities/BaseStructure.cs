@@ -27,10 +27,12 @@ namespace SWLOR.Web.Data.Entities
         public int ResourceStorage { get; set; }
         public int RetrievalRating { get; set; }
         public int FuelRating { get; set; }
+        public int DefaultStructureModeID { get; set; }
 
-        public BaseStructureType BaseStructureType { get; set; }
-        public ICollection<BuildingStyle> BuildingStyle { get; set; }
-        public ICollection<CraftBlueprint> CraftBlueprint { get; set; }
-        public ICollection<PCBaseStructure> PCBaseStructure { get; set; }
+        public virtual BaseStructureType BaseStructureType { get; set; }
+        public virtual StructureMode DefaultStructureMode { get; set; }
+        public virtual ICollection<BuildingStyle> BuildingStyle { get; set; }
+        public virtual ICollection<CraftBlueprint> CraftBlueprint { get; set; }
+        public virtual ICollection<PCBaseStructure> PCBaseStructure { get; set; }
     }
 }

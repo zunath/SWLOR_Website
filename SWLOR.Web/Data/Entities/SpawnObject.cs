@@ -10,8 +10,9 @@
         public int? NPCGroupID { get; set; }
         public string BehaviourScript { get; set; }
         public int DeathVFXID { get; set; }
+        public int AIFlags { get; set; }
 
-        public NPCGroup NPCGroup { get; set; }
-        public Spawn Spawn { get; set; }
+        public virtual NPCGroup NPCGroup { get; set; }
+        public virtual Spawn Spawn { get; set; }
     }
 }

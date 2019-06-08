@@ -13,6 +13,6 @@ namespace SWLOR.Web.Data.Entities
         public int RoleID { get; set; }
         public DateTime DateRegistered { get; set; }
 
-        public DMRole Role { get; set; }
+        public virtual DMRole Role { get; set; }
     }
 }

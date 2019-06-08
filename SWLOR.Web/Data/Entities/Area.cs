@@ -35,17 +35,18 @@ namespace SWLOR.Web.Data.Entities
         public int? SouthwestLootTableID { get; set; }
         public int? SoutheastLootTableID { get; set; }
         public int MaxResourceQuality { get; set; }
+        public int ClusterID { get; set; }
 
-        public LootTable NortheastLootTable { get; set; }
-        public Player NortheastOwnerNavigation { get; set; }
-        public LootTable NorthwestLootTable { get; set; }
-        public Player NorthwestOwnerNavigation { get; set; }
-        public Spawn ResourceSpawnTable { get; set; }
-        public LootTable SoutheastLootTable { get; set; }
-        public Player SoutheastOwnerNavigation { get; set; }
-        public LootTable SouthwestLootTable { get; set; }
-        public Player SouthwestOwnerNavigation { get; set; }
-        public ICollection<AreaWalkmesh> AreaWalkmesh { get; set; }
-        public ICollection<PCBase> PCBase { get; set; }
+        public virtual LootTable NortheastLootTable { get; set; }
+        public virtual Player NortheastOwnerNavigation { get; set; }
+        public virtual LootTable NorthwestLootTable { get; set; }
+        public virtual Player NorthwestOwnerNavigation { get; set; }
+        public virtual Spawn ResourceSpawnTable { get; set; }
+        public virtual LootTable SoutheastLootTable { get; set; }
+        public virtual Player SoutheastOwnerNavigation { get; set; }
+        public virtual LootTable SouthwestLootTable { get; set; }
+        public virtual Player SouthwestOwnerNavigation { get; set; }
+        public virtual ICollection<AreaWalkmesh> AreaWalkmesh { get; set; }
+        public virtual ICollection<PCBase> PCBase { get; set; }
     }
 }

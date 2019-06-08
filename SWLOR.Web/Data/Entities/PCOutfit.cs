@@ -15,7 +15,8 @@ namespace SWLOR.Web.Data.Entities
         public string Outfit8 { get; set; }
         public string Outfit9 { get; set; }
         public string Outfit10 { get; set; }
+        public int ClusterID { get; set; }
 
-        public Player Player { get; set; }
+        public virtual Player Player { get; set; }
     }
 }

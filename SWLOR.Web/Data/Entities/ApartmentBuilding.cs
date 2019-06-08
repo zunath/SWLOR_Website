@@ -12,6 +12,6 @@ namespace SWLOR.Web.Data.Entities
         public int ID { get; set; }
         public string Name { get; set; }
 
-        public ICollection<PCBase> PCBase { get; set; }
+        public virtual ICollection<PCBase> PCBase { get; set; }
     }
 }

@@ -17,7 +17,8 @@ namespace SWLOR.Web.Data.Entities
         public int TotalTicks { get; set; }
         public int WaterStatus { get; set; }
         public int LongevityBonus { get; set; }
+        public int ClusterID { get; set; }
 
-        public Plant Plant { get; set; }
+        public virtual Plant Plant { get; set; }
     }
 }

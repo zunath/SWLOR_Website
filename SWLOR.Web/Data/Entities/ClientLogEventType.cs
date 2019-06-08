@@ -12,6 +12,6 @@ namespace SWLOR.Web.Data.Entities
         public int ID { get; set; }
         public string Name { get; set; }
 
-        public ICollection<ClientLogEvent> ClientLogEvent { get; set; }
+        public virtual ICollection<ClientLogEvent> ClientLogEvent { get; set; }
     }
 }

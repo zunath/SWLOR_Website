@@ -9,5 +9,6 @@ namespace SWLOR.Web.Data.Entities
         public string Message { get; set; }
         public string StackTrace { get; set; }
         public string Caller { get; set; }
+        public int ClusterID { get; set; }
     }
 }

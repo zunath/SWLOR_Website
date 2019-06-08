@@ -16,10 +16,10 @@ namespace SWLOR.Web.Data.Entities
         public int ID { get; set; }
         public string Name { get; set; }
 
-        public ICollection<Area> AreaNortheastLootTable { get; set; }
-        public ICollection<Area> AreaNorthwestLootTable { get; set; }
-        public ICollection<Area> AreaSoutheastLootTable { get; set; }
-        public ICollection<Area> AreaSouthwestLootTable { get; set; }
-        public ICollection<LootTableItem> LootTableItem { get; set; }
+        public virtual ICollection<Area> AreaNortheastLootTable { get; set; }
+        public virtual ICollection<Area> AreaNorthwestLootTable { get; set; }
+        public virtual ICollection<Area> AreaSoutheastLootTable { get; set; }
+        public virtual ICollection<Area> AreaSouthwestLootTable { get; set; }
+        public virtual ICollection<LootTableItem> LootTableItem { get; set; }
     }
 }

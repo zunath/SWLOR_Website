@@ -14,5 +14,6 @@ namespace SWLOR.Web.Data.Entities
         public int RetryAttempts { get; set; }
         public string SenderAccountName { get; set; }
         public string SenderCDKey { get; set; }
+        public int ClusterID { get; set; }
     }
 }

@@ -9,7 +9,7 @@
         public int QuestStateID { get; set; }
         public bool MustBeCraftedByPlayer { get; set; }
 
-        public Quest Quest { get; set; }
-        public QuestState QuestState { get; set; }
+        public virtual Quest Quest { get; set; }
+        public virtual QuestState QuestState { get; set; }
     }
 }

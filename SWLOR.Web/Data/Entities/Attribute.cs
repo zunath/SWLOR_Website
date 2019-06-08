@@ -15,8 +15,8 @@ namespace SWLOR.Web.Data.Entities
         public int NWNValue { get; set; }
         public string Name { get; set; }
 
-        public ICollection<Skill> SkillPrimaryNavigation { get; set; }
-        public ICollection<Skill> SkillSecondaryNavigation { get; set; }
-        public ICollection<Skill> SkillTertiaryNavigation { get; set; }
+        public virtual ICollection<Skill> SkillPrimaryNavigation { get; set; }
+        public virtual ICollection<Skill> SkillSecondaryNavigation { get; set; }
+        public virtual ICollection<Skill> SkillTertiaryNavigation { get; set; }
     }
 }

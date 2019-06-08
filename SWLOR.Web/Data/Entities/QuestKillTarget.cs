@@ -8,8 +8,8 @@
         public int Quantity { get; set; }
         public int QuestStateID { get; set; }
 
-        public NPCGroup NPCGroup { get; set; }
-        public Quest Quest { get; set; }
-        public QuestState QuestState { get; set; }
+        public virtual NPCGroup NPCGroup { get; set; }
+        public virtual Quest Quest { get; set; }
+        public virtual QuestState QuestState { get; set; }
     }
 }

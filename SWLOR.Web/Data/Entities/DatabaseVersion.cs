@@ -9,5 +9,6 @@ namespace SWLOR.Web.Data.Entities
         public DateTime DateApplied { get; set; }
         public DateTime VersionDate { get; set; }
         public int VersionNumber { get; set; }
+        public int ClusterID { get; set; }
     }
 }

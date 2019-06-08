@@ -39,17 +39,17 @@ namespace SWLOR.Web.Data.Entities
         public string OnCompleteArgs { get; set; }
         public string OnKillTargetArgs { get; set; }
 
-        public FameRegion FameRegion { get; set; }
-        public KeyItem RewardKeyItem { get; set; }
-        public KeyItem StartKeyItem { get; set; }
-        public ICollection<PCQuestStatus> PCQuestStatus { get; set; }
-        public ICollection<PerkLevelQuestRequirement> PerkLevelQuestRequirement { get; set; }
-        public ICollection<QuestKillTarget> QuestKillTarget { get; set; }
-        public ICollection<QuestPrerequisite> QuestPrerequisiteQuest { get; set; }
-        public ICollection<QuestPrerequisite> QuestPrerequisiteRequiredQuest { get; set; }
-        public ICollection<QuestRequiredItem> QuestRequiredItem { get; set; }
-        public ICollection<QuestRequiredKeyItem> QuestRequiredKeyItem { get; set; }
-        public ICollection<QuestRewardItem> QuestRewardItem { get; set; }
-        public ICollection<QuestState> QuestState { get; set; }
+        public virtual FameRegion FameRegion { get; set; }
+        public virtual KeyItem RewardKeyItem { get; set; }
+        public virtual KeyItem StartKeyItem { get; set; }
+        public virtual ICollection<PCQuestStatus> PCQuestStatus { get; set; }
+        public virtual ICollection<PerkLevelQuestRequirement> PerkLevelQuestRequirement { get; set; }
+        public virtual ICollection<QuestKillTarget> QuestKillTarget { get; set; }
+        public virtual ICollection<QuestPrerequisite> QuestPrerequisiteQuest { get; set; }
+        public virtual ICollection<QuestPrerequisite> QuestPrerequisiteRequiredQuest { get; set; }
+        public virtual ICollection<QuestRequiredItem> QuestRequiredItem { get; set; }
+        public virtual ICollection<QuestRequiredKeyItem> QuestRequiredKeyItem { get; set; }
+        public virtual ICollection<QuestRewardItem> QuestRewardItem { get; set; }
+        public virtual ICollection<QuestState> QuestState { get; set; }
     }
 }

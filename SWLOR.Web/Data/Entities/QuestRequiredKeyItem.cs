@@ -7,8 +7,8 @@
         public int KeyItemID { get; set; }
         public int QuesttateID { get; set; }
 
-        public KeyItem KeyItem { get; set; }
-        public Quest Quest { get; set; }
-        public QuestState Questtate { get; set; }
+        public virtual KeyItem KeyItem { get; set; }
+        public virtual Quest Quest { get; set; }
+        public virtual QuestState Questtate { get; set; }
     }
 }

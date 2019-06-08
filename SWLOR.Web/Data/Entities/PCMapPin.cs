@@ -10,7 +10,8 @@ namespace SWLOR.Web.Data.Entities
         public double PositionX { get; set; }
         public double PositionY { get; set; }
         public string NoteText { get; set; }
+        public int ClusterID { get; set; }
 
-        public Player Player { get; set; }
+        public virtual Player Player { get; set; }
     }
 }

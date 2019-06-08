@@ -16,9 +16,10 @@ namespace SWLOR.Web.Data.Entities
         public DateTime DateSent { get; set; }
         public string SenderDMName { get; set; }
         public string ReceiverDMName { get; set; }
+        public int ClusterID { get; set; }
 
-        public ChatChannel ChatChannel { get; set; }
-        public Player ReceiverPlayer { get; set; }
-        public Player SenderPlayer { get; set; }
+        public virtual ChatChannel ChatChannel { get; set; }
+        public virtual Player ReceiverPlayer { get; set; }
+        public virtual Player SenderPlayer { get; set; }
     }
 }

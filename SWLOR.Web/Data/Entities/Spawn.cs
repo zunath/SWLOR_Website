@@ -14,8 +14,8 @@ namespace SWLOR.Web.Data.Entities
         public string Name { get; set; }
         public int SpawnObjectTypeID { get; set; }
 
-        public SpawnObjectType SpawnObjectType { get; set; }
-        public ICollection<Area> Area { get; set; }
-        public ICollection<SpawnObject> SpawnObject { get; set; }
+        public virtual SpawnObjectType SpawnObjectType { get; set; }
+        public virtual ICollection<Area> Area { get; set; }
+        public virtual ICollection<SpawnObject> SpawnObject { get; set; }
     }
 }

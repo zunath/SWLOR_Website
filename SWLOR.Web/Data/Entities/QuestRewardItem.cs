@@ -14,7 +14,7 @@ namespace SWLOR.Web.Data.Entities
         public string Resref { get; set; }
         public int Quantity { get; set; }
 
-        public Quest Quest { get; set; }
-        public ICollection<PCQuestStatus> PCQuestStatus { get; set; }
+        public virtual Quest Quest { get; set; }
+        public virtual ICollection<PCQuestStatus> PCQuestStatus { get; set; }
     }
 }

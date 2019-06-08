@@ -23,10 +23,10 @@ namespace SWLOR.Web.Data.Entities
         public int DailyUpkeep { get; set; }
         public int FurnitureLimit { get; set; }
 
-        public BaseStructure BaseStructure { get; set; }
-        public BuildingType BuildingType { get; set; }
-        public ICollection<PCBase> PCBase { get; set; }
-        public ICollection<PCBaseStructure> PCBaseStructureExteriorStyle { get; set; }
-        public ICollection<PCBaseStructure> PCBaseStructureInteriorStyle { get; set; }
+        public virtual BaseStructure BaseStructure { get; set; }
+        public virtual BuildingType BuildingType { get; set; }
+        public virtual ICollection<PCBase> PCBase { get; set; }
+        public virtual ICollection<PCBaseStructure> PCBaseStructureExteriorStyle { get; set; }
+        public virtual ICollection<PCBaseStructure> PCBaseStructureInteriorStyle { get; set; }
     }
 }

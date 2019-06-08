@@ -14,8 +14,8 @@ namespace SWLOR.Web.Data.Entities
         public int ID { get; set; }
         public string Name { get; set; }
 
-        public ICollection<PCQuestKillTargetProgress> PCQuestKillTargetProgress { get; set; }
-        public ICollection<QuestKillTarget> QuestKillTarget { get; set; }
-        public ICollection<SpawnObject> SpawnObject { get; set; }
+        public virtual ICollection<PCQuestKillTargetProgress> PCQuestKillTargetProgress { get; set; }
+        public virtual ICollection<QuestKillTarget> QuestKillTarget { get; set; }
+        public virtual ICollection<SpawnObject> SpawnObject { get; set; }
     }
 }

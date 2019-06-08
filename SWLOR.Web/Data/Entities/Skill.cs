@@ -9,7 +9,6 @@ namespace SWLOR.Web.Data.Entities
             CraftBlueprint = new HashSet<CraftBlueprint>();
             PCSkill = new HashSet<PCSkill>();
             PerkLevelSkillRequirement = new HashSet<PerkLevelSkillRequirement>();
-            SkillXPRequirement = new HashSet<SkillXPRequirement>();
         }
 
         public int ID { get; set; }
@@ -23,13 +22,12 @@ namespace SWLOR.Web.Data.Entities
         public int Tertiary { get; set; }
         public bool? ContributesToSkillCap { get; set; }
 
-        public Attribute PrimaryAttribute { get; set; }
-        public Attribute SecondaryAttribute { get; set; }
-        public SkillCategory SkillCategory { get; set; }
-        public Attribute TertiaryAttribute { get; set; }
-        public ICollection<CraftBlueprint> CraftBlueprint { get; set; }
-        public ICollection<PCSkill> PCSkill { get; set; }
-        public ICollection<PerkLevelSkillRequirement> PerkLevelSkillRequirement { get; set; }
-        public ICollection<SkillXPRequirement> SkillXPRequirement { get; set; }
+        public virtual Attribute PrimaryAttribute { get; set; }
+        public virtual Attribute SecondaryAttribute { get; set; }
+        public virtual SkillCategory SkillCategory { get; set; }
+        public virtual Attribute TertiaryAttribute { get; set; }
+        public virtual ICollection<CraftBlueprint> CraftBlueprint { get; set; }
+        public virtual ICollection<PCSkill> PCSkill { get; set; }
+        public virtual ICollection<PerkLevelSkillRequirement> PerkLevelSkillRequirement { get; set; }
     }
 }

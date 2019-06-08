@@ -15,7 +15,8 @@ namespace SWLOR.Web.Data.Entities
         public double SenderLocationZ { get; set; }
         public double SenderLocationOrientation { get; set; }
         public DateTime DateSubmitted { get; set; }
+        public int ClusterID { get; set; }
 
-        public Player SenderPlayer { get; set; }
+        public virtual Player SenderPlayer { get; set; }
     }
 }

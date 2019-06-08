@@ -10,7 +10,8 @@ namespace SWLOR.Web.Data.Entities
         public string ItemTag { get; set; }
         public string ItemResref { get; set; }
         public string ItemObject { get; set; }
+        public int ClusterID { get; set; }
 
-        public Player Player { get; set; }
+        public virtual Player Player { get; set; }
     }
 }

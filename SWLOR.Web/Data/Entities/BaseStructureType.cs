@@ -15,6 +15,6 @@ namespace SWLOR.Web.Data.Entities
         public bool CanPlaceInside { get; set; }
         public bool CanPlaceOutside { get; set; }
 
-        public ICollection<BaseStructure> BaseStructure { get; set; }
+        public virtual ICollection<BaseStructure> BaseStructure { get; set; }
     }
 }

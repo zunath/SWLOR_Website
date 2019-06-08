@@ -8,8 +8,9 @@ namespace SWLOR.Web.Data.Entities
         public Guid PlayerID { get; set; }
         public int KeyItemID { get; set; }
         public DateTime AcquiredDate { get; set; }
+        public int ClusterID { get; set; }
 
-        public KeyItem KeyItem { get; set; }
-        public Player Player { get; set; }
+        public virtual KeyItem KeyItem { get; set; }
+        public virtual Player Player { get; set; }
     }
 }

@@ -10,6 +10,6 @@
         public bool IsActive { get; set; }
         public string SpawnRule { get; set; }
 
-        public LootTable LootTable { get; set; }
+        public virtual LootTable LootTable { get; set; }
     }
 }

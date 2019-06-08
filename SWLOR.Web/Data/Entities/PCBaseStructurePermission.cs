@@ -15,8 +15,13 @@ namespace SWLOR.Web.Data.Entities
         public bool CanRenameStructures { get; set; }
         public bool CanEditPrimaryResidence { get; set; }
         public bool CanRemovePrimaryResidence { get; set; }
+        public bool CanChangeStructureMode { get; set; }
+        public bool IsPublicPermission { get; set; }
+        public bool CanAdjustPublicPermissions { get; set; }
+        public bool CanFlyStarship { get; set; }
+        public int ClusterID { get; set; }
 
-        public PCBaseStructure PCBaseStructure { get; set; }
-        public Player Player { get; set; }
+        public virtual PCBaseStructure PCBaseStructure { get; set; }
+        public virtual Player Player { get; set; }
     }
 }

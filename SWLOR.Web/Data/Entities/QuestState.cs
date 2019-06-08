@@ -18,11 +18,11 @@ namespace SWLOR.Web.Data.Entities
         public int QuestTypeID { get; set; }
         public int JournalStateID { get; set; }
 
-        public Quest Quest { get; set; }
-        public QuestType QuestType { get; set; }
-        public ICollection<PCQuestStatus> PCQuestStatus { get; set; }
-        public ICollection<QuestKillTarget> QuestKillTarget { get; set; }
-        public ICollection<QuestRequiredItem> QuestRequiredItem { get; set; }
-        public ICollection<QuestRequiredKeyItem> QuestRequiredKeyItem { get; set; }
+        public virtual Quest Quest { get; set; }
+        public virtual QuestType QuestType { get; set; }
+        public virtual ICollection<PCQuestStatus> PCQuestStatus { get; set; }
+        public virtual ICollection<QuestKillTarget> QuestKillTarget { get; set; }
+        public virtual ICollection<QuestRequiredItem> QuestRequiredItem { get; set; }
+        public virtual ICollection<QuestRequiredKeyItem> QuestRequiredKeyItem { get; set; }
     }
 }

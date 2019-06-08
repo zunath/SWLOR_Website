@@ -12,8 +12,9 @@ namespace SWLOR.Web.Data.Entities
         public string Data { get; set; }
         public string CasterNWNObjectID { get; set; }
         public int? StancePerkID { get; set; }
+        public int ClusterID { get; set; }
 
-        public CustomEffect CustomEffect { get; set; }
-        public Player Player { get; set; }
+        public virtual CustomEffect CustomEffect { get; set; }
+        public virtual Player Player { get; set; }
     }
 }

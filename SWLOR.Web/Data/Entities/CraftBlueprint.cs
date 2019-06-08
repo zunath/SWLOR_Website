@@ -32,14 +32,14 @@ namespace SWLOR.Web.Data.Entities
         public int TertiaryMaximum { get; set; }
         public int? BaseStructureID { get; set; }
 
-        public BaseStructure BaseStructure { get; set; }
-        public CraftBlueprintCategory CraftCategory { get; set; }
-        public CraftDevice CraftDevice { get; set; }
-        public ComponentType MainComponentType { get; set; }
-        public Perk Perk { get; set; }
-        public ComponentType SecondaryComponentType { get; set; }
-        public Skill Skill { get; set; }
-        public ComponentType TertiaryComponentType { get; set; }
-        public ICollection<PCCraftedBlueprint> PCCraftedBlueprint { get; set; }
+        public virtual BaseStructure BaseStructure { get; set; }
+        public virtual CraftBlueprintCategory CraftCategory { get; set; }
+        public virtual CraftDevice CraftDevice { get; set; }
+        public virtual ComponentType MainComponentType { get; set; }
+        public virtual Perk Perk { get; set; }
+        public virtual ComponentType SecondaryComponentType { get; set; }
+        public virtual Skill Skill { get; set; }
+        public virtual ComponentType TertiaryComponentType { get; set; }
+        public virtual ICollection<PCCraftedBlueprint> PCCraftedBlueprint { get; set; }
     }
 }

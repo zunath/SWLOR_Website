@@ -14,6 +14,6 @@ namespace SWLOR.Web.Data.Entities
         public bool IsActive { get; set; }
         public int Sequence { get; set; }
 
-        public ICollection<Perk> Perk { get; set; }
+        public virtual ICollection<Perk> Perk { get; set; }
     }
 }

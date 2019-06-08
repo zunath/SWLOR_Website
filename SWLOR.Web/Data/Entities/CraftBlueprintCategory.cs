@@ -13,6 +13,6 @@ namespace SWLOR.Web.Data.Entities
         public string Name { get; set; }
         public bool IsActive { get; set; }
 
-        public ICollection<CraftBlueprint> CraftBlueprint { get; set; }
+        public virtual ICollection<CraftBlueprint> CraftBlueprint { get; set; }
     }
 }

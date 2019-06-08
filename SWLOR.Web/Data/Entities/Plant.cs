@@ -17,6 +17,6 @@ namespace SWLOR.Web.Data.Entities
         public int Level { get; set; }
         public string SeedResref { get; set; }
 
-        public ICollection<GrowingPlant> GrowingPlant { get; set; }
+        public virtual ICollection<GrowingPlant> GrowingPlant { get; set; }
     }
 }
