@@ -59,7 +59,7 @@ export default class Downloads extends React.Component {
                                 <tr key={obj.ID}>
                                     <td>{obj.Name}</td>
                                     <td>{obj.Description}</td>
-                                    <td></td>
+                                    <td>{obj.Instructions}</td>
                                     <td>
                                         <a className="btn btn-primary" href={this.buildURL(obj.ID)}>Download</a>
                                     </td>
