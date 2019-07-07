@@ -1,14 +1,22 @@
 ﻿import * as React from 'react';
+import * as dotnetify from 'dotnetify';
 
 export default class Downloads extends React.Component {
     constructor(props) {
         super(props);
 
-        this.download = this.download.bind(this);
+        this.vm = dotnetify.react.connect('DownloadViewModel', this);
+        this.dispatch = state => this.vm.$dispatch(state);
+
+        this.buildURL = this.buildURL.bind(this);
     }
-    
-    download(path) {
-        window.open(window.location.protocol + '//' + window.location.host + path);
+
+    componentWillUnmount() {
+        this.vm.$destroy();
+    }
+
+    buildURL(id) {
+        return '/Download/Index/' + id;
     }
 
 
@@ -46,23 +54,18 @@ export default class Downloads extends React.Component {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>GUI Override</td>
-                                <td>This overrides the graphics of your user interface. It will affect all servers so you will need to move it out of your override folder if you no longer wish to use it.</td>
-                                <td>Extract all files to your My Documents/Neverwinter Nights/override directory.</td>
-                                <td>
-                                    <a className="btn btn-primary" href="https://neverwintervault.org/sites/all/modules/pubdlcnt/pubdlcnt.php?file=https://neverwintervault.org/sites/neverwintervault.org/files/project/29362/files/swgui-2.zip&nid=29362">Download</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Music Package</td>
-                                <td>This is all of the music we use on SWLOR. Because we cannot currently distribute music files via NWSync, you will need to download this separately. We highly recommend it, but the download is optional! File last updated 2019-03-03.</td>
-                                <td>Extract all files to your My Documents/Neverwinter Nights/music directory.</td>
-                                <td>
-                                    <a className="btn btn-primary" href="https://www.dropbox.com/s/mxmcn4pc7lkw4ho/SWLOR_Music_v2.rar?dl=1">Download</a>
-                                </td>
-                            </tr>
 
+                            {this.state && this.state.DownloadList.map(obj =>
+                                <tr key={obj.ID}>
+                                    <td>{obj.Name}</td>
+                                    <td>{obj.Description}</td>
+                                    <td></td>
+                                    <td>
+                                        <a className="btn btn-primary" href={this.buildURL(obj.ID)}>Download</a>
+                                    </td>
+                                </tr>
+
+                                )}
                         </tbody>
 
                     </table>
