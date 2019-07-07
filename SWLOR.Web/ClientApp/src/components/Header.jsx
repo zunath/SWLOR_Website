@@ -25,19 +25,6 @@ export default class Header extends React.Component {
 
     render() {
 
-        const self = this;
-        function renderAdmin() {
-
-            if (self.state.Role === 1 || self.state.Role === 2) {
-                return <li className="nav-item">
-                    <Link className="nav-link" to="/Admin">
-                        <i className="fa fa-cogs fa-lg" /> Admin
-                    </Link>
-                </li>;
-            }
-            return '';
-        }
-
         return (
             <div className="container">
                 <Logout callback={this.confirmLogout} />
