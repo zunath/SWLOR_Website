@@ -899,9 +899,17 @@ namespace SWLOR.Web.Data
                     .HasMaxLength(50)
                     .HasDefaultValueSql("('')");
 
-                entity.Property(e => e.Url)
-                    .IsRequired()
-                    .HasMaxLength(200)
+                entity.Property(e => e.LocalPath)
+                    .HasMaxLength(64);
+
+                entity.Property(e => e.FileName)
+                    .HasMaxLength(64);
+
+                entity.Property(e => e.ContentType)
+                    .HasMaxLength(32);
+
+                entity.Property(e => e.Instructions)
+                    .HasMaxLength(1000)
                     .HasDefaultValueSql("('')");
             });
 
