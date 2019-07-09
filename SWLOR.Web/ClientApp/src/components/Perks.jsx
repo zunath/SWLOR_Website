@@ -13,6 +13,7 @@ export default class Perks extends React.Component {
         };
 
         this.handleChange = this.handleChange.bind(this);
+        this.toggle = this.toggle.bind(this);
     }
 
     componentWillUnmount() {
@@ -21,7 +22,8 @@ export default class Perks extends React.Component {
 
     handleChangeCategory() {
         this.dispatch({
-            SelectedCategory: this.state.SelectedCategory
+            SelectedCategory: this.state.SelectedCategory,
+            ActivePerkLevel: 1
         });
     }
 
@@ -34,14 +36,16 @@ export default class Perks extends React.Component {
             value = target.getAttribute('data-perkid');
 
         this.setState({
-            [name]: value
+            [name]: value,
+            ActivePerkLevel: 1
         }, () => this.dispatch({ [name]: value }));
     }
 
-    toggle(tab) {
-        if (this.state.ActivePerkLevel !== tab) {
+    toggle(event) {
+        const level = event.target.getAttribute('data-perklevel');
+        if (this.state.ActivePerkLevel !== level) {
             this.setState({
-                ActivePerkLevel: tab
+                ActivePerkLevel: level
             });
         }
     }
@@ -170,6 +174,8 @@ export default class Perks extends React.Component {
                                                 <Link
                                                     className={this.state.ActivePerkLevel === perkLevel.Level ? 'nav-link active' : 'nav-link'}
                                                     data-toggle="tab"
+                                                    data-perklevel={perkLevel.Level}
+                                                    onClick={this.toggle}
                                                     to={'#nav-rank' + perkLevel.Level} role="tab">Lvl {perkLevel.Level}</Link>
                                             </li>
                                         )}
@@ -177,7 +183,7 @@ export default class Perks extends React.Component {
 
                                     <div className="tab-content">
                                         {this.state.SelectedPerk.PerkLevels.map(perkLevel =>
-                                            <div className={this.state.ActivePerkLevel === perkLevel.Level ? 'tab-pane active' : 'tab-pane'}
+                                            <div className={this.state.ActivePerkLevel == perkLevel.Level ? 'tab-pane active' : 'tab-pane'}
                                                 id={'nav-rank' + perkLevel.Level}
                                                 role="tabpanel"
                                                 key={'tabcontent_' + perkLevel.PerkLevelID}>
