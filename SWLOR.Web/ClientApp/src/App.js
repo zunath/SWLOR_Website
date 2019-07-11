@@ -46,6 +46,7 @@ export default () => (
             <Route exact path="/admin/logs" component={Logs} />
             <Route exact path="/admin/chat-logs" component={ChatLogs} />
             <Route exact path="/admin/connection-logs" component={ConnectionLogs} />
+            <Route path="/Download/Index/" />
 
             <Route exact path="/not-found" component={NotFound} />
             <Redirect from='*' to='/not-found' />
