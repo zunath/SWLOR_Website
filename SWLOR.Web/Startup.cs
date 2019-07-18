@@ -14,7 +14,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Newtonsoft.Json;
 using SWLOR.Web.Data;
-using SWLOR.Web.Middleware;
 using SWLOR.Web.Models;
 using SWLOR.Web.Models.Contracts;
 
@@ -63,37 +62,6 @@ namespace SWLOR.Web
                 ServiceLifetime.Transient,
                 ServiceLifetime.Transient);
 
-            services.AddAuthentication(options =>
-                {
-                    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                })
-                .AddCookie(options =>
-                {
-                    options.LoginPath = "/Authorization/Login";
-                    options.LogoutPath = "/Authorization/Logout";
-                })
-                .AddDiscord(options =>
-                {
-                    options.ClientId = Configuration.GetValue<string>("DiscordOAuthClientID");
-                    options.ClientSecret = Configuration.GetValue<string>("DiscordOAuthClientSecret");
-                    options.CallbackPath = "/Authorization/Authenticated";
-                    options.Scope.Add("identify email");
-                    options.ClaimActions.Add(new JsonKeyClaimAction("Discriminator", typeof(string).ToString(), "discriminator"));
-                    options.ClaimActions.Add(new JsonKeyClaimAction("Avatar", typeof(string).ToString(), "avatar"));
-
-                    options.Events.OnRemoteFailure = (context) =>
-                    {
-                        if (context.Failure.Message.Contains("access_denied"))
-                        {
-                            context.Response.Redirect("/");
-                        }
-
-                        context.HandleResponse();
-                        return Task.FromResult(0);
-                    };
-                });
-
-
             if (HostingEnvironment.IsProduction())
             {
                 services.Configure<MvcOptions>(options =>
@@ -124,10 +92,7 @@ namespace SWLOR.Web
             // Dotnetify / SignalR / WebSockets
             app.UseWebSockets();
             app.UseSignalR(routes => routes.MapDotNetifyHub());
-            app.UseDotNetify(config =>
-            {
-                config.UseMiddleware<AuthorizationMiddleware>();
-            });
+            app.UseDotNetify();
 
             // MVC / Routing / Authentication
             app.UseHttpsRedirection();
