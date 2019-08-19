@@ -107,9 +107,9 @@ export default class Header extends React.Component {
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="https://discord.gg/MyQAM6m" target="_blank" rel="nopener noreferrer">
+                                <a className="nav-link" href="https://discord.gg/MyQAM6m" target="_blank" rel="nopener noreferrer">
                                     <i className="fa fa-commenting-o fa-lg" /> Discord
-                                </Link>
+                                </a>
                             </li>
 
                             <li className="nav-item dropdown">
