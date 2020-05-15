@@ -4,17 +4,15 @@ using System.Collections.Generic;
 
 namespace SWLOR.Web.Data.Entities.Data.Entities
 {
-    public partial class PCQuestItemProgress
+    public partial class PCGuildPoint
     {
         public string ID { get; set; }
         public string PlayerID { get; set; }
-        public string PCQuestStatusID { get; set; }
-        public string Resref { get; set; }
-        public int Remaining { get; set; }
-        public bool MustBeCraftedByPlayer { get; set; }
-        public int ClusterID { get; set; }
+        public int GuildID { get; set; }
+        public int Rank { get; set; }
+        public int Points { get; set; }
 
-        public virtual PCQuestStatus PCQuestStatus { get; set; }
+        public virtual Guild Guild { get; set; }
         public virtual Player Player { get; set; }
     }
 }

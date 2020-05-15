@@ -2,6 +2,7 @@
 using System.Linq;
 using DotNetify;
 using SWLOR.Web.Data;
+using SWLOR.Web.Data.Entities.Data;
 using SWLOR.Web.Models.UI.Skills;
 
 namespace SWLOR.Web.ViewModels
@@ -83,9 +84,9 @@ namespace SWLOR.Web.ViewModels
                     Name = o.Name,
                     Description = o.Description,
                     MaxRank = o.MaxRank,
-                    PrimaryName = o.PrimaryAttribute.Name,
-                    SecondaryName = o.SecondaryAttribute.Name,
-                    TertiaryName = o.TertiaryAttribute.Name
+                    PrimaryName = o.PrimaryNavigation.Name,
+                    SecondaryName = o.SecondaryNavigation.Name,
+                    TertiaryName = o.TertiaryNavigation.Name
                 })
                 .ToList();
 

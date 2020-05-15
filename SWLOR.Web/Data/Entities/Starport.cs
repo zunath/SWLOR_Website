@@ -4,16 +4,14 @@ using System.Collections.Generic;
 
 namespace SWLOR.Web.Data.Entities.Data.Entities
 {
-    public partial class ForceBalanceType
+    public partial class Starport
     {
-        public ForceBalanceType()
-        {
-            Perk = new HashSet<Perk>();
-        }
-
         public int ID { get; set; }
+        public string StarportID { get; set; }
+        public string PlanetName { get; set; }
         public string Name { get; set; }
-
-        public virtual ICollection<Perk> Perk { get; set; }
+        public int CustomsDC { get; set; }
+        public int Cost { get; set; }
+        public string WaypointTag { get; set; }
     }
 }

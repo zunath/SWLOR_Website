@@ -3,6 +3,8 @@ using System.Linq;
 using DotNetify;
 using SWLOR.Web.Data;
 using SWLOR.Web.Data.Entities;
+using SWLOR.Web.Data.Entities.Data;
+using SWLOR.Web.Data.Entities.Data.Entities;
 
 namespace SWLOR.Web.ViewModels
 {

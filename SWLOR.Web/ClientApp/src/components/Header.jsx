@@ -1,18 +1,11 @@
 ﻿import * as React from 'react';
 import { Link } from 'react-router-dom';
-import * as dotnetify from 'dotnetify';
 import Logout from './Logout';
 import Logo from '../images/swollogo2.png';
 
 export default class Header extends React.Component {
     constructor(props) {
         super(props);
-        this.vm = dotnetify.react.connect('HeaderViewModel', this);
-        this.dispatchState = state => this.vm.$dispatch(state);
-
-        this.state = { Username: '', Role: 0 }
-
-        this.confirmLogout = this.confirmLogout.bind(this);
     }
 
     componentWillUnmount() {
@@ -20,7 +13,6 @@ export default class Header extends React.Component {
     }
 
     confirmLogout() {
-        window.location.replace('/Authorization/Logout');
     }
 
     render() {

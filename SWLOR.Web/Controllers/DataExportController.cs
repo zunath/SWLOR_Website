@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using SWLOR.Web.Data;
+using SWLOR.Web.Data.Entities.Data;
 using SWLOR.Web.Models.UI.Perks;
 
 namespace SWLOR.Web.Controllers

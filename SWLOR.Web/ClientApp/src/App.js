@@ -4,10 +4,6 @@ import { Layout } from './components/Layout';
 import Home from './components/Home';
 import About from './components/About';
 import Setting from './components/Setting';
-import UserProfile from './components/UserProfile';
-import Logs from './components/admin/logs/Logs';
-import ChatLogs from './components/admin/logs/ChatLogs';
-import ConnectionLogs from './components/admin/logs/ConnectionLogs';
 import Admin from './components/Admin';
 import NotFound from './components/NotFound';
 import CharacterBackgrounds from './components/CharacterBackgrounds';
@@ -41,11 +37,6 @@ export default () => (
             <Route exact path="/downloads" component={Downloads} />
             <Route exact path="/gallery" component={Gallery} />
 
-            <Route exact path="/user-profile" component={UserProfile} />
-
-            <Route exact path="/admin/logs" component={Logs} />
-            <Route exact path="/admin/chat-logs" component={ChatLogs} />
-            <Route exact path="/admin/connection-logs" component={ConnectionLogs} />
             <Route path="/Download/Index/" />
 
             <Route exact path="/not-found" component={NotFound} />
