@@ -37,7 +37,10 @@ namespace SWLOR.Web
             services.AddSignalR();
             services.AddDotNetify();
            
-            services.AddMvc()
+            services.AddMvc(setup =>
+                {
+                    setup.EnableEndpointRouting = false;
+                })
                 .AddNewtonsoftJson(options =>
                 {
                     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
@@ -91,12 +94,12 @@ namespace SWLOR.Web
             app.UseSpaStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
-            //app.UseMvc(routes =>
-            //{
-            //    routes.MapRoute(
-            //        name: "default",
-            //        template: "{controller=Home}/{action=Index}/{id?}");
-            //});
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
 
             app.UseSpa(spa =>
             {
