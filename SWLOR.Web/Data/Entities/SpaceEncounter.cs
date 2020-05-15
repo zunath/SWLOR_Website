@@ -4,15 +4,14 @@ using System.Collections.Generic;
 
 namespace SWLOR.Web.Data.Entities.Data.Entities
 {
-    public partial class LootTableItem
+    public partial class SpaceEncounter
     {
         public int ID { get; set; }
+        public string Planet { get; set; }
+        public int TypeID { get; set; }
+        public int Chance { get; set; }
+        public int Difficulty { get; set; }
         public int LootTableID { get; set; }
-        public string Resref { get; set; }
-        public int MaxQuantity { get; set; }
-        public byte Weight { get; set; }
-        public bool IsActive { get; set; }
-        public string SpawnRule { get; set; }
 
         public virtual LootTable LootTable { get; set; }
     }

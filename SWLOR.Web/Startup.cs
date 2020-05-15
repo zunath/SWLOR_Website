@@ -1,21 +1,15 @@
-using System.Threading.Tasks;
 using DotNetify;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.OAuth.Claims;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
-using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Newtonsoft.Json;
-using SWLOR.Web.Data;
-using SWLOR.Web.Models;
-using SWLOR.Web.Models.Contracts;
+using SWLOR.Web.Data.Entities.Data;
 
 namespace SWLOR.Web
 {
@@ -44,11 +38,10 @@ namespace SWLOR.Web
             services.AddDotNetify();
            
             services.AddMvc()
-                .AddJsonOptions(options =>
+                .AddNewtonsoftJson(options =>
                 {
                     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                })
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                });
 
             services.AddSpaStaticFiles(configuration =>
             {
@@ -57,7 +50,7 @@ namespace SWLOR.Web
 
             services.AddDbContext<DataContext>(options =>
                 {
-                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                    options.UseMySql(Configuration.GetConnectionString("DefaultConnection"));
                 },
                 ServiceLifetime.Transient,
                 ServiceLifetime.Transient);
@@ -70,9 +63,7 @@ namespace SWLOR.Web
                 });
             }
 
-
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddTransient<ICurrentUser, CurrentUser>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -100,12 +91,12 @@ namespace SWLOR.Web
             app.UseSpaStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: "{controller=Home}/{action=Index}/{id?}");
+            //});
 
             app.UseSpa(spa =>
             {

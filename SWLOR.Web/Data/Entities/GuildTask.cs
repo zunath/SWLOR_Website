@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 namespace SWLOR.Web.Data.Entities.Data.Entities
 {
-    public partial class PerkLevelSkillRequirement
+    public partial class GuildTask
     {
         public int ID { get; set; }
-        public int PerkLevelID { get; set; }
-        public int SkillID { get; set; }
+        public int GuildID { get; set; }
+        public int QuestID { get; set; }
         public int RequiredRank { get; set; }
+        public bool IsCurrentlyOffered { get; set; }
 
-        public virtual PerkLevel PerkLevel { get; set; }
-        public virtual Skill Skill { get; set; }
+        public virtual Guild Guild { get; set; }
     }
 }

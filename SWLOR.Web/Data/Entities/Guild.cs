@@ -4,19 +4,19 @@ using System.Collections.Generic;
 
 namespace SWLOR.Web.Data.Entities.Data.Entities
 {
-    public partial class KeyItem
+    public partial class Guild
     {
-        public KeyItem()
+        public Guild()
         {
-            PCKeyItem = new HashSet<PCKeyItem>();
+            GuildTask = new HashSet<GuildTask>();
+            PCGuildPoint = new HashSet<PCGuildPoint>();
         }
 
         public int ID { get; set; }
-        public int KeyItemCategoryID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public virtual KeyItemCategory KeyItemCategory { get; set; }
-        public virtual ICollection<PCKeyItem> PCKeyItem { get; set; }
+        public virtual ICollection<GuildTask> GuildTask { get; set; }
+        public virtual ICollection<PCGuildPoint> PCGuildPoint { get; set; }
     }
 }

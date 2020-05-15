@@ -1,1 +1,415 @@
-﻿{"ContextClassName":"DataContext","DefaultDacpacSchema":null,"IdReplace":true,"IncludeConnectionString":true,"OutputPath":"Data\/NewEntities","ProjectRootNamespace":"SWLOR.Web.Data.Entities","SelectedToBeGenerated":0,"Tables":[{"HasPrimaryKey":true,"Name":"dbo.ApartmentBuilding"},{"HasPrimaryKey":true,"Name":"dbo.Area"},{"HasPrimaryKey":true,"Name":"dbo.AreaWalkmesh"},{"HasPrimaryKey":true,"Name":"dbo.Association"},{"HasPrimaryKey":true,"Name":"dbo.Attribute"},{"HasPrimaryKey":true,"Name":"dbo.AuthorizedDM"},{"HasPrimaryKey":true,"Name":"dbo.Backgrounds"},{"HasPrimaryKey":true,"Name":"dbo.Bank"},{"HasPrimaryKey":true,"Name":"dbo.BankItem"},{"HasPrimaryKey":true,"Name":"dbo.BaseItemType"},{"HasPrimaryKey":true,"Name":"dbo.BaseStructure"},{"HasPrimaryKey":true,"Name":"dbo.BaseStructureType"},{"HasPrimaryKey":true,"Name":"dbo.BugReport"},{"HasPrimaryKey":true,"Name":"dbo.BuildingStyle"},{"HasPrimaryKey":true,"Name":"dbo.BuildingType"},{"HasPrimaryKey":true,"Name":"dbo.ChatChannel"},{"HasPrimaryKey":true,"Name":"dbo.ChatLog"},{"HasPrimaryKey":true,"Name":"dbo.ClientLogEvent"},{"HasPrimaryKey":true,"Name":"dbo.ClientLogEventType"},{"HasPrimaryKey":true,"Name":"dbo.ComponentType"},{"HasPrimaryKey":true,"Name":"dbo.CooldownCategory"},{"HasPrimaryKey":true,"Name":"dbo.CraftBlueprint"},{"HasPrimaryKey":true,"Name":"dbo.CraftBlueprintCategory"},{"HasPrimaryKey":true,"Name":"dbo.CraftDevice"},{"HasPrimaryKey":true,"Name":"dbo.CustomEffect"},{"HasPrimaryKey":true,"Name":"dbo.CustomEffectCategory"},{"HasPrimaryKey":true,"Name":"dbo.DatabaseVersion"},{"HasPrimaryKey":true,"Name":"dbo.DataPackage"},{"HasPrimaryKey":true,"Name":"dbo.DiscordChatQueue"},{"HasPrimaryKey":true,"Name":"dbo.DMAction"},{"HasPrimaryKey":true,"Name":"dbo.DMActionType"},{"HasPrimaryKey":true,"Name":"dbo.DMRole"},{"HasPrimaryKey":true,"Name":"dbo.Download"},{"HasPrimaryKey":true,"Name":"dbo.EnmityAdjustmentRule"},{"HasPrimaryKey":true,"Name":"dbo.Error"},{"HasPrimaryKey":true,"Name":"dbo.FameRegion"},{"HasPrimaryKey":true,"Name":"dbo.ForceBalanceType"},{"HasPrimaryKey":true,"Name":"dbo.GameTopic"},{"HasPrimaryKey":true,"Name":"dbo.GameTopicCategory"},{"HasPrimaryKey":true,"Name":"dbo.GrowingPlant"},{"HasPrimaryKey":true,"Name":"dbo.ItemType"},{"HasPrimaryKey":true,"Name":"dbo.JukeboxSong"},{"HasPrimaryKey":true,"Name":"dbo.KeyItem"},{"HasPrimaryKey":true,"Name":"dbo.KeyItemCategory"},{"HasPrimaryKey":true,"Name":"dbo.LootTable"},{"HasPrimaryKey":true,"Name":"dbo.LootTableItem"},{"HasPrimaryKey":true,"Name":"dbo.MarketCategory"},{"HasPrimaryKey":true,"Name":"dbo.MarketRegion"},{"HasPrimaryKey":true,"Name":"dbo.Message"},{"HasPrimaryKey":true,"Name":"dbo.NPCGroup"},{"HasPrimaryKey":true,"Name":"dbo.PCBase"},{"HasPrimaryKey":true,"Name":"dbo.PCBasePermission"},{"HasPrimaryKey":true,"Name":"dbo.PCBaseStructure"},{"HasPrimaryKey":true,"Name":"dbo.PCBaseStructureItem"},{"HasPrimaryKey":true,"Name":"dbo.PCBaseStructurePermission"},{"HasPrimaryKey":true,"Name":"dbo.PCBaseType"},{"HasPrimaryKey":true,"Name":"dbo.PCCooldown"},{"HasPrimaryKey":true,"Name":"dbo.PCCraftedBlueprint"},{"HasPrimaryKey":true,"Name":"dbo.PCCustomEffect"},{"HasPrimaryKey":true,"Name":"dbo.PCImpoundedItem"},{"HasPrimaryKey":true,"Name":"dbo.PCKeyItem"},{"HasPrimaryKey":true,"Name":"dbo.PCMapPin"},{"HasPrimaryKey":true,"Name":"dbo.PCMapProgression"},{"HasPrimaryKey":true,"Name":"dbo.PCMarketListing"},{"HasPrimaryKey":true,"Name":"dbo.PCObjectVisibility"},{"HasPrimaryKey":true,"Name":"dbo.PCOutfit"},{"HasPrimaryKey":true,"Name":"dbo.PCOverflowItem"},{"HasPrimaryKey":true,"Name":"dbo.PCPerk"},{"HasPrimaryKey":true,"Name":"dbo.PCPerkRefund"},{"HasPrimaryKey":true,"Name":"dbo.PCQuestItemProgress"},{"HasPrimaryKey":true,"Name":"dbo.PCQuestKillTargetProgress"},{"HasPrimaryKey":true,"Name":"dbo.PCQuestStatus"},{"HasPrimaryKey":true,"Name":"dbo.PCRegionalFame"},{"HasPrimaryKey":true,"Name":"dbo.PCSearchSite"},{"HasPrimaryKey":true,"Name":"dbo.PCSearchSiteItem"},{"HasPrimaryKey":true,"Name":"dbo.PCSkill"},{"HasPrimaryKey":true,"Name":"dbo.PCSkillPool"},{"HasPrimaryKey":true,"Name":"dbo.Perk"},{"HasPrimaryKey":true,"Name":"dbo.PerkCategory"},{"HasPrimaryKey":true,"Name":"dbo.PerkExecutionType"},{"HasPrimaryKey":true,"Name":"dbo.PerkFeat"},{"HasPrimaryKey":true,"Name":"dbo.PerkLevel"},{"HasPrimaryKey":true,"Name":"dbo.PerkLevelQuestRequirement"},{"HasPrimaryKey":true,"Name":"dbo.PerkLevelSkillRequirement"},{"HasPrimaryKey":true,"Name":"dbo.Plant"},{"HasPrimaryKey":true,"Name":"dbo.Player"},{"HasPrimaryKey":true,"Name":"dbo.Quest"},{"HasPrimaryKey":true,"Name":"dbo.QuestKillTarget"},{"HasPrimaryKey":true,"Name":"dbo.QuestPrerequisite"},{"HasPrimaryKey":true,"Name":"dbo.QuestRequiredItem"},{"HasPrimaryKey":true,"Name":"dbo.QuestRequiredKeyItem"},{"HasPrimaryKey":true,"Name":"dbo.QuestRewardItem"},{"HasPrimaryKey":true,"Name":"dbo.QuestState"},{"HasPrimaryKey":true,"Name":"dbo.QuestType"},{"HasPrimaryKey":true,"Name":"dbo.ServerConfiguration"},{"HasPrimaryKey":true,"Name":"dbo.Skill"},{"HasPrimaryKey":true,"Name":"dbo.SkillCategory"},{"HasPrimaryKey":true,"Name":"dbo.Spawn"},{"HasPrimaryKey":true,"Name":"dbo.SpawnObject"},{"HasPrimaryKey":true,"Name":"dbo.SpawnObjectType"},{"HasPrimaryKey":true,"Name":"dbo.Specialization"},{"HasPrimaryKey":true,"Name":"dbo.StructureMode"},{"HasPrimaryKey":true,"Name":"dbo.sysdiagrams"},{"HasPrimaryKey":true,"Name":"dbo.User"}],"UseDatabaseNames":true,"UseFluentApiOnly":true,"UseHandleBars":false,"UseInflector":false}
+﻿{
+   "ContextClassName": "DataContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "DoNotCombineNamespace": false,
+   "IdReplace": true,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": "Data\/",
+   "OutputPath": "Data\/Entities",
+   "ProjectRootNamespace": "SWLOR.Web.Data.Entities",
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "HasPrimaryKey": true,
+         "Name": "ApartmentBuilding"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "Area"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "Association"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "Attribute"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "AuthorizedDM"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "Backgrounds"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "Bank"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "BankItem"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "BaseItemType"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "BaseStructure"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "BaseStructureType"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "BugReport"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "BuildingStyle"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "BuildingType"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "ChatChannel"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "ChatLog"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "ComponentType"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "CooldownCategory"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "CraftBlueprint"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "CraftBlueprintCategory"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "CraftDevice"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "CustomEffect"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "CustomEffectCategory"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "DatabaseVersion"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "DMAction"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "DMActionType"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "DMRole"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "Download"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "EnmityAdjustmentRule"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "Error"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "FameRegion"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "ForceBalanceType"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "GameTopic"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "GameTopicCategory"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "GrowingPlant"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "Guild"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "GuildTask"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "ItemType"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "JukeboxSong"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "KeyItem"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "KeyItemCategory"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "LootTable"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "LootTableItem"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "MarketCategory"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "MarketRegion"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "Message"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "ModuleEvent"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "ModuleEventType"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "NPCGroup"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCBase"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCBasePermission"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCBaseStructure"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCBaseStructureItem"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCBaseStructurePermission"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCBaseType"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCCooldown"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCCraftedBlueprint"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCCustomEffect"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCGuildPoint"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCHelmet"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCImpoundedItem"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCKeyItem"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCMapPin"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCMapProgression"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCMarketListing"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCObjectVisibility"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCOutfit"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCOverflowItem"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCPerk"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCPerkRefund"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCQuestItemProgress"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCQuestKillTargetProgress"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCQuestStatus"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCRegionalFame"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCSearchSite"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCSearchSiteItem"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCSkill"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCSkillPool"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PCWeapon"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "Perk"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PerkCategory"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PerkExecutionType"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PerkFeat"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PerkLevel"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PerkLevelQuestRequirement"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "PerkLevelSkillRequirement"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "Plant"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "Player"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "ServerConfiguration"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "Skill"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "SkillCategory"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "SpaceEncounter"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "Spawn"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "SpawnObject"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "SpawnObjectType"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "Specialization"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "Starport"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "StructureMode"
+      }
+   ],
+   "UseDatabaseNames": true,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseSpatial": false
+}

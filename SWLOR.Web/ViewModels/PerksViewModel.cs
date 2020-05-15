@@ -4,6 +4,7 @@ using System.Linq;
 using DotNetify;
 using Microsoft.EntityFrameworkCore;
 using SWLOR.Web.Data;
+using SWLOR.Web.Data.Entities.Data;
 using SWLOR.Web.Models.UI.Perks;
 
 namespace SWLOR.Web.ViewModels

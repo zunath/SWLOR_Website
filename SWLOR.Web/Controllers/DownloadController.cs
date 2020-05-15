@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SWLOR.Web.Data;
+using SWLOR.Web.Data.Entities.Data;
 
 namespace SWLOR.Web.Controllers
 {

@@ -4,18 +4,16 @@ using System.Collections.Generic;
 
 namespace SWLOR.Web.Data.Entities.Data.Entities
 {
-    public partial class Specialization
+    public partial class ModuleEventType
     {
-        public Specialization()
+        public ModuleEventType()
         {
-            PerkLevel = new HashSet<PerkLevel>();
-            Player = new HashSet<Player>();
+            ModuleEvent = new HashSet<ModuleEvent>();
         }
 
         public int ID { get; set; }
         public string Name { get; set; }
 
-        public virtual ICollection<PerkLevel> PerkLevel { get; set; }
-        public virtual ICollection<Player> Player { get; set; }
+        public virtual ICollection<ModuleEvent> ModuleEvent { get; set; }
     }
 }
