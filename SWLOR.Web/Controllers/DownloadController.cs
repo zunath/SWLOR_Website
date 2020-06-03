@@ -29,21 +29,7 @@ namespace SWLOR.Web.Controllers
                 return Content("File not found on server for ID " + id);
             }
 
-            var fileInfo = new FileInfo(download.LocalPath);
-
-            // Normally we'd call "return File(...);" but some files are really big,
-            // so we don't want to buffer them into memory before sending to the client.
-            Response.Clear();
-            Response.ContentType = download.ContentType;
-            Response.ContentLength = fileInfo.Length;
-            Response.Headers.Add("Content-Disposition", "attachment; filename=" + download.FileName);
-
-            using (var stream = System.IO.File.OpenRead(download.LocalPath))
-            {
-                stream.CopyTo(Response.Body);
-            }
-
-            return Ok(Response);
+            return File(System.IO.File.OpenRead(download.LocalPath), download.ContentType, download.FileName);
         }
 
 
